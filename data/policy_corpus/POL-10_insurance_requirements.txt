@@ -1,0 +1,17 @@
+POLICY ID: POL-10
+TITLE: Insurance Requirements Policy
+CATEGORY: Insurance
+EFFECTIVE DATE: 2024-01-01
+OWNER: Risk Management Department
+
+1. PURPOSE
+This policy sets minimum insurance coverage requirements for third parties contracting with the company.
+
+2. REQUIREMENTS
+2.1 Vendors providing services on company premises must maintain general liability insurance with a minimum coverage of USD 1,000,000 per occurrence.
+2.2 Vendors processing company data must maintain cyber liability insurance with a minimum coverage of USD 2,000,000 per incident.
+2.3 Professional services vendors must maintain professional indemnity (errors and omissions) insurance appropriate to the scope of engagement, with a minimum of USD 1,000,000 coverage.
+2.4 Proof of insurance (certificate of insurance) must be provided prior to contract execution and renewed annually.
+
+3. APPLICABILITY
+Applies to all vendors, contractors, and service providers engaged by the company.

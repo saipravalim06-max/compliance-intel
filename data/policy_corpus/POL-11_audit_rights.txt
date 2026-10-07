@@ -1,0 +1,17 @@
+POLICY ID: POL-11
+TITLE: Audit Rights Policy
+CATEGORY: Audit
+EFFECTIVE DATE: 2024-01-01
+OWNER: Internal Audit Department
+
+1. PURPOSE
+This policy defines the company's minimum audit rights in contracts with vendors and service providers.
+
+2. REQUIREMENTS
+2.1 Contracts involving data processing, financial transactions, or regulatory compliance obligations must grant the company the right to audit the counterparty's relevant records and systems, with reasonable prior written notice of no less than fifteen (15) business days.
+2.2 Audit rights must extend to compliance with data protection and security obligations under the agreement.
+2.3 Audit frequency should not be limited to fewer than once per twelve (12) month period without documented business justification.
+2.4 Vendors must cooperate with regulatory audits or inquiries relevant to the services provided to the company.
+
+3. APPLICABILITY
+Applies to vendor, outsourcing, and data processing agreements.

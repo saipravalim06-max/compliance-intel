@@ -1,0 +1,17 @@
+POLICY ID: POL-12
+TITLE: Dispute Resolution and Governing Law Policy
+CATEGORY: Dispute Resolution
+EFFECTIVE DATE: 2024-01-01
+OWNER: Legal Department
+
+1. PURPOSE
+This policy establishes the company's preferred approach to dispute resolution and governing law provisions in contracts.
+
+2. REQUIREMENTS
+2.1 Contracts should specify a governing law consistent with the company's principal place of business, unless a different jurisdiction is required by the counterparty's regulatory environment and approved by Legal.
+2.2 Mandatory binding arbitration clauses that waive the company's right to seek injunctive relief in court are not acceptable, except where injunctive relief remains expressly available as a carve-out.
+2.3 Dispute resolution clauses should require a good-faith negotiation period of no less than thirty (30) days prior to initiation of formal proceedings.
+2.4 Venue for any litigation or arbitration should be reasonably convenient and must not be unilaterally set solely at the counterparty's home jurisdiction without justification.
+
+3. APPLICABILITY
+Applies to all commercial contracts entered into by the company.

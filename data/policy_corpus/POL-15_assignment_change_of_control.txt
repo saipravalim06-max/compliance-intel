@@ -1,0 +1,17 @@
+POLICY ID: POL-15
+TITLE: Assignment and Change of Control Policy
+CATEGORY: Assignment
+EFFECTIVE DATE: 2024-01-01
+OWNER: Legal Department
+
+1. PURPOSE
+This policy defines the company's requirements regarding assignment of contracts and change of control provisions.
+
+2. REQUIREMENTS
+2.1 A counterparty must not assign or transfer a contract, in whole or in part, without the company's prior written consent, which shall not be unreasonably withheld.
+2.2 A change of control of the counterparty (e.g., merger, acquisition, or sale of substantially all assets) involving a direct competitor of the company entitles the company to terminate the agreement without penalty.
+2.3 The company reserves the right to assign its own contracts to an affiliate or successor entity without requiring counterparty consent, provided the affiliate/successor assumes all obligations.
+2.4 Notice of any change of control must be provided to the company within fifteen (15) business days of the event.
+
+3. APPLICABILITY
+Applies to all commercial contracts entered into by the company.

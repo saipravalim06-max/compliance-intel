@@ -1,0 +1,17 @@
+POLICY ID: POL-05
+TITLE: Contract Termination and Notice Policy
+CATEGORY: Termination
+EFFECTIVE DATE: 2024-01-01
+OWNER: Legal Department
+
+1. PURPOSE
+This policy defines minimum notice periods required for termination of company contracts across categories.
+
+2. REQUIREMENTS
+2.1 Termination for convenience (without cause) requires a minimum notice period of thirty (30) calendar days, unless a longer period is specified by a category-specific policy (e.g., critical vendors require 60 days per POL-01).
+2.2 Termination for cause requires a cure period of no less than fifteen (15) calendar days following written notice of the breach, except in cases of material data security breaches, which may permit immediate termination.
+2.3 All termination notices must be delivered in writing to a designated notice address specified in the contract.
+2.4 Contracts must not permit unilateral termination by a counterparty with less than fifteen (15) days notice under any circumstance.
+
+3. APPLICABILITY
+Applies to all commercial contracts entered into by the company, unless superseded by a more specific policy for a given contract category.

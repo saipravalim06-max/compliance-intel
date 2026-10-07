@@ -1,0 +1,17 @@
+POLICY ID: POL-13
+TITLE: Force Majeure Policy
+CATEGORY: Force Majeure
+EFFECTIVE DATE: 2024-01-01
+OWNER: Legal Department
+
+1. PURPOSE
+This policy defines acceptable standards for force majeure provisions in company contracts.
+
+2. REQUIREMENTS
+2.1 Force majeure clauses must require the affected party to provide written notice within ten (10) business days of the event's onset, describing the nature and expected duration of the impact.
+2.2 Force majeure provisions must not excuse payment obligations for services already rendered prior to the triggering event.
+2.3 If a force majeure event continues for longer than sixty (60) consecutive days, either party should retain the right to terminate the agreement without penalty.
+2.4 Pandemic, epidemic, and government-mandated shutdowns must be explicitly addressed as qualifying events where relevant to the contract's subject matter.
+
+3. APPLICABILITY
+Applies to all commercial contracts, particularly those involving ongoing service delivery or supply obligations.

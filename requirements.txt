@@ -1,0 +1,20 @@
+# Core NLP
+sentence-transformers>=2.2.2
+transformers>=4.30.0
+torch>=2.0.0
+langdetect>=1.0.9
+
+# Document ingestion
+PyMuPDF>=1.23.0        # PDF text extraction
+python-docx>=1.1.0     # DOCX text extraction
+
+# Data handling
+numpy>=1.24.0
+pandas>=2.0.0
+
+# (Later) Dashboard
+# streamlit>=1.28.0    # fastest way to get Module 1/2/3 into one UI
+
+# (Later, for IndicTrans2 specifically — see their repo for exact install
+# instructions, it has some extra setup beyond pip install)
+# https://github.com/AI4Bharat/IndicTrans2

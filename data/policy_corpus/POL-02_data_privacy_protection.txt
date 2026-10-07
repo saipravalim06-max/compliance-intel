@@ -1,0 +1,18 @@
+POLICY ID: POL-02
+TITLE: Data Privacy and Protection Policy
+CATEGORY: Data Privacy
+EFFECTIVE DATE: 2024-01-01
+OWNER: Data Protection Office
+
+1. PURPOSE
+This policy establishes minimum standards for the collection, processing, storage, and deletion of personal data handled by the company and its contracted third parties.
+
+2. REQUIREMENTS
+2.1 Any third party processing personal data on the company's behalf must delete or return all such data within thirty (30) days of contract termination, and provide written certification of deletion.
+2.2 Cross-border transfer of personal data outside the country of collection requires an approved data transfer mechanism (e.g., standard contractual clauses) prior to transfer.
+2.3 Any data breach involving company personal data must be reported to the Data Protection Office within twenty-four (24) hours of discovery by the processing party.
+2.4 Contracts involving personal data processing must specify the categories of data processed, purpose of processing, and retention period.
+2.5 Sub-processing of personal data by a vendor's own subcontractors requires prior written approval from the company.
+
+3. APPLICABILITY
+Applies to all contracts, vendors, and internal systems that collect, store, or process personal data of employees, customers, or other data subjects.

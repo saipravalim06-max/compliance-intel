@@ -1,0 +1,17 @@
+POLICY ID: POL-06
+TITLE: Limitation of Liability Policy
+CATEGORY: Liability
+EFFECTIVE DATE: 2024-01-01
+OWNER: Legal Department
+
+1. PURPOSE
+This policy establishes acceptable standards for liability caps and exclusions in company contracts.
+
+2. REQUIREMENTS
+2.1 A counterparty's total liability under a contract should not be capped below an amount equal to twelve (12) months of fees paid or payable under the agreement, except where a lower cap is separately approved by the General Counsel.
+2.2 Exclusions of liability for gross negligence, willful misconduct, or breach of confidentiality obligations are not acceptable and must be carved out of any liability cap or exclusion clause.
+2.3 Uncapped liability is required for breaches of data protection obligations resulting in a reportable data breach.
+2.4 Any mutual liability cap must apply equally to both parties unless a business justification for asymmetry is documented and approved.
+
+3. APPLICABILITY
+Applies to all commercial contracts where the company is a counterparty, particularly vendor, software licensing, and services agreements.

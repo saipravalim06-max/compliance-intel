@@ -1,0 +1,18 @@
+POLICY ID: POL-01
+TITLE: Vendor Management Policy
+CATEGORY: Vendor Management / Termination
+EFFECTIVE DATE: 2024-01-01
+OWNER: Procurement & Vendor Relations Department
+
+1. PURPOSE
+This policy governs the onboarding, management, and termination of third-party vendor relationships to ensure operational continuity and risk mitigation.
+
+2. REQUIREMENTS
+2.1 All vendor contracts must include a minimum thirty (30) calendar day written termination notice period for termination without cause, to allow sufficient time for service transition.
+2.2 Vendor contracts involving access to company systems or data must undergo a security review prior to signature.
+2.3 Vendors classified as "critical" (defined as vendors supporting core business operations) must provide a minimum sixty (60) day termination notice period.
+2.4 All vendor agreements must designate a company-side relationship owner responsible for performance monitoring.
+2.5 Vendor performance must be reviewed at least annually against agreed service levels.
+
+3. APPLICABILITY
+Applies to all procurement, IT, and business unit personnel entering into third-party vendor agreements on behalf of the company.

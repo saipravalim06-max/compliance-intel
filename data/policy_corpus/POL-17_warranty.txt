@@ -1,0 +1,17 @@
+POLICY ID: POL-17
+TITLE: Warranty Policy
+CATEGORY: Warranty
+EFFECTIVE DATE: 2024-01-01
+OWNER: Legal Department
+
+1. PURPOSE
+This policy defines minimum warranty standards required in vendor and supplier contracts.
+
+2. REQUIREMENTS
+2.1 Software and service vendors must provide a minimum warranty period of ninety (90) days from delivery or go-live, during which defects must be remedied at no additional cost.
+2.2 Vendors must warrant that delivered products/services do not infringe upon the intellectual property rights of any third party.
+2.3 Disclaimers of implied warranties (e.g., merchantability, fitness for purpose) must be reviewed and approved by Legal before acceptance, and should not eliminate express warranties negotiated in the agreement.
+2.4 Warranty remedies should include, at minimum, repair, replacement, or refund at the company's option.
+
+3. APPLICABILITY
+Applies to all agreements involving the purchase or licensing of goods, software, or services by the company.

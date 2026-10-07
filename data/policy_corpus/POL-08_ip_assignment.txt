@@ -1,0 +1,17 @@
+POLICY ID: POL-08
+TITLE: Intellectual Property Assignment Policy
+CATEGORY: Intellectual Property
+EFFECTIVE DATE: 2024-01-01
+OWNER: Legal Department
+
+1. PURPOSE
+This policy defines the company's standards for ownership of intellectual property created under contracted work.
+
+2. REQUIREMENTS
+2.1 Any work product created by a contractor or vendor specifically for the company under a paid engagement must be assigned to the company as a "work made for hire," with all rights, title, and interest vesting in the company upon creation or payment, whichever is earlier.
+2.2 Background or pre-existing intellectual property of a vendor incorporated into deliverables must be licensed to the company on a perpetual, royalty-free, worldwide basis for the intended use.
+2.3 Contracts must not grant the vendor ownership of any custom developments, data, or configurations created specifically for the company.
+2.4 Any exceptions to full IP assignment require review and written approval by the Legal Department.
+
+3. APPLICABILITY
+Applies to all consulting, development, design, and custom software engagements entered into by the company.

@@ -1,0 +1,17 @@
+POLICY ID: POL-16
+TITLE: Exclusivity and Most-Favored-Nation Policy
+CATEGORY: Exclusivity
+EFFECTIVE DATE: 2024-01-01
+OWNER: Legal Department
+
+1. PURPOSE
+This policy governs the use of exclusivity and most-favored-nation (MFN) provisions in company contracts.
+
+2. REQUIREMENTS
+2.1 Exclusivity commitments binding the company to a single vendor or partner must not exceed a duration of twenty-four (24) months without Executive Committee approval.
+2.2 Most-favored-nation clauses requiring a vendor to offer the company terms no less favorable than those offered to other customers require Legal Department review prior to acceptance.
+2.3 Exclusivity provisions must include defined performance thresholds that, if unmet by the counterparty, permit the company to terminate the exclusivity without penalty.
+2.4 Category-wide exclusivity (restricting the company from engaging any competing vendor in an entire product category) is discouraged and requires General Counsel sign-off.
+
+3. APPLICABILITY
+Applies to vendor, supply, and strategic partnership agreements.

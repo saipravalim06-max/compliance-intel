@@ -1,0 +1,18 @@
+POLICY ID: POL-03
+TITLE: Payment Terms Policy
+CATEGORY: Payment
+EFFECTIVE DATE: 2024-01-01
+OWNER: Finance Department
+
+1. PURPOSE
+This policy defines standard payment terms for contracts entered into by the company with vendors, suppliers, and service providers.
+
+2. REQUIREMENTS
+2.1 Standard payment terms for vendor invoices shall be net forty-five (45) days from the date of a valid, undisputed invoice, unless otherwise approved by the Chief Financial Officer.
+2.2 Late payment penalties or interest charges proposed by a counterparty in excess of one and one-half percent (1.5%) per month require Finance Department approval prior to acceptance.
+2.3 All payments in foreign currency must include a clearly defined exchange rate mechanism.
+2.4 Advance payments or deposits exceeding twenty percent (20%) of total contract value require Director-level approval.
+2.5 Contracts must not include automatic price escalation clauses exceeding five percent (5%) annually without Finance review.
+
+3. APPLICABILITY
+Applies to all contracts involving payment obligations by or to the company.

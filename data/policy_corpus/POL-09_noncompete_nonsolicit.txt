@@ -1,0 +1,17 @@
+POLICY ID: POL-09
+TITLE: Non-Compete and Non-Solicitation Policy
+CATEGORY: Non-Compete
+EFFECTIVE DATE: 2024-01-01
+OWNER: Legal & HR Department
+
+1. PURPOSE
+This policy establishes acceptable limits for non-compete and non-solicitation provisions in company contracts and employment-adjacent agreements.
+
+2. REQUIREMENTS
+2.1 Non-compete provisions in vendor or partner agreements must not exceed a duration of twelve (12) months following termination of the agreement.
+2.2 Non-compete provisions must be limited to a reasonably defined geographic scope and line of business directly related to the agreement's subject matter.
+2.3 Non-solicitation of employee provisions may extend up to twenty-four (24) months following termination but must be mutual where possible.
+2.4 Non-compete clauses that would restrict the company's ability to engage other providers in the same market segment are not acceptable without General Counsel approval.
+
+3. APPLICABILITY
+Applies to vendor, partnership, franchise, and consulting agreements that include restrictive covenants.

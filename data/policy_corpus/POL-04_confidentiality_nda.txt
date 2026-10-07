@@ -1,0 +1,18 @@
+POLICY ID: POL-04
+TITLE: Confidentiality and Non-Disclosure Policy
+CATEGORY: Confidentiality
+EFFECTIVE DATE: 2024-01-01
+OWNER: Legal Department
+
+1. PURPOSE
+This policy establishes minimum confidentiality protection standards for agreements involving the exchange of confidential or proprietary information.
+
+2. REQUIREMENTS
+2.1 Confidentiality obligations in vendor and partner contracts must survive termination of the underlying agreement for a minimum period of three (3) years.
+2.2 Confidentiality obligations relating to trade secrets must survive indefinitely, or for as long as the information retains trade secret status.
+2.3 Any exceptions to confidentiality obligations (e.g., disclosures required by law) must require prior written notice to the company where legally permissible.
+2.4 Confidential information must be marked or otherwise identified as confidential at the time of disclosure, or within a reasonable period thereafter.
+2.5 Return or destruction of confidential materials must be required within thirty (30) days of contract termination.
+
+3. APPLICABILITY
+Applies to all agreements involving the disclosure of company confidential, proprietary, or trade secret information to a third party.

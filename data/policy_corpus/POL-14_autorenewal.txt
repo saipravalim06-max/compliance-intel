@@ -1,0 +1,17 @@
+POLICY ID: POL-14
+TITLE: Auto-Renewal and Contract Renewal Policy
+CATEGORY: Renewal
+EFFECTIVE DATE: 2024-01-01
+OWNER: Procurement Department
+
+1. PURPOSE
+This policy governs the use of automatic renewal provisions in company contracts.
+
+2. REQUIREMENTS
+2.1 Any contract with an automatic renewal clause must provide the company with a non-renewal notice window of no less than sixty (60) calendar days prior to the renewal date.
+2.2 Automatic renewal terms must not increase contract value by more than five percent (5%) per renewal period without prior Finance Department approval.
+2.3 Contracts with automatic renewal clauses must include the renewal date and notice deadline in a clearly identifiable, non-buried section of the agreement.
+2.4 Multi-year automatic renewal commitments (renewal terms exceeding twelve months) require Director-level approval before signature.
+
+3. APPLICABILITY
+Applies to all subscription, licensing, and service contracts containing automatic renewal provisions.

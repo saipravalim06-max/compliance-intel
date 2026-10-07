@@ -1,0 +1,17 @@
+POLICY ID: POL-07
+TITLE: Indemnification Policy
+CATEGORY: Indemnification
+EFFECTIVE DATE: 2024-01-01
+OWNER: Legal Department
+
+1. PURPOSE
+This policy defines minimum indemnification protections required in company contracts.
+
+2. REQUIREMENTS
+2.1 Vendor and supplier contracts must include indemnification by the counterparty for third-party intellectual property infringement claims arising from the counterparty's products or services.
+2.2 Indemnification obligations must cover reasonable attorneys' fees and costs of defense, not solely settlement or judgment amounts.
+2.3 Data processing agreements must include indemnification for losses arising from the counterparty's failure to comply with applicable data protection law.
+2.4 Indemnification obligations should not be subject to the general liability cap under POL-06 where they relate to IP infringement, data breaches, or confidentiality breaches.
+
+3. APPLICABILITY
+Applies to all contracts involving the provision of goods, services, software, or data processing by a third party to the company.
