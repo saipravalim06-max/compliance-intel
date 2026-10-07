@@ -3,44 +3,30 @@ __pycache__/
 *.py[cod]
 *.pyo
 
-# Virtual environment
+# Virtual environments
 .venv/
 venv/
 env/
 
-# IDE
+# VS Code
 .vscode/
-.idea/
 
-# OS
+# Large/raw CUAD dataset
+data/cuad/cuad-main-extracted/
+data/cuad/*.zip
+
+# Python/Jupyter
+.ipynb_checkpoints/
+
+# OS files
 .DS_Store
 Thumbs.db
+# Intermediate/obsolete processing files
+data/policy_corpus/policy_corpus.zip
+data/processed/candidate_clauses.csv
+data/processed/manual_labels.csv
+data/processed/policy_mapping.csv
 
-# Python tooling
-.pytest_cache/
-.mypy_cache/
-
-# Secrets
-.env
-*.env
-
-# Logs
-*.log
-
-# Model/cache files
-.cache/
-huggingface/
-transformers_cache/
-
-# Large generated files
-*.bin
-*.pt
-*.pth
-*.safetensors
-
-# Temporary files
-tmp/
-temp/
-
-# CUAD raw dataset archive
-data/cuad/data.zip
+# Intermediate scripts
+scripts/create_labeling_sample.py
+scripts/extract_candidate_clauses.py

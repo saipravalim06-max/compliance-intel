@@ -1,0 +1,19 @@
+cuad_category,policy_id,policy_name
+Termination for Convenience,POL-05,Termination Notice Policy
+Cap on Liability,POL-06,Limitation of Liability Policy
+Uncapped Liability,POL-06,Limitation of Liability Policy
+Insurance,POL-10,Insurance Requirements Policy
+Warranty Duration,POL-17,Warranty Policy
+Audit Rights,POL-13,Audit Rights Policy
+Indemnification,POL-14,Indemnification Policy
+Renewal Term,POL-15,Renewal Policy
+Notice Period To Terminate Renewal,POL-15,Renewal Policy
+Governing Law,POL-12,Dispute Resolution Policy
+Confidentiality,POL-04,Confidentiality Policy
+License Grant,POL-11,Intellectual Property Policy
+IP Ownership Assignment,POL-11,Intellectual Property Policy
+Joint IP Ownership,POL-11,Intellectual Property Policy
+Non-Transferable License,POL-11,Intellectual Property Policy
+Data Privacy,POL-02,Data Privacy Protection Policy
+Data Retention,POL-08,Data Retention Policy
+Third Party Beneficiary,POL-09,Third-Party Data Sharing Policy

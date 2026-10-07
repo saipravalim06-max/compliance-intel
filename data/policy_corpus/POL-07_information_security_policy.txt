@@ -1,0 +1,1 @@
+Third parties processing company or customer information must implement appropriate access controls, encryption, authentication, and security safeguards. Security obligations must be reflected in applicable agreements.
