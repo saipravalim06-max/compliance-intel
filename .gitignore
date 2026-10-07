@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python tooling
+.pytest_cache/
+.mypy_cache/
+
+# Secrets
+.env
+*.env
+
+# Logs
+*.log
+
+# Model/cache files
+.cache/
+huggingface/
+transformers_cache/
+
+# Large generated files
+*.bin
+*.pt
+*.pth
+*.safetensors
+
+# Temporary files
+tmp/
+temp/
+
+# CUAD raw dataset archive
+data/cuad/data.zip
