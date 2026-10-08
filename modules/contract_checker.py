@@ -1,80 +1,144 @@
 """
-modules/contract_checker.py — MODULE 2
+Module 2: Contract -> Company Policy Compliance Checker.
 
-Build and validate this module FIRST. You already have the data for it
-(CUAD contract clauses + the synthetic policy corpus), so it's your fastest
-path to a working, demoable result — and it proves out the shared engine
-before you point it at anything else.
+This module connects the shared NLP components:
 
-This module contains almost no logic of its own — it just calls the shared
-engine with (contract clauses) as source and (company's own policy corpus)
-as target. If you find yourself writing matching logic here, move it to
-core/engine.py instead.
+    contract clause
+        ↓
+    requirement extraction
+        ↓
+    semantic policy matching
+        ↓
+    policy requirement extraction
+        ↓
+    structured conflict reasoning
+        ↓
+    evidence + explanation
 """
 
-import os
-from core.engine import (
-    ingest_document,
-    detect_language,
-    translate_to_english,
-    segment_policy_text,
-    segment_contract_text,
-    embed_segments,
-    match_segments,
-    generate_explanation,
-)
+from typing import List, Dict
+
+from core.engine import Segment
+from core.extraction import extract_requirement
+from core.matching import PolicyMatcher
+from core.conflict import detect_conflict
 
 
-def check_contract_against_policies(contract_path: str, policy_corpus_dir: str):
+def check_clause_against_policies(
+    contract_text: str,
+    policy_texts: List[str],
+) -> List[Dict]:
     """
-    End-to-end: one contract file -> list of MatchResult flagged conflicts
-    against every policy in the corpus directory.
-    """
-    # 1. Ingest + detect language + translate the contract
-    raw_text = ingest_document(contract_path)
-    lang = detect_language(raw_text)
-    english_text = translate_to_english(raw_text, lang)
+    Check one contract clause against a list of company policy requirements.
 
-    # 2. Segment the contract into clauses
-    contract_segments = segment_contract_text(
-        doc_id=os.path.basename(contract_path),
-        text=english_text,
-        language=lang,
+    Returns the most relevant policy matches together with their
+    structured conflict analysis.
+    """
+
+    # ---------------------------------------------------------
+    # 1. Create a contract Segment
+    # ---------------------------------------------------------
+
+    contract_segment = Segment(
+        source_doc_id="CONTRACT-001",
+        segment_id="CONTRACT-001-1",
+        original_text=contract_text,
+        original_language="en",
     )
 
-    # 3. Load + segment every policy in the corpus
+    # ---------------------------------------------------------
+    # 2. Create policy Segments
+    # ---------------------------------------------------------
+
     policy_segments = []
-    for fname in os.listdir(policy_corpus_dir):
-        if not fname.endswith(".txt"):
-            continue
-        path = os.path.join(policy_corpus_dir, fname)
-        text = ingest_document(path)
-        policy_segments.extend(segment_policy_text(doc_id=fname, text=text))
 
-    # 4. Embed both sides
-    contract_segments = embed_segments(contract_segments)
-    policy_segments = embed_segments(policy_segments)
-
-    # 5. Match + score
-    matches = match_segments(contract_segments, policy_segments)
-
-    # 6. Explain, back in the original language if the contract wasn't English
-    for match in matches:
-        match.explanation = generate_explanation(
-            match, target_language=lang if lang != "en" else None
+    for index, policy_text in enumerate(policy_texts):
+        policy_segments.append(
+            Segment(
+                source_doc_id=f"POLICY-{index + 1:03d}",
+                segment_id=f"POLICY-{index + 1:03d}-1",
+                original_text=policy_text,
+                original_language="en",
+            )
         )
 
-    return matches
+    # ---------------------------------------------------------
+    # 3. Find semantically relevant policies
+    # ---------------------------------------------------------
+
+    matcher = PolicyMatcher()
+
+    matches = matcher.match(
+        contract_segment,
+        policy_segments,
+        top_k=3,
+    )
+
+    results = []
+
+    # ---------------------------------------------------------
+    # 4. Extract contract requirement once
+    # ---------------------------------------------------------
+
+    contract_requirement = extract_requirement(
+        contract_text,
+        requirement_id="CONTRACT-REQ-001",
+        source_document_id="CONTRACT-001",
+    )
+
+    # ---------------------------------------------------------
+    # 5. Extract + compare each relevant policy
+    # ---------------------------------------------------------
+
+    for policy_segment, similarity_score in matches:
+
+        policy_requirement = extract_requirement(
+            policy_segment.original_text,
+            requirement_id=policy_segment.segment_id,
+            source_document_id=policy_segment.source_doc_id,
+        )
+
+        conflict_result = detect_conflict(
+            contract_requirement,
+            policy_requirement,
+        )
+
+        results.append(
+            {
+                "contract_text": contract_text,
+                "policy_text": policy_segment.original_text,
+                "similarity_score": round(similarity_score, 3),
+                **conflict_result,
+            }
+        )
+
+    return results
 
 
 if __name__ == "__main__":
-    # Example run once the TODOs in core/engine.py are filled in:
-    #
-    # results = check_contract_against_policies(
-    #     contract_path="data/cuad/sample_contract.txt",
-    #     policy_corpus_dir="data/policy_corpus",
-    # )
-    # for r in results:
-    #     if r.numeric_conflict:
-    #         print(r.explanation)
-    print("Fill in core/engine.py's TODOs, then uncomment the example above.")
+
+    contract = (
+        "The vendor may share customer data with subcontractors "
+        "without prior approval."
+    )
+
+    policies = [
+        (
+            "Customer data may only be shared with approved third "
+            "parties after prior authorization."
+        ),
+        (
+            "Invoices must be paid within 30 days."
+        ),
+    ]
+
+    results = check_clause_against_policies(
+        contract,
+        policies,
+    )
+
+    for result in results:
+        print("\n--- RESULT ---")
+
+        for key, value in result.items():
+            print(f"{key}: {value}")
