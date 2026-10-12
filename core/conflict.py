@@ -1,23 +1,116 @@
 from core.schemas import Requirement
 
 
+def _same_unit(contract: Requirement, policy: Requirement) -> bool:
+    """
+    Check whether both requirements use the same measurable unit.
+    """
+    if contract.unit is None or policy.unit is None:
+        return False
+
+    return contract.unit.lower() == policy.unit.lower()
+
+
+def _numeric_conflict(
+    contract: Requirement,
+    policy: Requirement,
+):
+    """
+    Detect conflicts between numeric contract and policy requirements.
+
+    The policy requirement is treated as the governing constraint.
+
+    Example:
+
+        Contract: 7 days
+        Policy:   >= 30 days
+
+        7 < 30 -> conflict
+    """
+
+    if contract.threshold is None or policy.threshold is None:
+        return None
+
+    if not _same_unit(contract, policy):
+        return None
+
+    # ---------------------------------------------------------
+    # Policy minimum requirement
+    # ---------------------------------------------------------
+
+    if policy.operator == ">=":
+        if contract.threshold < policy.threshold:
+            return (
+                True,
+                "HIGH",
+                (
+                    f"The contract specifies {contract.threshold:g} "
+                    f"{contract.unit}, while the company policy requires "
+                    f"at least {policy.threshold:g} {policy.unit}."
+                ),
+            )
+
+    # ---------------------------------------------------------
+    # Policy maximum requirement
+    # ---------------------------------------------------------
+
+    if policy.operator == "<=":
+        if contract.threshold > policy.threshold:
+            return (
+                True,
+                "HIGH",
+                (
+                    f"The contract specifies {contract.threshold:g} "
+                    f"{contract.unit}, while the company policy allows "
+                    f"at most {policy.threshold:g} {policy.unit}."
+                ),
+            )
+
+    # ---------------------------------------------------------
+    # Policy strict lower bound
+    # ---------------------------------------------------------
+
+    if policy.operator == ">":
+        if contract.threshold <= policy.threshold:
+            return (
+                True,
+                "HIGH",
+                (
+                    f"The contract specifies {contract.threshold:g} "
+                    f"{contract.unit}, while the company policy requires "
+                    f"more than {policy.threshold:g} {policy.unit}."
+                ),
+            )
+
+    # ---------------------------------------------------------
+    # Policy strict upper bound
+    # ---------------------------------------------------------
+
+    if policy.operator == "<":
+        if contract.threshold >= policy.threshold:
+            return (
+                True,
+                "HIGH",
+                (
+                    f"The contract specifies {contract.threshold:g} "
+                    f"{contract.unit}, while the company policy requires "
+                    f"less than {policy.threshold:g} {policy.unit}."
+                ),
+            )
+
+    return None
+
+
 def detect_conflict(
     contract: Requirement,
     policy: Requirement,
 ) -> dict:
-    """
-    Compare a contract requirement against a company policy requirement.
-
-    This is the first rule-based conflict reasoning baseline.
-    It deliberately reasons over structured fields instead of treating
-    embedding similarity as proof of a conflict.
-    """
 
     reasons = []
     severity = "NONE"
 
     # ---------------------------------------------------------
-    # Rule 1: Authorization conflict
+    # Authorization conflict
     # ---------------------------------------------------------
 
     if (
@@ -30,10 +123,6 @@ def detect_conflict(
         )
         severity = "HIGH"
 
-    # ---------------------------------------------------------
-    # Rule 2: Reverse authorization conflict
-    # ---------------------------------------------------------
-
     elif (
         contract.authorization == "REQUIRED"
         and policy.authorization == "NOT_REQUIRED"
@@ -45,7 +134,24 @@ def detect_conflict(
         severity = "MEDIUM"
 
     # ---------------------------------------------------------
-    # No conflict detected
+    # Numeric conflict
+    # ---------------------------------------------------------
+
+    numeric_result = _numeric_conflict(contract, policy)
+
+    if numeric_result is not None:
+        numeric_conflict, numeric_severity, numeric_reason = numeric_result
+
+        if numeric_conflict:
+            reasons.append(numeric_reason)
+
+            if numeric_severity == "HIGH":
+                severity = "HIGH"
+            elif severity == "NONE":
+                severity = numeric_severity
+
+    # ---------------------------------------------------------
+    # Final result
     # ---------------------------------------------------------
 
     if not reasons:

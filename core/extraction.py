@@ -4,16 +4,159 @@ from typing import Optional
 from core.schemas import Requirement
 
 
+NUMBER_WORDS = {
+    "zero": 0,
+    "one": 1,
+    "two": 2,
+    "three": 3,
+    "four": 4,
+    "five": 5,
+    "six": 6,
+    "seven": 7,
+    "eight": 8,
+    "nine": 9,
+    "ten": 10,
+    "eleven": 11,
+    "twelve": 12,
+    "thirteen": 13,
+    "fourteen": 14,
+    "fifteen": 15,
+    "sixteen": 16,
+    "seventeen": 17,
+    "eighteen": 18,
+    "nineteen": 19,
+    "twenty": 20,
+    "thirty": 30,
+    "forty": 40,
+    "fifty": 50,
+    "sixty": 60,
+    "seventy": 70,
+    "eighty": 80,
+    "ninety": 90,
+}
+
+
+def _extract_number(text: str) -> Optional[float]:
+    """
+    Extract a numeric value from either:
+      - 30
+      - 30.5
+      - thirty
+      - thirty (30)
+
+    Returns the numeric value only.
+    """
+
+    digit_match = re.search(r"\b\d+(?:\.\d+)?\b", text)
+
+    if digit_match:
+        return float(digit_match.group())
+
+    lower = text.lower()
+
+    for word, value in NUMBER_WORDS.items():
+        if re.search(rf"\b{word}\b", lower):
+            return float(value)
+
+    return None
+
+
+def _extract_unit(text: str) -> Optional[str]:
+    """
+    Extract the unit associated with a numeric value.
+    """
+
+    unit_match = re.search(
+        r"\b(days?|weeks?|months?|years?|employees?|percent|%)\b",
+        text.lower(),
+    )
+
+    if unit_match:
+        unit = unit_match.group(1).lower()
+
+        if unit == "%":
+            return "percent"
+
+        if unit.endswith("s"):
+            return unit[:-1]
+
+        return unit
+
+    return None
+
+
+def _extract_operator(text: str) -> Optional[str]:
+    """
+    Extract a comparison operator from phrases such as:
+      at least 30 days -> >=
+      no less than 30 days -> >=
+      at most 30 days -> <=
+      no more than 30 days -> <=
+      more than 30 days -> >
+      fewer than 30 employees -> <
+      less than 30 days -> <
+    """
+
+    lower = text.lower()
+
+    if re.search(r"\b(at least|no less than|minimum of)\b", lower):
+        return ">="
+
+    if re.search(r"\b(at most|no more than|maximum of)\b", lower):
+        return "<="
+
+    if re.search(r"\b(more than|greater than|over)\b", lower):
+        return ">"
+
+    if re.search(r"\b(less than|fewer than|under)\b", lower):
+        return "<"
+
+    return None
+
+
+def _extract_threshold(text: str):
+    """
+    Extract threshold and unit while distinguishing phrases such as
+    'at least 30 days' from deadline phrases such as 'within 30 days'.
+    """
+
+    lower = text.lower()
+
+    # Match phrases containing a number/number word followed by a unit.
+    number_pattern = (
+        r"(?:\d+(?:\.\d+)?|"
+        + "|".join(NUMBER_WORDS.keys())
+        + r")"
+    )
+
+    threshold_match = re.search(
+        rf"\b{number_pattern}\s*(?:\(\s*\d+(?:\.\d+)?\s*\))?"
+        rf"\s*(days?|weeks?|months?|years?|employees?|percent|%)\b",
+        lower,
+    )
+
+    if not threshold_match:
+        return None, None
+
+    matched_text = threshold_match.group()
+
+    value = _extract_number(matched_text)
+    unit = _extract_unit(matched_text)
+
+    return value, unit
+
+
 def extract_requirement(
     text: str,
     requirement_id: str = "REQ-001",
     source_document_id: str = "DOC-001",
 ) -> Requirement:
     """
-    Extract a lightweight structured requirement from a contract/policy sentence.
+    Extract a lightweight structured requirement from a contract,
+    policy, or regulatory sentence.
 
-    This is the first rule-based baseline for the project.
-    Later, we will replace/extend these rules with an NLP model.
+    This is the rule-based baseline for the project.
+    Later, NLP models can extend these rules.
     """
 
     lower = text.lower()
@@ -24,10 +167,13 @@ def extract_requirement(
     recipient: Optional[str] = None
     authorization: Optional[str] = None
     condition: Optional[str] = None
-    threshold: Optional[str] = None
+    threshold: Optional[float] = None
+    unit: Optional[str] = None
+    operator: Optional[str] = None
     deadline: Optional[str] = None
     obligation_type: Optional[str] = None
     exception: Optional[str] = None
+    eligibility_logic: Optional[str] = None
 
     # ---------------------------------------------------------
     # Authorization
@@ -88,7 +234,9 @@ def extract_requirement(
     # ---------------------------------------------------------
 
     recipient_match = re.search(
-        r"\b(?:to|with)\s+(?:the\s+)?([a-zA-Z][a-zA-Z\s-]*?)(?=\s+(?:without|with|if|when|unless|provided that)\b|[.,;]|$)",
+        r"\b(?:to|with)\s+(?:the\s+)?"
+        r"([a-zA-Z][a-zA-Z\s-]*?)"
+        r"(?=\s+(?:without|with|if|when|unless|provided that)\b|[.,;]|$)",
         text,
         re.IGNORECASE,
     )
@@ -122,35 +270,46 @@ def extract_requirement(
     # ---------------------------------------------------------
 
     deadline_match = re.search(
-        r"\b(?:within|after)\s+(\d+(?:\.\d+)?)\s+(day|days|month|months|year|years)\b",
+        r"\b(?:within|after)\s+"
+        r"(\d+(?:\.\d+)?)\s+"
+        r"(day|days|month|months|year|years)\b",
         lower,
     )
 
     if deadline_match:
-        deadline = f"{deadline_match.group(1)} {deadline_match.group(2)}"
-
-    # ---------------------------------------------------------
-    # Numeric threshold
-    # ---------------------------------------------------------
-
-    threshold_match = re.search(
-        r"\b(\d+(?:\.\d+)?)\s*(%|percent|employees?|days?|months?|years?)\b",
-        lower,
-    )
-
-    if threshold_match:
-        threshold = (
-            f"{threshold_match.group(1)} {threshold_match.group(2)}"
+        deadline = (
+            f"{deadline_match.group(1)} "
+            f"{deadline_match.group(2)}"
         )
+
+    # ---------------------------------------------------------
+    # Threshold + unit + operator
+    # ---------------------------------------------------------
+
+    threshold, unit = _extract_threshold(text)
+
+    operator = _extract_operator(text)
+
+    # 'within 30 days' represents a deadline rather than
+    # a >= comparison.
+    if re.search(r"\bwithin\b", lower):
+        operator = "<="
 
     # ---------------------------------------------------------
     # Obligation type
     # ---------------------------------------------------------
 
-    if any(word in lower for word in ["may", "can", "permitted", "allowed"]):
+    # Restrictions must be checked before ordinary permission.
+    if re.search(r"\b(must not|shall not|may not|cannot|can not)\b", lower):
+        obligation_type = "PROHIBITION"
+
+    elif re.search(r"\bmay only\b", lower):
+        obligation_type = "RESTRICTED_PERMISSION"
+
+    elif re.search(r"\b(may|can|permitted|allowed)\b", lower):
         obligation_type = "PERMISSION"
 
-    elif any(word in lower for word in ["must", "shall", "required"]):
+    elif re.search(r"\b(must|shall|required)\b", lower):
         obligation_type = "OBLIGATION"
 
     # ---------------------------------------------------------
@@ -158,7 +317,7 @@ def extract_requirement(
     # ---------------------------------------------------------
 
     condition_match = re.search(
-        r"\b(?:if|when|unless|provided that)\b(.+?)(?:\.|$)",
+        r"\b(?:if|when|provided that)\b(.+?)(?:\.|$)",
         text,
         re.IGNORECASE,
     )
@@ -179,6 +338,16 @@ def extract_requirement(
     if exception_match:
         exception = exception_match.group(1).strip()
 
+    # ---------------------------------------------------------
+    # Eligibility logic
+    # ---------------------------------------------------------
+
+    if re.search(r"\b(and|both)\b", lower):
+        eligibility_logic = "AND"
+
+    elif re.search(r"\b(or|either)\b", lower):
+        eligibility_logic = "OR"
+
     return Requirement(
         requirement_id=requirement_id,
         source_document_id=source_document_id,
@@ -189,8 +358,11 @@ def extract_requirement(
         obligation_type=obligation_type,
         authorization=authorization,
         condition=condition,
-        threshold=threshold,
-        deadline=deadline,
         exception=exception,
+        eligibility_logic=eligibility_logic,
+        operator=operator,
+        threshold=threshold,
+        unit=unit,
+        deadline=deadline,
         source_text=text,
     )
