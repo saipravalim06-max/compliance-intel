@@ -1,289 +1,96 @@
+"""
+core/extraction.py — rule-based requirement extraction (baseline).
+
+Turns one contract / policy sentence into a structured Requirement:
+modality (permission / obligation / prohibition / restricted permission),
+action, object, recipient, authorization, quantities (value, unit, direction,
+kind), deadline, condition, scope qualifier and exception.
+
+This is the transparent baseline. A learned extractor should be evaluated
+against it on the same labelled set (see scripts/evaluate.py).
+"""
 import re
 from typing import Optional
 
+from core.quantities import Quantity, detect_kind, find_quantities, preprocess
 from core.schemas import Requirement
+from core.taxonomy import ObligationType, Operator, Unit
+
+# ----------------------------------------------------------------- modality
+_NOT_REQUIRED = re.compile(r"\bnot\s+(?:be\s+)?required\b|\bneed\s+not\b")
+_PROHIBITION = re.compile(
+    r"\b(?:must|shall|will|may|can|should|is|are|be|do|does)\s+not\b|\bcannot\b|\bcan\s+not\b|"
+    r"\bnot\s+(?:be\s+)?(?:permitted|allowed|entitled)\b|\bprohibit\w*\b|\bforbid\w*\b|"
+    r"\bno\s+(?:\w+\s+){1,2}(?:shall|may|will|can)\b|\bneither\b[^.;]{0,60}\b(?:may|shall|will|can)\b|"
+    r"\b(?:agrees?|covenants?|undertakes?|promises?)\s+not\s+to\b|\b(?:not\s+acceptable|unacceptable)\b"
+)
+_VOID = re.compile(r"\b(?:void|invalid|null|of no (?:force|effect)|not (?:be )?valid)\b")
+_RESTRICTED = re.compile(
+    r"\bmay\s+only\b|\bonly\b[^.;]{0,40}\bmay\b|\bonly\s+(?:be\s+)?(?:shared|disclosed|provided|transferred|used)\b|"
+    r"\bmay\b[^.;]{0,100}\bonly\s+(?:if|with|after|when|upon|to)\b"
+)
+_OBLIGATION = re.compile(r"\b(?:must|shall|required|requires?|needs?\s+to|is\s+responsible\s+for|agrees?\s+to|will)\b")
+_PERMISSION = re.compile(r"\b(?:may|can|permitted|allowed|entitled|right\s+to)\b")
 
 
-NUMBER_WORDS = {
-    "zero": 0,
-    "one": 1,
-    "two": 2,
-    "three": 3,
-    "four": 4,
-    "five": 5,
-    "six": 6,
-    "seven": 7,
-    "eight": 8,
-    "nine": 9,
-    "ten": 10,
-    "eleven": 11,
-    "twelve": 12,
-    "thirteen": 13,
-    "fourteen": 14,
-    "fifteen": 15,
-    "sixteen": 16,
-    "seventeen": 17,
-    "eighteen": 18,
-    "nineteen": 19,
-    "twenty": 20,
-    "thirty": 30,
-    "forty": 40,
-    "fifty": 50,
-    "sixty": 60,
-    "seventy": 70,
-    "eighty": 80,
-    "ninety": 90,
-}
-
-
-def _number_pattern() -> str:
-    """Build a regex pattern for supported number words and digits."""
-    words = "|".join(
-        re.escape(word)
-        for word in sorted(NUMBER_WORDS, key=len, reverse=True)
-    )
-    return rf"(?:\d[\d,]*(?:\.\d+)?|{words})"
-
-
-def _convert_number(value: str) -> Optional[float]:
-    """Convert a numeric string or supported number word into a float."""
-    value = value.strip().lower()
-
-    if value in NUMBER_WORDS:
-        return float(NUMBER_WORDS[value])
-
-    try:
-        return float(value.replace(",", ""))
-    except ValueError:
-        return None
-
-
-def _extract_number(text: str) -> Optional[float]:
-    """
-    Extract a number from text.
-
-    Supports examples such as:
-        30
-        30.5
-        2,000,000
-        thirty
-        thirty (30)
-        USD 2,000,000
-    """
-
-    # Prefer the explicit numeric value in expressions such as
-    # "thirty (30)".
-    parenthetical_match = re.search(
-        r"\(\s*(\d[\d,]*(?:\.\d+)?)\s*\)",
-        text,
-    )
-
-    if parenthetical_match:
-        return _convert_number(parenthetical_match.group(1))
-
-    # Prefer currency amounts when present.
-    currency_match = re.search(
-        r"(?:\bUSD\b|US\$|\$)\s*(\d[\d,]*(?:\.\d+)?)",
-        text,
-        re.IGNORECASE,
-    )
-
-    if currency_match:
-        return _convert_number(currency_match.group(1))
-
-    # Extract a numeric value, including comma separators.
-    digit_match = re.search(r"\b\d[\d,]*(?:\.\d+)?\b", text)
-
-    if digit_match:
-        return _convert_number(digit_match.group())
-
-    # Fall back to supported number words.
-    lower = text.lower()
-
-    for word in sorted(NUMBER_WORDS, key=len, reverse=True):
-        if re.search(rf"\b{re.escape(word)}\b", lower):
-            return float(NUMBER_WORDS[word])
-
+def detect_modality(lower: str) -> Optional[ObligationType]:
+    if _NOT_REQUIRED.search(lower):
+        return ObligationType.PERMISSION
+    if _PROHIBITION.search(lower):
+        return ObligationType.PROHIBITION
+    if _RESTRICTED.search(lower):
+        return ObligationType.RESTRICTED_PERMISSION
+    ob, pe = _OBLIGATION.search(lower), _PERMISSION.search(lower)
+    if ob and pe:
+        return ObligationType.OBLIGATION if ob.start() < pe.start() else ObligationType.PERMISSION
+    if ob:
+        return ObligationType.OBLIGATION
+    if pe:
+        return ObligationType.PERMISSION
     return None
 
 
-def _extract_unit(text: str) -> Optional[str]:
-    """
-    Extract and normalize a measurement unit.
+# ------------------------------------------------------------ authorization
+_AUTH_WORD = r"(?:approval|authori[sz]ation|consent|permission)"
+_WITHOUT_AUTH = re.compile(rf"\bwithout\s+(?:the\s+|any\s+)?(?:[\w'’-]+\s+){{0,3}}?(?:prior\s+)?(?:written\s+)?{_AUTH_WORD}\b")
+_REQUIRES_AUTH = re.compile(
+    rf"\b(?:prior\s+(?:written\s+)?{_AUTH_WORD}|{_AUTH_WORD}\s+(?:is|are)\s+required|"
+    rf"(?:requires?|subject\s+to|only\s+with|upon|with\s+the)\s+(?:the\s+)?(?:[\w'’-]+\s+){{0,3}}?(?:prior\s+)?(?:written\s+)?{_AUTH_WORD})\b"
+)
 
-    Examples:
-        days -> day
-        months -> month
-        USD 2,000,000 -> usd
-        20% -> percent
-    """
+# approvals by the COMPANY's own functions are internal governance, not consent from the counterparty
+_INTERNAL_APPROVER = re.compile(
+    r"\b(?:general counsel|director[- ]level|finance (?:department|review)|legal (?:department|review)|executive committee|"
+    r"chief financial officer|cfo|by legal|by finance)\b"
+)
 
-    lower = text.lower()
+# ------------------------------------------------------------------- action
+_ACTIONS = [
+    ("share", r"shar\w*"), ("disclose", r"disclos\w*"), ("provide", r"provid\w*"), ("transfer", r"transfer\w*"),
+    ("collect", r"collect\w*"), ("store", r"stor(?:e|es|ed|ing|age)"), ("retain", r"retain\w*|retention"),
+    ("delete", r"delet\w*|destr(?:oy|uction)\w*|purg\w*"), ("pay", r"pay\w*"), ("terminate", r"terminat\w*"),
+    ("assign", r"assign\w*"), ("audit", r"audit\w*"), ("notify", r"notif\w*|notice"), ("report", r"report\w*"),
+    ("maintain", r"maintain\w*"), ("submit", r"submit\w*"), ("renew", r"renew\w*"), ("indemnify", r"indemnif\w*"),
+    ("insure", r"insur\w*"), ("warrant", r"warrant\w*"), ("compete", r"compet\w*"), ("solicit", r"solicit\w*"),
+    ("remediate", r"remediat\w*"),
+]
+_ACTION_RES = [(name, re.compile(rf"\b(?:{rx})\b")) for name, rx in _ACTIONS]
+_RECIPIENT_ACTIONS = {"share", "disclose", "provide", "transfer", "submit"}
 
-    # Check currency first so an amount such as USD 2,000,000
-    # is not confused with another measurement.
-    if re.search(r"\b(?:usd|us dollars?)\b|us\$|\$", lower):
-        return "usd"
+_OBJECTS = [
+    "customer data", "personal data", "confidential information", "customer information", "company information",
+    "intellectual property", "payments", "payment", "services", "liability", "insurance", "warranty", "fees",
+]
 
-    unit_match = re.search(
-        r"\b(days?|weeks?|months?|years?|employees?|percent)\b|%",
-        lower,
-    )
-
-    if not unit_match:
-        return None
-
-    unit = unit_match.group().lower()
-
-    if unit == "%":
-        return "percent"
-
-    if unit.endswith("s"):
-        return unit[:-1]
-
-    return unit
-
-
-def _extract_operator(text: str) -> Optional[str]:
-    """
-    Extract a comparison operator from requirement wording.
-
-    Examples:
-        at least 30 days -> >=
-        no less than 15 days -> >=
-        minimum coverage of USD 2,000,000 -> >=
-        not capped below 12 months -> >=
-        at most 30 days -> <=
-        no more than 10 employees -> <=
-        more than 30 days -> >
-        less than 15 days -> <
-    """
-
-    lower = text.lower()
-
-    # Check lower-bound expressions before generic "less than"
-    # expressions so that "no less than" is handled correctly.
-    minimum_patterns = [
-        r"\bat least\b",
-        r"\bno less than\b",
-        r"\bnot less than\b",
-        r"\bminimum\b",
-        r"\bnot below\b",
-        r"\b(?:should|must|shall)\s+not\s+(?:be\s+)?capped\s+below\b",
-        r"\bnot\s+(?:be\s+)?capped\s+below\b",
-    ]
-
-    maximum_patterns = [
-        r"\bat most\b",
-        r"\bno more than\b",
-        r"\bnot more than\b",
-        r"\bmaximum\b",
-        r"\bup to\b",
-        r"\bnot above\b",
-    ]
-
-    greater_patterns = [
-        r"\bmore than\b",
-        r"\bgreater than\b",
-        r"\bover\b",
-    ]
-
-    less_patterns = [
-        r"\bless than\b",
-        r"\bfewer than\b",
-        r"\bunder\b",
-        r"\bbelow\b",
-    ]
-
-    if any(re.search(p, lower) for p in minimum_patterns):
-        return ">="
-
-    if any(re.search(p, lower) for p in maximum_patterns):
-        return "<="
-
-    if any(re.search(p, lower) for p in greater_patterns):
-        return ">"
-
-    if any(re.search(p, lower) for p in less_patterns):
-        return "<"
-
-    return None
+_APPLIES_TO = re.compile(
+    r"^\s*(?:\d+\.\d+\s+)?((?:vendors?|suppliers?|contractors?|contracts?|agreements?|third parties)\s+"
+    r"(?:classified|designated|categori[sz]ed|deemed)\s+as\s+[^,]*?)(?=\s+(?:must|shall|should|are\s+required|will)\b)"
+)
 
 
-def _extract_threshold(text: str):
-    """
-    Extract a numeric threshold and its unit.
-
-    Supports:
-        thirty (30) calendar days -> (30, day)
-        no less than fifteen days -> (15, day)
-        twelve (12) months of fees -> (12, month)
-        USD 2,000,000 per incident -> (2000000, usd)
-        minimum coverage of USD 1,000,000 -> (1000000, usd)
-        20 percent -> (20, percent)
-        20% -> (20, percent)
-    """
-
-    lower = text.lower()
-
-    # Currency amounts must be handled separately because the amount
-    # may be followed by "per incident", "per occurrence", etc.
-    currency_match = re.search(
-        r"(?:\busd\b|us\$|\$)\s*"
-        r"(?P<amount>\d[\d,]*(?:\.\d+)?)",
-        lower,
-    )
-
-    if currency_match:
-        amount = _convert_number(currency_match.group("amount"))
-        return amount, "usd"
-
-    number_core = _number_pattern()
-
-    # Match durations, counts, and word-plus-parenthetical-number
-    # expressions such as "thirty (30) calendar days".
-    duration_match = re.search(
-        rf"(?P<number>{number_core})"
-        rf"(?:\s*\(\s*(?P<paren>\d[\d,]*(?:\.\d+)?)\s*\))?"
-        rf"\s*(?:calendar\s+)?"
-        rf"(?P<unit>days?|weeks?|months?|years?|employees?|percent)\b",
-        lower,
-    )
-
-    if duration_match:
-        # Prefer the explicit digits when the text contains both
-        # a number word and a parenthetical number.
-        value_text = (
-            duration_match.group("paren")
-            or duration_match.group("number")
-        )
-
-        value = _convert_number(value_text)
-        unit = duration_match.group("unit")
-
-        if unit.endswith("s"):
-            unit = unit[:-1]
-
-        return value, unit
-
-    # Percent signs need separate handling because "%" is not a word
-    # and should not be followed by a word boundary.
-    percent_match = re.search(
-        rf"(?P<number>{number_core})"
-        rf"(?:\s*\(\s*(?P<paren>\d[\d,]*(?:\.\d+)?)\s*\))?"
-        rf"\s*%",
-        lower,
-    )
-
-    if percent_match:
-        value_text = (
-            percent_match.group("paren")
-            or percent_match.group("number")
-        )
-
-        return _convert_number(value_text), "percent"
-
-    return None, None
+def _fmt(q: Quantity) -> str:
+    unit = q.unit.value.lower().replace("_", " ")
+    return f"{q.value:g} {unit}"
 
 
 def extract_requirement(
@@ -291,220 +98,96 @@ def extract_requirement(
     requirement_id: str = "REQ-001",
     source_document_id: str = "DOC-001",
 ) -> Requirement:
-    """
-    Extract a lightweight structured requirement from a contract,
-    policy, or regulatory sentence.
+    lower = text.lower().replace("’", "'")
 
-    This is the rule-based baseline for the project.
-    Later, NLP models can extend these rules.
-    """
+    modality = detect_modality(lower)
 
-    lower = text.lower()
-
-    actor: Optional[str] = None
-    action: Optional[str] = None
-    obj: Optional[str] = None
-    recipient: Optional[str] = None
+    # authorization (context-aware: "must not share ... without approval" means approval IS required)
     authorization: Optional[str] = None
-    condition: Optional[str] = None
-    threshold: Optional[float] = None
-    unit: Optional[str] = None
-    operator: Optional[str] = None
-    deadline: Optional[str] = None
-    obligation_type: Optional[str] = None
-    exception: Optional[str] = None
-    eligibility_logic: Optional[str] = None
-
-    # ---------------------------------------------------------
-    # Authorization
-    # ---------------------------------------------------------
-
-    no_authorization_patterns = [
-        "without prior approval",
-        "without prior written approval",
-        "without approval",
-        "without prior authorization",
-        "without prior written authorization",
-        "without authorization",
-    ]
-
-    authorization_required_patterns = [
-        "prior approval",
-        "prior written approval",
-        "prior authorization",
-        "prior written authorization",
-        "approval is required",
-        "authorization is required",
-    ]
-
-    if any(pattern in lower for pattern in no_authorization_patterns):
-        authorization = "NOT_REQUIRED"
-
-    elif any(pattern in lower for pattern in authorization_required_patterns):
+    if _WITHOUT_AUTH.search(lower):
+        # "must not X without consent" / "X without consent is void"  => consent IS required
+        restrictive = modality == ObligationType.PROHIBITION or bool(_VOID.search(lower))
+        authorization = "REQUIRED" if restrictive else "NOT_REQUIRED"
+    elif _REQUIRES_AUTH.search(lower):
         authorization = "REQUIRED"
 
-    # ---------------------------------------------------------
-    # Action
-    # ---------------------------------------------------------
+    if authorization and _INTERNAL_APPROVER.search(lower) and not re.search(r"\b(?:counterparty|vendor|supplier|customer|other party|licensor|licensee)'?s?\s+(?:prior\s+)?(?:written\s+)?(?:consent|approval)", lower):
+        authorization = None
 
-    action_patterns = [
-        "share",
-        "disclose",
-        "provide",
-        "transfer",
-        "collect",
-        "store",
-        "retain",
-        "pay",
-        "terminate",
-        "assign",
-        "audit",
-        "notify",
-        "maintain",
-        "submit",
-    ]
+    # action = whichever action word appears first in the sentence
+    action, best = None, None
+    for name, rx in _ACTION_RES:
+        m = rx.search(lower)
+        if m and (best is None or m.start() < best):
+            action, best = name, m.start()
 
-    for candidate in action_patterns:
-        if re.search(rf"\b{candidate}\w*\b", lower):
-            action = candidate
-            break
-
-    # ---------------------------------------------------------
-    # Recipient
-    # ---------------------------------------------------------
-
-    recipient_match = re.search(
-        r"\b(?:to|with)\s+(?:the\s+)?"
-        r"([a-zA-Z][a-zA-Z\s-]*?)"
-        r"(?=\s+(?:without|with|if|when|unless|provided that)\b|[.,;]|$)",
-        text,
-        re.IGNORECASE,
-    )
-
-    if recipient_match:
-        recipient = recipient_match.group(1).strip()
-
-    # ---------------------------------------------------------
-    # Object
-    # ---------------------------------------------------------
-
-    object_patterns = [
-        "customer data",
-        "personal data",
-        "confidential information",
-        "customer information",
-        "company information",
-        "intellectual property",
-        "payment",
-        "payments",
-        "services",
-    ]
-
-    for candidate in object_patterns:
-        if candidate in lower:
-            obj = candidate
-            break
-
-    # ---------------------------------------------------------
-    # Deadline
-    # ---------------------------------------------------------
-
-    deadline_match = re.search(
-        r"\b(?:within|after)\s+"
-        r"(\d[\d,]*(?:\.\d+)?)\s+"
-        r"(day|days|month|months|year|years)\b",
-        lower,
-    )
-
-    if deadline_match:
-        deadline = (
-            f"{deadline_match.group(1).replace(',', '')} "
-            f"{deadline_match.group(2)}"
+    # recipient (only meaningful for disclosure-type actions)
+    recipient = None
+    if action in _RECIPIENT_ACTIONS:
+        m = re.search(
+            r"\b(?:to|with)\s+(?:the\s+|its\s+|any\s+)?([a-z][a-z\s-]*?)"
+            r"(?=\s+(?:without|with|if|when|unless|provided that|after|only|before|for|by|upon|in|on|during|within|that|which)\b|[.,;]|$)",
+            text, re.IGNORECASE,
         )
+        if m:
+            recipient = m.group(1).strip()
 
-    # ---------------------------------------------------------
-    # Threshold + unit + operator
-    # ---------------------------------------------------------
+    obj = next((o for o in _OBJECTS if o in lower), None)
 
-    threshold, unit = _extract_threshold(text)
-    operator = _extract_operator(text)
+    # quantities
+    prohibition = modality == ObligationType.PROHIBITION
+    quantities = find_quantities(text, prohibition=prohibition)
+    if not any(detect_kind(text, q) == "TERMINATION_NOTICE" for q in quantities):
+        # immediate termination counts as "0 days notice" only when it is not for cause / insolvency / pay in lieu
+        if re.search(r"\b(?:terminat\w*|cancel\w*)\b", lower) and re.search(
+            r"\b(?:immediately|forthwith|with immediate effect|without (?:any |prior )?notice)\b", lower
+        ) and not re.search(
+            r"\b(?:cause|breach|default|insolven\w*|bankrupt\w*|violat\w*|misconduct|fail\w*|in lieu|notice period|"
+            r"convicted|fraud|negligence|non-?payment)\b", lower
+        ):
+            quantities.append(Quantity(0.0, Unit.DAYS, kind="TERMINATION_NOTICE", raw="immediate termination", inferred=True))
+    for q in quantities:
+        q.kind = q.kind or detect_kind(text, q)
+    primary = next((q for q in quantities if q.kind), quantities[0] if quantities else None)
 
-    # "Within 30 days" is generally a deadline, not a minimum.
-    # Do not overwrite a deadline's comparison if a different
-    # explicit comparison phrase is present.
-    if re.search(r"\bwithin\b", lower):
-        operator = "<="
+    threshold = threshold_value = unit = bound = per = kind = operator = None
+    if primary:
+        threshold, threshold_value, unit, bound = _fmt(primary), primary.value, primary.unit.value, primary.bound
+        per, kind = primary.per, primary.kind
+        operator = {"UPPER": Operator.LTE.value, "LOWER": Operator.GTE.value}.get(bound or "")
 
-    # ---------------------------------------------------------
-    # Obligation type
-    # ---------------------------------------------------------
+    deadline = None
+    m = re.search(r"\b(?:within|no later than|not later than|after)\s+(?:the\s+)?(\d+(?:\.\d+)?)\s*(?:business\s+|calendar\s+)?(hours?|days?|weeks?|months?|years?)\b", preprocess(text))
+    if m:
+        deadline = f"{m.group(1)} {m.group(2)}"
 
-    if re.search(
-        r"\b(must not|shall not|may not|cannot|can not)\b",
-        lower,
-    ):
-        obligation_type = "PROHIBITION"
-
-    elif re.search(r"\bmay only\b", lower):
-        obligation_type = "RESTRICTED_PERMISSION"
-
-    elif re.search(r"\b(may|can|permitted|allowed)\b", lower):
-        obligation_type = "PERMISSION"
-
-    elif re.search(r"\b(must|shall|required)\b", lower):
-        obligation_type = "OBLIGATION"
-
-    # ---------------------------------------------------------
-    # Condition
-    # ---------------------------------------------------------
-
-    condition_match = re.search(
-        r"\b(?:if|when|provided that)\b(.+?)(?:\.|$)",
-        text,
-        re.IGNORECASE,
-    )
-
-    if condition_match:
-        condition = condition_match.group(1).strip()
-
-    # ---------------------------------------------------------
-    # Exception
-    # ---------------------------------------------------------
-
-    exception_match = re.search(
-        r"\b(?:except|unless)\b(.+?)(?:\.|$)",
-        text,
-        re.IGNORECASE,
-    )
-
-    if exception_match:
-        exception = exception_match.group(1).strip()
-
-    # ---------------------------------------------------------
-    # Eligibility logic
-    # ---------------------------------------------------------
-
-    if re.search(r"\b(and|both)\b", lower):
-        eligibility_logic = "AND"
-
-    elif re.search(r"\b(or|either)\b", lower):
-        eligibility_logic = "OR"
+    cond = re.search(r"\b(?:if|when|unless|provided that)\b(.+?)(?:\.|$)", text, re.IGNORECASE)
+    exc = re.search(r"\b(?:except|unless)\b(.+?)(?:\.|$)", text, re.IGNORECASE)
+    scope = _APPLIES_TO.search(lower)
 
     return Requirement(
         requirement_id=requirement_id,
         source_document_id=source_document_id,
-        actor=actor,
         action=action,
         object=obj,
         recipient=recipient,
-        obligation_type=obligation_type,
+        obligation_type=modality.value if modality else None,
         authorization=authorization,
-        condition=condition,
-        exception=exception,
-        eligibility_logic=eligibility_logic,
-        operator=operator,
+        condition=cond.group(1).strip() if cond else None,
         threshold=threshold,
-        unit=unit,
         deadline=deadline,
+        exception=exc.group(1).strip() if exc else None,
         source_text=text,
+        threshold_value=threshold_value,
+        unit=unit,
+        bound=bound,
+        operator=operator,
+        quantity_kind=kind,
+        per=per,
+        applies_to=scope.group(1).strip() if scope else None,
+        quantities=[
+            {"value": q.value, "unit": q.unit.value, "bound": q.bound, "per": q.per, "kind": q.kind,
+             "raw": q.raw, "inferred": q.inferred}
+            for q in quantities
+        ] or None,
     )

@@ -1,0 +1,740 @@
+{
+  "description": "Synthetic gold cases. Clauses are written to be unambiguous; labels come from reading the policy line, not from system output. Real-CUAD labelling is separate (data/processed/evaluation_sample.csv).",
+  "labels": [
+    "CONFLICT",
+    "NO_CONFLICT",
+    "PARTIAL_CONFLICT",
+    "UNCERTAIN"
+  ],
+  "cases": [
+    {
+      "id": "EV-001",
+      "clause": "Either party may terminate this Agreement for convenience upon seven (7) days' prior written notice.",
+      "policy_line": "POL-05#2.1",
+      "expected": "CONFLICT",
+      "category": "termination notice",
+      "note": "7 < 30",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-002",
+      "clause": "Either party may terminate this Agreement for convenience upon sixty (60) days' prior written notice.",
+      "policy_line": "POL-05#2.1",
+      "expected": "NO_CONFLICT",
+      "category": "termination notice",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-003",
+      "clause": "Either party may terminate this Agreement for convenience upon thirty (30) days' written notice.",
+      "policy_line": "POL-05#2.1",
+      "expected": "NO_CONFLICT",
+      "category": "termination notice",
+      "note": "boundary: equal to the minimum",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-004",
+      "clause": "Either party may terminate this Agreement immediately without notice.",
+      "policy_line": "POL-05#2.1",
+      "expected": "CONFLICT",
+      "category": "termination notice",
+      "note": "no notice at all = 0 days",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-005",
+      "clause": "Either party may terminate this Agreement for convenience upon reasonable notice.",
+      "policy_line": "POL-05#2.1",
+      "expected": "UNCERTAIN",
+      "category": "termination notice",
+      "note": "no figure to compare",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-006",
+      "clause": "Either party may terminate this Agreement upon 1 month's written notice.",
+      "policy_line": "POL-05#2.1",
+      "expected": "NO_CONFLICT",
+      "category": "termination notice",
+      "note": "unit conversion: 1 month >= 30 days",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-007",
+      "clause": "Either party may terminate this Agreement upon two (2) weeks' written notice.",
+      "policy_line": "POL-05#2.1",
+      "expected": "CONFLICT",
+      "category": "termination notice",
+      "note": "unit conversion: 14 days < 30",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-008",
+      "clause": "Either party may terminate this Agreement if the other party fails to cure a material breach within five (5) days after written notice.",
+      "policy_line": "POL-05#2.2",
+      "expected": "CONFLICT",
+      "category": "cure period",
+      "note": "5 < 15",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-009",
+      "clause": "Either party may terminate this Agreement if the other party fails to cure a material breach within thirty (30) days after written notice.",
+      "policy_line": "POL-05#2.2",
+      "expected": "NO_CONFLICT",
+      "category": "cure period",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-010",
+      "clause": "Supplier may terminate this Agreement upon ten (10) days' written notice.",
+      "policy_line": "POL-05#2.4",
+      "expected": "CONFLICT",
+      "category": "termination notice",
+      "note": "policy line is a prohibition ('less than 15')",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-011",
+      "clause": "Supplier may terminate this Agreement upon forty-five (45) days' written notice.",
+      "policy_line": "POL-05#2.4",
+      "expected": "NO_CONFLICT",
+      "category": "termination notice",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-012",
+      "clause": "Either party may terminate this Agreement upon twenty (20) days' written notice.",
+      "policy_line": "POL-01#2.1",
+      "expected": "CONFLICT",
+      "category": "termination notice",
+      "note": "20 < 30",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-013",
+      "clause": "Either party may terminate this Agreement upon forty-five (45) days' written notice.",
+      "policy_line": "POL-01#2.3",
+      "expected": "PARTIAL_CONFLICT",
+      "category": "termination notice",
+      "note": "violates only if the vendor is classified critical",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-014",
+      "clause": "Either party may terminate this Agreement upon sixty (60) days' written notice.",
+      "policy_line": "POL-01#2.3",
+      "expected": "NO_CONFLICT",
+      "category": "termination notice",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-015",
+      "clause": "Customer shall pay each invoice within fifteen (15) days of receipt.",
+      "policy_line": "POL-03#2.1",
+      "expected": "CONFLICT",
+      "category": "payment term",
+      "note": "15 < net 45",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-016",
+      "clause": "Customer shall pay each invoice within sixty (60) days of receipt.",
+      "policy_line": "POL-03#2.1",
+      "expected": "NO_CONFLICT",
+      "category": "payment term",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-017",
+      "clause": "Overdue amounts shall bear interest at 3% per month.",
+      "policy_line": "POL-03#2.2",
+      "expected": "CONFLICT",
+      "category": "late fee",
+      "note": "3 > 1.5",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-018",
+      "clause": "Overdue amounts shall bear interest at 1% per month.",
+      "policy_line": "POL-03#2.2",
+      "expected": "NO_CONFLICT",
+      "category": "late fee",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-019",
+      "clause": "Overdue amounts shall bear interest at 12% per annum.",
+      "policy_line": "POL-03#2.2",
+      "expected": "UNCERTAIN",
+      "category": "late fee",
+      "note": "different period (annum vs month): not comparable",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-020",
+      "clause": "Fees may be increased by up to 10% each year.",
+      "policy_line": "POL-03#2.5",
+      "expected": "CONFLICT",
+      "category": "price escalation",
+      "note": "10 > 5",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-021",
+      "clause": "Fees may be increased by up to 3% each year.",
+      "policy_line": "POL-03#2.5",
+      "expected": "NO_CONFLICT",
+      "category": "price escalation",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-022",
+      "clause": "Customer shall pay fifty percent (50%) of the fees in advance.",
+      "policy_line": "POL-03#2.4",
+      "expected": "CONFLICT",
+      "category": "advance payment",
+      "note": "50 > 20",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-023",
+      "clause": "Customer shall pay a deposit of ten percent (10%) of the total fees.",
+      "policy_line": "POL-03#2.4",
+      "expected": "NO_CONFLICT",
+      "category": "advance payment",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-024",
+      "clause": "In no event shall either party's aggregate liability exceed the fees paid in the three (3) months preceding the claim.",
+      "policy_line": "POL-06#2.1",
+      "expected": "CONFLICT",
+      "category": "liability cap",
+      "note": "3 < 12 months of fees",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-025",
+      "clause": "In no event shall either party's aggregate liability exceed the fees paid in the twenty-four (24) months preceding the claim.",
+      "policy_line": "POL-06#2.1",
+      "expected": "NO_CONFLICT",
+      "category": "liability cap",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-026",
+      "clause": "In no event shall either party's aggregate liability exceed USD 50,000.",
+      "policy_line": "POL-06#2.1",
+      "expected": "UNCERTAIN",
+      "category": "liability cap",
+      "note": "fixed amount vs months of fees: not comparable",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-027",
+      "clause": "Each party's total liability shall be limited to six (6) months of fees paid or payable under this Agreement.",
+      "policy_line": "POL-06#2.1",
+      "expected": "CONFLICT",
+      "category": "liability cap",
+      "note": "6 < 12",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-028",
+      "clause": "Vendor shall not compete with the Company for a period of three (3) years after termination.",
+      "policy_line": "POL-09#2.1",
+      "expected": "CONFLICT",
+      "category": "non-compete",
+      "note": "36 months > 12",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-029",
+      "clause": "Vendor shall not compete with the Company for a period of six (6) months after termination.",
+      "policy_line": "POL-09#2.1",
+      "expected": "NO_CONFLICT",
+      "category": "non-compete",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-030",
+      "clause": "Neither party shall solicit the other's employees during the term and for thirty-six (36) months thereafter.",
+      "policy_line": "POL-09#2.3",
+      "expected": "CONFLICT",
+      "category": "non-solicit",
+      "note": "36 > 24",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-031",
+      "clause": "Neither party shall solicit the other's employees during the term and for twelve (12) months thereafter.",
+      "policy_line": "POL-09#2.3",
+      "expected": "NO_CONFLICT",
+      "category": "non-solicit",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-032",
+      "clause": "Company shall purchase exclusively from Supplier for a period of five (5) years.",
+      "policy_line": "POL-16#2.1",
+      "expected": "CONFLICT",
+      "category": "exclusivity",
+      "note": "60 months > 24",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-033",
+      "clause": "Company shall purchase exclusively from Supplier for a period of eighteen (18) months.",
+      "policy_line": "POL-16#2.1",
+      "expected": "NO_CONFLICT",
+      "category": "exclusivity",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-034",
+      "clause": "Supplier warrants that the Software will be free of material defects for thirty (30) days following delivery.",
+      "policy_line": "POL-17#2.1",
+      "expected": "CONFLICT",
+      "category": "warranty",
+      "note": "30 < 90",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-035",
+      "clause": "Supplier warrants that the Software will be free of material defects for one (1) year following delivery.",
+      "policy_line": "POL-17#2.1",
+      "expected": "NO_CONFLICT",
+      "category": "warranty",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-036",
+      "clause": "This Agreement renews automatically for successive terms unless either party gives notice of non-renewal at least ninety (90) days before the end of the then-current term.",
+      "policy_line": "POL-14#2.1",
+      "expected": "CONFLICT",
+      "category": "renewal notice",
+      "note": "90 > 60 days",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-037",
+      "clause": "This Agreement renews automatically for successive terms unless either party gives notice of non-renewal at least thirty (30) days before the end of the then-current term.",
+      "policy_line": "POL-14#2.1",
+      "expected": "NO_CONFLICT",
+      "category": "renewal notice",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-038",
+      "clause": "Upon each renewal, the fees shall increase by 8%.",
+      "policy_line": "POL-14#2.2",
+      "expected": "CONFLICT",
+      "category": "renewal price increase",
+      "note": "8 > 5",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-039",
+      "clause": "Upon each renewal, the fees shall increase by 3%.",
+      "policy_line": "POL-14#2.2",
+      "expected": "NO_CONFLICT",
+      "category": "renewal price increase",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-040",
+      "clause": "Processor shall delete all Personal Data within ninety (90) days after termination.",
+      "policy_line": "POL-02#2.1",
+      "expected": "CONFLICT",
+      "category": "data deletion",
+      "note": "90 > 30",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-041",
+      "clause": "Processor shall delete all Personal Data within fifteen (15) days after termination.",
+      "policy_line": "POL-02#2.1",
+      "expected": "NO_CONFLICT",
+      "category": "data deletion",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-042",
+      "clause": "Processor shall notify Controller of any data breach within seventy-two (72) hours of discovery.",
+      "policy_line": "POL-02#2.3",
+      "expected": "CONFLICT",
+      "category": "breach notification",
+      "note": "72h > 24h",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-043",
+      "clause": "Processor shall notify Controller of any data breach within twelve (12) hours of discovery.",
+      "policy_line": "POL-02#2.3",
+      "expected": "NO_CONFLICT",
+      "category": "breach notification",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-044",
+      "clause": "Processor shall notify Controller of any data breach within three (3) days of discovery.",
+      "policy_line": "POL-02#2.3",
+      "expected": "CONFLICT",
+      "category": "breach notification",
+      "note": "unit conversion: 3 days = 72h > 24h",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-045",
+      "clause": "Processor may engage sub-processors without the Controller's approval.",
+      "policy_line": "POL-02#2.5",
+      "expected": "CONFLICT",
+      "category": "sub-processing",
+      "note": "approval required",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-046",
+      "clause": "Processor shall not engage sub-processors without the Controller's prior written approval.",
+      "policy_line": "POL-02#2.5",
+      "expected": "NO_CONFLICT",
+      "category": "sub-processing",
+      "note": "negation + 'without' = approval required",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-047",
+      "clause": "The obligations of confidentiality shall survive termination for a period of one (1) year.",
+      "policy_line": "POL-04#2.1",
+      "expected": "CONFLICT",
+      "category": "confidentiality survival",
+      "note": "1 < 3 years",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-048",
+      "clause": "The obligations of confidentiality shall survive termination for a period of five (5) years.",
+      "policy_line": "POL-04#2.1",
+      "expected": "NO_CONFLICT",
+      "category": "confidentiality survival",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-049",
+      "clause": "Each party shall return or destroy all Confidential Information within ninety (90) days after termination.",
+      "policy_line": "POL-04#2.5",
+      "expected": "CONFLICT",
+      "category": "return/destroy",
+      "note": "90 > 30",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-050",
+      "clause": "Each party shall return or destroy all Confidential Information within fifteen (15) days after termination.",
+      "policy_line": "POL-04#2.5",
+      "expected": "NO_CONFLICT",
+      "category": "return/destroy",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-051",
+      "clause": "Vendor may share Customer data with its subcontractors without prior approval.",
+      "policy_line": "POL-21#2.1",
+      "expected": "CONFLICT",
+      "category": "data sharing",
+      "note": "authorization",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-052",
+      "clause": "Vendor may share Customer data with subcontractors only with the Customer's prior written approval.",
+      "policy_line": "POL-21#2.1",
+      "expected": "NO_CONFLICT",
+      "category": "data sharing",
+      "note": "'may only' = restricted permission",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-053",
+      "clause": "Vendor shall not share Customer data with any third party without the Customer's prior written consent.",
+      "policy_line": "POL-21#2.1",
+      "expected": "NO_CONFLICT",
+      "category": "data sharing",
+      "note": "'consent' counts as authorization",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-054",
+      "clause": "Vendor may disclose Customer data to its affiliates without prior written authorization.",
+      "policy_line": "POL-21#2.1",
+      "expected": "CONFLICT",
+      "category": "data sharing",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-055",
+      "clause": "Supplier may assign this Agreement to any third party without the Company's consent.",
+      "policy_line": "POL-15#2.1",
+      "expected": "CONFLICT",
+      "category": "assignment",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-056",
+      "clause": "Supplier shall not assign this Agreement without the Company's prior written consent.",
+      "policy_line": "POL-15#2.1",
+      "expected": "NO_CONFLICT",
+      "category": "assignment",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-057",
+      "clause": "Contractor shall maintain commercial general liability insurance of not less than $500,000 per occurrence.",
+      "policy_line": "POL-10#2.1",
+      "expected": "CONFLICT",
+      "category": "insurance",
+      "note": "500k < 1M",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-058",
+      "clause": "Contractor shall maintain commercial general liability insurance of not less than $2,000,000 per occurrence.",
+      "policy_line": "POL-10#2.1",
+      "expected": "NO_CONFLICT",
+      "category": "insurance",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-059",
+      "clause": "Vendor shall maintain cyber liability insurance with limits of $1,000,000 per incident.",
+      "policy_line": "POL-10#2.2",
+      "expected": "CONFLICT",
+      "category": "insurance",
+      "note": "1M < 2M",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-060",
+      "clause": "Vendor shall maintain cyber liability insurance of at least $5,000,000 per claim.",
+      "policy_line": "POL-10#2.2",
+      "expected": "NO_CONFLICT",
+      "category": "insurance",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-061",
+      "clause": "The affected party shall notify the other party within thirty (30) business days of the force majeure event.",
+      "policy_line": "POL-13#2.1",
+      "expected": "CONFLICT",
+      "category": "force majeure notice",
+      "note": "30 > 10 business days",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-062",
+      "clause": "The affected party shall notify the other party within five (5) business days of the force majeure event.",
+      "policy_line": "POL-13#2.1",
+      "expected": "NO_CONFLICT",
+      "category": "force majeure notice",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-063",
+      "clause": "Either party may terminate this Agreement if a force majeure event continues for more than one hundred twenty (120) consecutive days.",
+      "policy_line": "POL-13#2.3",
+      "expected": "CONFLICT",
+      "category": "force majeure termination",
+      "note": "120 > 60",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-064",
+      "clause": "Either party may terminate this Agreement if a force majeure event continues for more than thirty (30) consecutive days.",
+      "policy_line": "POL-13#2.3",
+      "expected": "NO_CONFLICT",
+      "category": "force majeure termination",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-065",
+      "clause": "Supplier shall notify the Company of any change of control within sixty (60) days.",
+      "policy_line": "POL-15#2.4",
+      "expected": "CONFLICT",
+      "category": "change-of-control notice",
+      "note": "60 calendar days vs 15 business days (~21): clearly over",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-066",
+      "clause": "Supplier shall notify the Company of any change of control within ten (10) days.",
+      "policy_line": "POL-15#2.4",
+      "expected": "NO_CONFLICT",
+      "category": "change-of-control notice",
+      "note": "10 calendar days: clearly under",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-067",
+      "clause": "Supplier shall notify the Company of any change of control within twenty (20) days.",
+      "policy_line": "POL-15#2.4",
+      "expected": "UNCERTAIN",
+      "category": "change-of-control notice",
+      "note": "borderline business/calendar days: should not guess",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-068",
+      "clause": "Vendor shall remediate critical vulnerabilities within sixty (60) days of identification.",
+      "policy_line": "POL-18#2.4",
+      "expected": "CONFLICT",
+      "category": "vulnerability remediation",
+      "note": "60 > 15",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-069",
+      "clause": "Vendor shall remediate critical vulnerabilities within ten (10) days of identification.",
+      "policy_line": "POL-18#2.4",
+      "expected": "NO_CONFLICT",
+      "category": "vulnerability remediation",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-070",
+      "clause": "Vendor shall retain financial records for three (3) years.",
+      "policy_line": "POL-19#2.4",
+      "expected": "CONFLICT",
+      "category": "record retention",
+      "note": "3 < 7",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-071",
+      "clause": "Vendor shall retain financial records for ten (10) years.",
+      "policy_line": "POL-19#2.4",
+      "expected": "NO_CONFLICT",
+      "category": "record retention",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-072",
+      "clause": "Backup copies shall be purged within one hundred eighty (180) days.",
+      "policy_line": "POL-19#2.3",
+      "expected": "CONFLICT",
+      "category": "backup purge",
+      "note": "180 > 90",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-073",
+      "clause": "Contractor shall report any environmental incident within five (5) days.",
+      "policy_line": "POL-20#2.3",
+      "expected": "CONFLICT",
+      "category": "environmental incident",
+      "note": "120h > 48h",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-074",
+      "clause": "Contractor shall report any environmental incident within twenty-four (24) hours.",
+      "policy_line": "POL-20#2.3",
+      "expected": "NO_CONFLICT",
+      "category": "environmental incident",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-075",
+      "clause": "The parties shall attempt good-faith negotiation for ten (10) days before commencing arbitration.",
+      "policy_line": "POL-12#2.3",
+      "expected": "CONFLICT",
+      "category": "negotiation period",
+      "note": "10 < 30",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-076",
+      "clause": "The parties shall attempt good-faith negotiation for forty-five (45) days before commencing arbitration.",
+      "policy_line": "POL-12#2.3",
+      "expected": "NO_CONFLICT",
+      "category": "negotiation period",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-077",
+      "clause": "Customer may audit Supplier's records upon sixty (60) days' prior written notice.",
+      "policy_line": "POL-11#2.1",
+      "expected": "CONFLICT",
+      "category": "audit notice",
+      "note": "60 calendar days vs max 15 business days (~21)",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-078",
+      "clause": "Customer may audit Supplier's records upon five (5) business days' prior written notice.",
+      "policy_line": "POL-11#2.1",
+      "expected": "NO_CONFLICT",
+      "category": "audit notice",
+      "note": "",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-079",
+      "clause": "Fees are payable upon cancellation of the order.",
+      "policy_line": "POL-03#2.1",
+      "expected": "UNCERTAIN",
+      "category": "trap: substring",
+      "note": "'cancellation' must not trigger a permission or a number",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-080",
+      "clause": "Either party may terminate this Agreement if the other party fails to cure a material breach within five (5) days after written notice.",
+      "policy_line": "POL-05#2.1",
+      "expected": "UNCERTAIN",
+      "category": "trap: different quantity",
+      "note": "a cure period is not a notice period",
+      "origin": "synthetic"
+    },
+    {
+      "id": "EV-081",
+      "clause": "Customer shall pay each invoice within fifteen (15) days of receipt.",
+      "policy_line": "POL-05#2.1",
+      "expected": "UNCERTAIN",
+      "category": "trap: different topic",
+      "note": "payment term vs termination notice",
+      "origin": "synthetic"
+    }
+  ]
+}

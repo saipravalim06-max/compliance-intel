@@ -1,0 +1,23 @@
+cuad_category,policy_id,policy_name,mapping_strength,rationale
+Termination For Convenience,POL-05,Contract Termination and Notice Policy,strong,Notice period for termination without cause (policy: >=30 days)
+Cap On Liability,POL-06,Limitation of Liability Policy,strong,Liability cap vs policy minimum (12 months of fees)
+Uncapped Liability,POL-06,Limitation of Liability Policy,strong,Carve-outs/uncapped liability vs policy carve-out rules
+Insurance,POL-10,Insurance Requirements Policy,strong,Coverage amounts and proof-of-insurance requirements
+Warranty Duration,POL-17,Warranty Policy,strong,Warranty period (policy: >=90 days)
+Audit Rights,POL-11,Audit Rights Policy,strong,"Audit notice and frequency (policy: >=15 business days notice, >=annual)"
+Renewal Term,POL-14,Auto-Renewal and Contract Renewal Policy,strong,Auto-renewal terms and price increase caps
+Notice Period To Terminate Renewal,POL-14,Auto-Renewal and Contract Renewal Policy,strong,Non-renewal notice window (policy: >=60 days)
+Governing Law,POL-12,Dispute Resolution and Governing Law Policy,strong,Governing law/venue/arbitration vs dispute-resolution policy
+Non-Compete,POL-09,Non-Compete and Non-Solicitation Policy,strong,Non-compete duration (policy: <=12 months)
+No-Solicit Of Employees,POL-09,Non-Compete and Non-Solicitation Policy,strong,Non-solicit duration (policy: <=24 months)
+Exclusivity,POL-16,Exclusivity and Most-Favored-Nation Policy,strong,Exclusivity duration (policy: <=24 months without approval)
+Most Favored Nation,POL-16,Exclusivity and Most-Favored-Nation Policy,strong,MFN clauses require legal review
+Anti-Assignment,POL-15,Assignment and Change of Control Policy,strong,Assignment consent requirements
+Change Of Control,POL-15,Assignment and Change of Control Policy,strong,Change-of-control termination rights and notice
+Ip Ownership Assignment,POL-08,Intellectual Property Assignment Policy,strong,Work-for-hire / IP assignment to company
+Joint Ip Ownership,POL-08,Intellectual Property Assignment Policy,moderate,Joint IP conflicts with full-assignment default
+Irrevocable Or Perpetual License,POL-08,Intellectual Property Assignment Policy,moderate,Policy wants perpetual royalty-free licence to background IP
+Price Restrictions,POL-03,Payment Terms Policy,moderate,Price escalation cap (policy: <=5% annually)
+No-Solicit Of Customers,POL-09,Non-Compete and Non-Solicitation Policy,weak,Policy covers employee non-solicit only
+License Grant,POL-08,Intellectual Property Assignment Policy,weak,Direction of licence varies; only loosely related to IP assignment policy
+Non-Transferable License,POL-15,Assignment and Change of Control Policy,weak,Relates to assignment limits only indirectly

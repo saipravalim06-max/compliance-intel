@@ -1,29 +1,33 @@
-from typing import List, Tuple
+from typing import List, Optional, Tuple
 
-from core.embeddings import EmbeddingModel
+from core.embeddings import EmbeddingModel, get_model
 from core.engine import Segment
+
+
+def _text(seg: Segment) -> str:
+    return seg.translated_text if seg.translated_text else seg.original_text
 
 
 class PolicyMatcher:
     """
-    Finds the company-policy requirements that are semantically
-    relevant to a contract clause.
+    Finds the company-policy requirements that are semantically relevant to a
+    contract clause.
 
-    Matching answers:
-        "Which policy requirements are about the same topic?"
+    Matching answers: "Which policy requirements are about the same topic?"
+    It does NOT answer: "Do they conflict?" — that is core.conflict's job.
 
-    It does NOT answer:
-        "Do they conflict?"
-
-    Conflict reasoning is handled separately by core.conflict.
+    The embedding model is shared and caches every text, so policy lines are
+    encoded once and each additional clause costs one encode + one matrix product.
     """
 
     def __init__(
         self,
         model_name: str = "all-MiniLM-L6-v2",
         similarity_threshold: float = 0.50,
+        backend: str = "sentence-transformers",
+        model: Optional[EmbeddingModel] = None,
     ):
-        self.embedding_model = EmbeddingModel(model_name)
+        self.embedding_model = model or get_model(model_name, backend)
         self.similarity_threshold = similarity_threshold
 
     def match(
@@ -32,36 +36,11 @@ class PolicyMatcher:
         policy_segments: List[Segment],
         top_k: int = 3,
     ) -> List[Tuple[Segment, float]]:
-        """
-        Return the top-k policy segments most semantically similar
-        to the contract segment.
-
-        Only candidates above similarity_threshold are returned.
-        """
-
-        contract_text = (
-            contract_segment.translated_text
-            if contract_segment.translated_text
-            else contract_segment.original_text
-        )
-
-        results = []
-
-        for policy_segment in policy_segments:
-            policy_text = (
-                policy_segment.translated_text
-                if policy_segment.translated_text
-                else policy_segment.original_text
-            )
-
-            score = self.embedding_model.similarity(
-                contract_text,
-                policy_text,
-            )
-
-            if score >= self.similarity_threshold:
-                results.append((policy_segment, score))
-
-        results.sort(key=lambda item: item[1], reverse=True)
-
-        return results[:top_k]
+        """Top-k policy segments above similarity_threshold, most similar first."""
+        if not policy_segments:
+            return []
+        sims = self.embedding_model.similarity_matrix(
+            [_text(contract_segment)], [_text(p) for p in policy_segments]
+        )[0]
+        ranked = sorted(zip(policy_segments, sims.tolist()), key=lambda x: x[1], reverse=True)
+        return [(p, s) for p, s in ranked if s >= self.similarity_threshold][:top_k]

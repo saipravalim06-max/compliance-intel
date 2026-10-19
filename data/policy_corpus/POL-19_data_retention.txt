@@ -1,0 +1,19 @@
+POLICY ID: POL-19
+TITLE: Data Retention Policy
+CATEGORY: Data Retention
+EFFECTIVE DATE: 2024-01-01
+OWNER: Data Protection Office
+
+1. PURPOSE
+This policy defines how long personal and business data may be retained by the company and by third parties acting on its behalf.
+
+2. REQUIREMENTS
+2.1 Contracts involving data processing must define the categories of data retained, the retention period, and the deletion responsibilities of each party.
+2.2 Personal data held by a vendor must not be retained beyond the contract term except where retention is required by applicable law, and primary copies must be deleted within thirty (30) days of termination in line with POL-02.
+2.3 Backup copies containing company personal data must be purged within ninety (90) days of deletion of the primary copy.
+2.4 Financial and transaction records must be retained for a minimum of seven (7) years.
+2.5 Retention schedules must be reviewed at least once every twelve (12) months.
+2.6 Data subject to a legal hold must not be deleted until the hold is released in writing by the Legal Department.
+
+3. APPLICABILITY
+Applies to all contracts and internal systems that store personal or business data.
