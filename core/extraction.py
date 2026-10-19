@@ -36,79 +36,175 @@ NUMBER_WORDS = {
 }
 
 
+def _number_pattern() -> str:
+    """Build a regex pattern for supported number words and digits."""
+    words = "|".join(
+        re.escape(word)
+        for word in sorted(NUMBER_WORDS, key=len, reverse=True)
+    )
+    return rf"(?:\d[\d,]*(?:\.\d+)?|{words})"
+
+
+def _convert_number(value: str) -> Optional[float]:
+    """Convert a numeric string or supported number word into a float."""
+    value = value.strip().lower()
+
+    if value in NUMBER_WORDS:
+        return float(NUMBER_WORDS[value])
+
+    try:
+        return float(value.replace(",", ""))
+    except ValueError:
+        return None
+
+
 def _extract_number(text: str) -> Optional[float]:
     """
-    Extract a numeric value from either:
-      - 30
-      - 30.5
-      - thirty
-      - thirty (30)
+    Extract a number from text.
 
-    Returns the numeric value only.
+    Supports examples such as:
+        30
+        30.5
+        2,000,000
+        thirty
+        thirty (30)
+        USD 2,000,000
     """
 
-    digit_match = re.search(r"\b\d+(?:\.\d+)?\b", text)
+    # Prefer the explicit numeric value in expressions such as
+    # "thirty (30)".
+    parenthetical_match = re.search(
+        r"\(\s*(\d[\d,]*(?:\.\d+)?)\s*\)",
+        text,
+    )
+
+    if parenthetical_match:
+        return _convert_number(parenthetical_match.group(1))
+
+    # Prefer currency amounts when present.
+    currency_match = re.search(
+        r"(?:\bUSD\b|US\$|\$)\s*(\d[\d,]*(?:\.\d+)?)",
+        text,
+        re.IGNORECASE,
+    )
+
+    if currency_match:
+        return _convert_number(currency_match.group(1))
+
+    # Extract a numeric value, including comma separators.
+    digit_match = re.search(r"\b\d[\d,]*(?:\.\d+)?\b", text)
 
     if digit_match:
-        return float(digit_match.group())
+        return _convert_number(digit_match.group())
 
+    # Fall back to supported number words.
     lower = text.lower()
 
-    for word, value in NUMBER_WORDS.items():
-        if re.search(rf"\b{word}\b", lower):
-            return float(value)
+    for word in sorted(NUMBER_WORDS, key=len, reverse=True):
+        if re.search(rf"\b{re.escape(word)}\b", lower):
+            return float(NUMBER_WORDS[word])
 
     return None
 
 
 def _extract_unit(text: str) -> Optional[str]:
     """
-    Extract the unit associated with a numeric value.
-    """
+    Extract and normalize a measurement unit.
 
-    unit_match = re.search(
-        r"\b(days?|weeks?|months?|years?|employees?|percent|%)\b",
-        text.lower(),
-    )
-
-    if unit_match:
-        unit = unit_match.group(1).lower()
-
-        if unit == "%":
-            return "percent"
-
-        if unit.endswith("s"):
-            return unit[:-1]
-
-        return unit
-
-    return None
-
-
-def _extract_operator(text: str) -> Optional[str]:
-    """
-    Extract a comparison operator from phrases such as:
-      at least 30 days -> >=
-      no less than 30 days -> >=
-      at most 30 days -> <=
-      no more than 30 days -> <=
-      more than 30 days -> >
-      fewer than 30 employees -> <
-      less than 30 days -> <
+    Examples:
+        days -> day
+        months -> month
+        USD 2,000,000 -> usd
+        20% -> percent
     """
 
     lower = text.lower()
 
-    if re.search(r"\b(at least|no less than|minimum of)\b", lower):
+    # Check currency first so an amount such as USD 2,000,000
+    # is not confused with another measurement.
+    if re.search(r"\b(?:usd|us dollars?)\b|us\$|\$", lower):
+        return "usd"
+
+    unit_match = re.search(
+        r"\b(days?|weeks?|months?|years?|employees?|percent)\b|%",
+        lower,
+    )
+
+    if not unit_match:
+        return None
+
+    unit = unit_match.group().lower()
+
+    if unit == "%":
+        return "percent"
+
+    if unit.endswith("s"):
+        return unit[:-1]
+
+    return unit
+
+
+def _extract_operator(text: str) -> Optional[str]:
+    """
+    Extract a comparison operator from requirement wording.
+
+    Examples:
+        at least 30 days -> >=
+        no less than 15 days -> >=
+        minimum coverage of USD 2,000,000 -> >=
+        not capped below 12 months -> >=
+        at most 30 days -> <=
+        no more than 10 employees -> <=
+        more than 30 days -> >
+        less than 15 days -> <
+    """
+
+    lower = text.lower()
+
+    # Check lower-bound expressions before generic "less than"
+    # expressions so that "no less than" is handled correctly.
+    minimum_patterns = [
+        r"\bat least\b",
+        r"\bno less than\b",
+        r"\bnot less than\b",
+        r"\bminimum\b",
+        r"\bnot below\b",
+        r"\b(?:should|must|shall)\s+not\s+(?:be\s+)?capped\s+below\b",
+        r"\bnot\s+(?:be\s+)?capped\s+below\b",
+    ]
+
+    maximum_patterns = [
+        r"\bat most\b",
+        r"\bno more than\b",
+        r"\bnot more than\b",
+        r"\bmaximum\b",
+        r"\bup to\b",
+        r"\bnot above\b",
+    ]
+
+    greater_patterns = [
+        r"\bmore than\b",
+        r"\bgreater than\b",
+        r"\bover\b",
+    ]
+
+    less_patterns = [
+        r"\bless than\b",
+        r"\bfewer than\b",
+        r"\bunder\b",
+        r"\bbelow\b",
+    ]
+
+    if any(re.search(p, lower) for p in minimum_patterns):
         return ">="
 
-    if re.search(r"\b(at most|no more than|maximum of)\b", lower):
+    if any(re.search(p, lower) for p in maximum_patterns):
         return "<="
 
-    if re.search(r"\b(more than|greater than|over)\b", lower):
+    if any(re.search(p, lower) for p in greater_patterns):
         return ">"
 
-    if re.search(r"\b(less than|fewer than|under)\b", lower):
+    if any(re.search(p, lower) for p in less_patterns):
         return "<"
 
     return None
@@ -116,34 +212,78 @@ def _extract_operator(text: str) -> Optional[str]:
 
 def _extract_threshold(text: str):
     """
-    Extract threshold and unit while distinguishing phrases such as
-    'at least 30 days' from deadline phrases such as 'within 30 days'.
+    Extract a numeric threshold and its unit.
+
+    Supports:
+        thirty (30) calendar days -> (30, day)
+        no less than fifteen days -> (15, day)
+        twelve (12) months of fees -> (12, month)
+        USD 2,000,000 per incident -> (2000000, usd)
+        minimum coverage of USD 1,000,000 -> (1000000, usd)
+        20 percent -> (20, percent)
+        20% -> (20, percent)
     """
 
     lower = text.lower()
 
-    # Match phrases containing a number/number word followed by a unit.
-    number_pattern = (
-        r"(?:\d+(?:\.\d+)?|"
-        + "|".join(NUMBER_WORDS.keys())
-        + r")"
-    )
-
-    threshold_match = re.search(
-        rf"\b{number_pattern}\s*(?:\(\s*\d+(?:\.\d+)?\s*\))?"
-        rf"\s*(days?|weeks?|months?|years?|employees?|percent|%)\b",
+    # Currency amounts must be handled separately because the amount
+    # may be followed by "per incident", "per occurrence", etc.
+    currency_match = re.search(
+        r"(?:\busd\b|us\$|\$)\s*"
+        r"(?P<amount>\d[\d,]*(?:\.\d+)?)",
         lower,
     )
 
-    if not threshold_match:
-        return None, None
+    if currency_match:
+        amount = _convert_number(currency_match.group("amount"))
+        return amount, "usd"
 
-    matched_text = threshold_match.group()
+    number_core = _number_pattern()
 
-    value = _extract_number(matched_text)
-    unit = _extract_unit(matched_text)
+    # Match durations, counts, and word-plus-parenthetical-number
+    # expressions such as "thirty (30) calendar days".
+    duration_match = re.search(
+        rf"(?P<number>{number_core})"
+        rf"(?:\s*\(\s*(?P<paren>\d[\d,]*(?:\.\d+)?)\s*\))?"
+        rf"\s*(?:calendar\s+)?"
+        rf"(?P<unit>days?|weeks?|months?|years?|employees?|percent)\b",
+        lower,
+    )
 
-    return value, unit
+    if duration_match:
+        # Prefer the explicit digits when the text contains both
+        # a number word and a parenthetical number.
+        value_text = (
+            duration_match.group("paren")
+            or duration_match.group("number")
+        )
+
+        value = _convert_number(value_text)
+        unit = duration_match.group("unit")
+
+        if unit.endswith("s"):
+            unit = unit[:-1]
+
+        return value, unit
+
+    # Percent signs need separate handling because "%" is not a word
+    # and should not be followed by a word boundary.
+    percent_match = re.search(
+        rf"(?P<number>{number_core})"
+        rf"(?:\s*\(\s*(?P<paren>\d[\d,]*(?:\.\d+)?)\s*\))?"
+        rf"\s*%",
+        lower,
+    )
+
+    if percent_match:
+        value_text = (
+            percent_match.group("paren")
+            or percent_match.group("number")
+        )
+
+        return _convert_number(value_text), "percent"
+
+    return None, None
 
 
 def extract_requirement(
@@ -271,14 +411,14 @@ def extract_requirement(
 
     deadline_match = re.search(
         r"\b(?:within|after)\s+"
-        r"(\d+(?:\.\d+)?)\s+"
+        r"(\d[\d,]*(?:\.\d+)?)\s+"
         r"(day|days|month|months|year|years)\b",
         lower,
     )
 
     if deadline_match:
         deadline = (
-            f"{deadline_match.group(1)} "
+            f"{deadline_match.group(1).replace(',', '')} "
             f"{deadline_match.group(2)}"
         )
 
@@ -287,11 +427,11 @@ def extract_requirement(
     # ---------------------------------------------------------
 
     threshold, unit = _extract_threshold(text)
-
     operator = _extract_operator(text)
 
-    # 'within 30 days' represents a deadline rather than
-    # a >= comparison.
+    # "Within 30 days" is generally a deadline, not a minimum.
+    # Do not overwrite a deadline's comparison if a different
+    # explicit comparison phrase is present.
     if re.search(r"\bwithin\b", lower):
         operator = "<="
 
@@ -299,8 +439,10 @@ def extract_requirement(
     # Obligation type
     # ---------------------------------------------------------
 
-    # Restrictions must be checked before ordinary permission.
-    if re.search(r"\b(must not|shall not|may not|cannot|can not)\b", lower):
+    if re.search(
+        r"\b(must not|shall not|may not|cannot|can not)\b",
+        lower,
+    ):
         obligation_type = "PROHIBITION"
 
     elif re.search(r"\bmay only\b", lower):
