@@ -46,5 +46,12 @@
   "assumptions": [
     "Fictional company designed to exercise inclusion rules (women, SC/ST, rural) and employee-count thresholds",
     "Not yet recognized by either state startup agency"
+  ],
+  "is_early_stage": true,
+  "technology_areas": [],
+  "impact_areas": [
+    "rural development",
+    "food security",
+    "SDG"
   ]
 }

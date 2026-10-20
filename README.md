@@ -26,6 +26,10 @@ python tests/test_foundation.py
 Extractor fixes, numeric/authorization conflict rules, cached batch embeddings, evaluation script
 (`python scripts/evaluate.py`), 81 gold cases, suggested labels for the 64 real CUAD pairs.
 
+## Module 1 — state fit (done; see `docs/MODULE1.md`)
+`python scripts/evaluate_profile.py` · `python -m modules.state_fit data/profiles/nirmaan_rural_foods.json` ·
+93 rules, 89.5% agreement with the hand labels, disagreements listed for review.
+
 ## Next
 1. Human-label `data/processed/evaluation_sample_predicted.csv`
 2. Rules / comparator for the textual categories (coverage on real clauses is ~19%)

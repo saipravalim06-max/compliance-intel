@@ -62,6 +62,13 @@ only by changing it here, in the code, and in `tests/test_foundation.py` togethe
   Finance, Director) are internal governance and are ignored by the authorization rule.
 - `core/schemas.py` gained `quantity_kind`, `per`, `applies_to`, `quantities` (all optional).
 
+## D6. State-fit conventions (Module 1) — see `docs/MODULE1.md`
+- A missing fact never becomes FAIL. Missing eligibility fact → UNKNOWN; eligible but more evidence needed → POTENTIAL.
+- Allocations/earmarks → APPLIES; competitive awards → POTENTIAL; programme targets, budgets, institution funding → INFO.
+- Registration and incorporation are steps to take (`actions_required`), not intrinsic failures; default evaluation is "if registered".
+- No single best-state score. States are described by intrinsic failures, steps, confirmed/potential benefits, and facts still needed.
+- Rules live in `scripts/build_profile_rules.py` → `data/state_policies/profile_rules.json` (one per requirement; a test enforces coverage).
+
 ## Known open items (not decided here)
 - Mirror rows in the Karnataka data (e.g. KA-ELIG-003 "turnover <= 100 crore" and
   KA-ELIG-008 "turnover > 100 crore" come from one sentence). Do not count both.

@@ -71,6 +71,29 @@ class CompanyProfile:
     is_green_tech: Optional[bool] = None
     is_first_time_founder: Optional[bool] = None
 
+    # --- stage and sector facts asked for by state rules (None = UNKNOWN) ---
+    is_early_stage: Optional[bool] = None             # idea / proof-of-concept stage
+    is_growth_stage: Optional[bool] = None
+    is_msme: Optional[bool] = None
+    technology_areas: Optional[List[str]] = None      # e.g. ["AI", "robotics"]
+    impact_areas: Optional[List[str]] = None          # e.g. ["rural development", "SDG"]
+    has_circular_economy_focus: Optional[bool] = None
+    is_obc_or_minority_led: Optional[bool] = None
+    women_employment_pct: Optional[float] = None
+    patent_stage: Optional[str] = None                # "filed" | "granted"
+    has_foreign_patent: Optional[bool] = None
+    has_trademark: Optional[bool] = None
+    quality_certification_count: Optional[int] = None
+    quality_certification_spend_inr: Optional[float] = None
+    is_sandbox_operator: Optional[bool] = None
+    is_sandbox_participant: Optional[bool] = None
+    has_women_night_shift_operations: Optional[bool] = None
+    hires_interns_from_beyond_bengaluru: Optional[bool] = None
+    intern_duration_months: Optional[float] = None
+    has_availed_rural_internship_subsidy: Optional[bool] = None
+    incubation_age_years: Optional[float] = None      # years since entering an incubator
+    startup_recognition_age_years: Optional[float] = None   # years since state recognition
+
     # --- operations / data (Modules 2 & 3) ---
     is_remote_first: Optional[bool] = None
     handles_cross_border_data: Optional[bool] = None

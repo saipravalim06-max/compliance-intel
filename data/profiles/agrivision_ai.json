@@ -47,5 +47,13 @@
     "Women ownership stake 51% is assumed for demonstration (from Karnataka sheet)",
     "State recognition set to Yes in both states, as in Sreeja's sheets (demo simplification)",
     "Unknown facts are left as None on purpose and must evaluate to UNKNOWN"
+  ],
+  "technology_areas": [
+    "AI"
+  ],
+  "impact_areas": [
+    "agriculture",
+    "rural development",
+    "SDG"
   ]
 }

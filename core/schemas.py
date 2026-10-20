@@ -156,6 +156,8 @@ class ProfileCheck(BaseModel):
     requirement_id: str
     jurisdiction: str
     verdict: FitVerdict
+    actionable: Optional[bool] = None     # FAIL caused only by a step the company can take (register, incorporate)
+    missing_facts: Optional[List[str]] = None   # profile facts that would settle an UNKNOWN / POTENTIAL verdict
     company_value: Optional[str] = None   # the profile fact that was compared
     rule: Optional[str] = None            # e.g. "annual_turnover <= 50 crore"
     reasoning: Optional[str] = None
