@@ -1,73 +1,61 @@
-# Compliance Intelligence Platform — Starter Repo
+# Compliance Intelligence Platform
 
-One shared NLP engine, three product modules, built on the same
-ingest → translate → segment → embed → match → explain pipeline.
+A unified regulatory and contract compliance platform that solves two interconnected compliance challenges:
+1. **Macro Fit (State Startup Policy Advisor)**: Evaluates a startup's profile against **93 state policies** across Tamil Nadu and Karnataka to determine the best-fit state for incentives, subsidies, incubator access, and statutory eligibility.
+2. **Micro Compliance (Contract Risk & Clashes)**: Screens third-party vendor contracts against internal corporate policies and statutory state regulations to catch liability, notice period, payment, and authorization conflicts.
 
+| Module | Compares | Status |
+|---|---|---|
+| **1. State Fit Advisor** | Company Profile ⟷ State Startup Policies (TN vs KA) | ✅ Complete (93 rules, UI + Backend) |
+| **2. Contract Checker** | Contract Clause ⟷ Company Internal Policies | ✅ Complete (UI + Backend + Test Suite) |
+| **3. Contract vs State Law** | Contract Clause ⟷ Sourced State Statutory Candidates | ✅ Complete (UI + Backend) |
+| **4. Drift Monitor** | Contract/Policy ⟷ Amended Regulations | ⏳ Roadmap |
+
+---
+
+## Quickstart: Launch the Web Application
+
+```bash
+pip install -r requirements.txt
+streamlit run app/app.py
 ```
-core/
-  company_profile.py   # the data model every module reads from — build/read this first
-  engine.py             # the shared pipeline — fill in the TODOs here, don't duplicate logic in modules/
-modules/
-  contract_checker.py   # MODULE 2 — build & validate THIS FIRST (you have the data for it already)
-  state_fit.py           # MODULE 1 — build SECOND, same engine, different corpus
-  drift_monitor.py       # MODULE 3 — build LAST, needs Module 1 & 2 working first
-data/
-  policy_corpus/         # your synthetic company policy corpus (copy in from policy_corpus.zip)
-  state_policies/         # one subdirectory per state, e.g. gujarat/, karnataka/
-  cuad/                   # CUAD contract clauses (download from Hugging Face)
-app/                       # dashboard — build LAST, after all 3 modules work via script/notebook
-tests/
+
+### What You Can Do in the Web App
+- **Tab 1: 🏛️ State Fit Advisor (Tamil Nadu vs Karnataka)**:
+  - 1-click load real demo profiles (`AgriVision AI`, `Nirmaan Rural Foods`, `SteelForge Components`) or enter a custom startup profile.
+  - Compares eligibility, confirmed grants/subsidies (e.g., TANSEED, Idea2PoC, SGST reimbursement), actionable registration steps, and missing facts questionnaire.
+  - Interactive filterable explorer for all 93 state requirements with source PDF pages and official government URLs.
+  - One-click CSV export of the state evaluation.
+- **Tab 2: 📄 Contract vs Company Policies**:
+  - 1-click load pre-built demo contract and policies or upload your own PDF, DOCX, or TXT documents.
+  - Detects numeric mismatches, authorization omissions, and modality prohibitions.
+  - Displays clause-by-clause evidence cards with rules triggered and similarity scores.
+- **Tab 3: ⚖️ Contract vs State Regulations**:
+  - Checks specific contract terms (notice periods, procurement criteria) against state statutory candidate rules in Tamil Nadu or Karnataka.
+
+---
+
+## Foundation & Datasets
+- `data/state_policies/` — 93 canonical state requirements across Tamil Nadu and Karnataka with page numbers and official source URLs.
+- `data/policy_corpus/` — 21 canonical company policies with quantifiable thresholds and unambiguous directional bounds.
+- `data/profiles/` — Tri-state profiles (`True` / `False` / `None = UNKNOWN`), ensuring missing facts never trigger false rejections.
+- `core/` — Unified schemas, taxonomy, mathematical quantity comparison, and deterministic conflict reasoning.
+
+---
+
+## Run Automated Tests & Evaluations
+
+Run the 80 automated unit tests:
+```bash
+python -B -m pytest -p no:cacheprovider
 ```
 
-## Build order (do not skip ahead)
+Run Module 1 profile evaluation report:
+```bash
+python scripts/evaluate_profile.py --report results/profile_eval_report.md
+```
 
-1. **`core/company_profile.py`** — already has a working example at the
-   bottom. Run it (`python core/company_profile.py`) to sanity-check the
-   schema makes sense for your use case before building anything else.
-
-2. **`core/engine.py`** — fill in the TODOs in this order:
-   - `detect_language()` → wire up `langdetect`
-   - `translate_to_english()` → wire up IndicTrans2 or NLLB-200
-   - `embed_segments()` → wire up `sentence-transformers` (`all-MiniLM-L6-v2` to start)
-   - `match_segments()` → cosine similarity + the numeric-conflict check
-   - `generate_explanation()` → grounded explanation from the matched spans
-
-3. **`modules/contract_checker.py`** — once `core/engine.py` is filled in,
-   run this against your policy corpus + a CUAD contract. This is your
-   first working demo. Get this right before touching anything else.
-
-4. **`modules/state_fit.py`** — add `data/state_policies/gujarat/` and
-   `data/state_policies/karnataka/` (just .txt files in the same numbered-
-   requirement format as the policy corpus — see README in that folder's
-   zip for the format). Run `rank_states()` and sanity-check the output
-   makes sense.
-
-5. **`modules/drift_monitor.py`** — leave this alone until 3 and 4 both work.
-
-6. **`app/`** — build a Streamlit dashboard last, once all three modules
-   work from a script/notebook. Don't build UI before the logic works —
-   it slows down iteration on the part that actually matters.
-
-## Getting your data into this repo
-
-- **Policy corpus**: unzip your existing `policy_corpus.zip` into
-  `data/policy_corpus/` (should give you 17 `.txt` files + `policy_index.csv`).
-- **CUAD**: `pip install datasets` then
-  `from datasets import load_dataset; ds = load_dataset("theatticusproject/cuad-qa")`
-  — pull out a handful of contracts to start, save as `.txt` under `data/cuad/`.
-- **State policies**: source Gujarat's and Karnataka's official startup
-  policy PDFs (search "Gujarat Startup Policy PDF" / "Karnataka Startup
-  Policy PDF" on the respective state government / Startup India sites),
-  extract text, and reformat into the same numbered-requirement `.txt`
-  style as the policy corpus so `segment_policy_text()` can parse them
-  without changes.
-
-## Why this structure
-
-Every module is a thin wrapper that calls `core/engine.py` with a
-different pair of documents. If you ever find yourself writing matching,
-embedding, or explanation logic inside a `modules/*.py` file, stop — that
-logic belongs in `core/engine.py` so all three modules stay provably
-built on the exact same mechanism. That shared-engine property is also
-the core of your patent claim, so keeping it structurally true (not just
-true in your head) matters.
+Run Module 2 contract evaluation benchmark:
+```bash
+python scripts/evaluate.py --report results/eval_report.md
+```

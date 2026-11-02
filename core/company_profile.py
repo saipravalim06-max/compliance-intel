@@ -1,15 +1,17 @@
 """
 core/company_profile.py
 
-The Company Profile is the single data model that every module (state-fit
-recommender, contract checker, drift monitor) reads from. Build this first
-and get its shape right before building anything else — it's the thing that
-makes the three modules feel like one product instead of three tools.
-"""
+The ONE company profile used by every module. It is the union of the facts in
+Sreeja's Tamil Nadu and Karnataka profile sheets plus the original engine fields,
+so every state's rules are evaluated against the SAME set of facts.
 
-from dataclasses import dataclass, field
-from typing import List, Optional
+Tri-state facts: True / False / None.  None means UNKNOWN (not supplied) and
+must produce an UNKNOWN verdict, never a FAIL, in Module 1.
+"""
+import json
+from dataclasses import asdict, dataclass, field, fields
 from enum import Enum
+from typing import Dict, List, Optional
 
 
 class Industry(str, Enum):
@@ -20,77 +22,144 @@ class Industry(str, Enum):
     MANUFACTURING = "manufacturing"
     EDTECH = "edtech"
     GREENTECH = "greentech"
+    AGRITECH = "agritech"
+    FOOD_PROCESSING = "food_processing"
+    AUTO_COMPONENTS = "auto_components"
     OTHER = "other"
 
 
 class DataSensitivity(str, Enum):
-    """How sensitive the data this company handles is — drives which
-    regulatory clauses (data privacy, breach notification, etc.) matter most
-    when matching against state/jurisdiction regulations."""
     NONE = "none"
-    BASIC_PII = "basic_pii"            # names, emails, addresses
-    FINANCIAL = "financial"             # payment data, bank details
-    HEALTH = "health"                   # medical/health records
-    CHILDREN = "children"               # data belonging to minors
+    BASIC_PII = "basic_pii"
+    FINANCIAL = "financial"
+    HEALTH = "health"
+    CHILDREN = "children"
 
 
 @dataclass
 class CompanyProfile:
-    # --- Identity ---
+    # --- identity ---
     company_name: str
-    industry: Industry
+    industry: Industry = Industry.OTHER
+    sector_description: Optional[str] = None      # e.g. "AI + Agriculture"
+    legal_form: Optional[str] = None              # "Private Limited", "LLP", ...
     founded_year: Optional[int] = None
+    age_years: Optional[float] = None
 
-    # --- Operational footprint (drives which regulatory clauses are relevant) ---
-    employee_count: int = 0
-    is_remote_first: bool = False
-    data_sensitivity: DataSensitivity = DataSensitivity.BASIC_PII
-    handles_cross_border_data: bool = False
-    environmental_footprint_notes: str = ""  # e.g. "manufacturing, heavy water use"
+    # --- size ---
+    annual_turnover_inr: Optional[float] = None   # absolute rupees (4 crore = 40_000_000)
+    employee_count: Optional[int] = None
 
-    # --- Category flags that matter for STATE INCENTIVE matching ---
-    is_women_led: bool = False
-    is_green_tech: bool = False
-    is_first_time_founder: bool = False
+    # --- eligibility facts used by state rules (None = UNKNOWN) ---
+    is_women_led: Optional[bool] = None
+    women_ownership_pct: Optional[float] = None
+    has_rural_impact: Optional[bool] = None
+    is_manufacturing: Optional[bool] = None
+    is_sc_st_led: Optional[bool] = None
+    is_trans_or_differently_abled_led: Optional[bool] = None
+    has_patent: Optional[bool] = None
+    patent_details: Optional[str] = None
+    has_innovation: Optional[bool] = None
+    has_scalable_model: Optional[bool] = None
+    formed_by_split_or_reconstruction: Optional[bool] = None
+    is_social_entrepreneur: Optional[bool] = None
+    grand_challenge_winner: Optional[bool] = None
+    located_beyond_bengaluru_urban: Optional[bool] = None
+    incubated_in_govt_supported_incubator: Optional[bool] = None
+    intl_marketing_spend_inr: Optional[float] = None
+    has_quality_certifications: Optional[bool] = None
+    is_green_tech: Optional[bool] = None
+    is_first_time_founder: Optional[bool] = None
 
-    # --- Document references (paths to uploaded files, not raw text) ---
+    # --- stage and sector facts asked for by state rules (None = UNKNOWN) ---
+    is_early_stage: Optional[bool] = None             # idea / proof-of-concept stage
+    is_growth_stage: Optional[bool] = None
+    is_msme: Optional[bool] = None
+    technology_areas: Optional[List[str]] = None      # e.g. ["AI", "robotics"]
+    impact_areas: Optional[List[str]] = None          # e.g. ["rural development", "SDG"]
+    has_circular_economy_focus: Optional[bool] = None
+    is_obc_or_minority_led: Optional[bool] = None
+    women_employment_pct: Optional[float] = None
+    patent_stage: Optional[str] = None                # "filed" | "granted"
+    has_foreign_patent: Optional[bool] = None
+    has_trademark: Optional[bool] = None
+    quality_certification_count: Optional[int] = None
+    quality_certification_spend_inr: Optional[float] = None
+    is_sandbox_operator: Optional[bool] = None
+    is_sandbox_participant: Optional[bool] = None
+    has_women_night_shift_operations: Optional[bool] = None
+    hires_interns_from_beyond_bengaluru: Optional[bool] = None
+    intern_duration_months: Optional[float] = None
+    has_availed_rural_internship_subsidy: Optional[bool] = None
+    incubation_age_years: Optional[float] = None      # years since entering an incubator
+    startup_recognition_age_years: Optional[float] = None   # years since state recognition
+
+    # --- operations / data (Modules 2 & 3) ---
+    is_remote_first: Optional[bool] = None
+    handles_cross_border_data: Optional[bool] = None
+    data_sensitivity: Optional[DataSensitivity] = None
+    environmental_footprint_notes: str = ""
+
+    # --- facts that only make sense per state, e.g.
+    # {"Karnataka": {"incorporated_in_state": True, "recognized_by_state_startup_agency": True}}
+    state_context: Dict[str, Dict[str, Optional[bool]]] = field(default_factory=dict)
+
+    # --- documents / free text ---
     internal_policy_doc_paths: List[str] = field(default_factory=list)
-    operating_in_states: List[str] = field(default_factory=list)  # once chosen
+    operating_in_states: List[str] = field(default_factory=list)
+    self_description: str = ""
 
-    # --- Free-text self-description (fed into semantic matching directly) ---
-    self_description: str = ""  # e.g. "We process customer payment data and
-                                 # employ 40 people, 10 remote across states."
+    # --- provenance: be explicit about anything assumed or fictional ---
+    is_demo_profile: bool = False
+    assumptions: List[str] = field(default_factory=list)
+
+    # ------------------------------------------------------------------ helpers
+    def unknown_fields(self) -> List[str]:
+        skip = {"company_name", "state_context", "internal_policy_doc_paths", "operating_in_states",
+                "self_description", "assumptions", "is_demo_profile", "environmental_footprint_notes"}
+        return [f.name for f in fields(self) if f.name not in skip and getattr(self, f.name) is None]
 
     def to_matching_text(self) -> str:
-        """
-        Flattens the structured profile into a single text blob for semantic
-        embedding against regulatory/policy text. Keep this function as the
-        ONE place that defines how structured fields become matchable text —
-        every module should call this rather than rolling its own version.
-        """
-        parts = [
-            f"Industry: {self.industry.value}",
-            f"Employee count: {self.employee_count}",
-            f"Data sensitivity: {self.data_sensitivity.value}",
-            f"Cross-border data handling: {self.handles_cross_border_data}",
-            f"Women-led: {self.is_women_led}",
-            f"Green/sustainability focused: {self.is_green_tech}",
-            self.self_description,
+        """Flatten known facts into text for semantic matching. Unknowns are skipped."""
+        pairs = [
+            ("Industry", self.industry.value if self.industry else None),
+            ("Sector", self.sector_description), ("Legal form", self.legal_form),
+            ("Age (years)", self.age_years), ("Employees", self.employee_count),
+            ("Annual turnover (INR)", self.annual_turnover_inr),
+            ("Women-led", self.is_women_led), ("Rural impact", self.has_rural_impact),
+            ("Manufacturing", self.is_manufacturing), ("Holds patent", self.has_patent),
+            ("Data sensitivity", self.data_sensitivity.value if self.data_sensitivity else None),
+            ("Cross-border data", self.handles_cross_border_data),
         ]
-        return "\n".join(p for p in parts if p)
+        lines = [f"{k}: {v}" for k, v in pairs if v is not None]
+        if self.self_description:
+            lines.append(self.self_description)
+        return "\n".join(lines)
 
+    def to_dict(self) -> dict:
+        d = asdict(self)
+        d["industry"] = self.industry.value if self.industry else None
+        d["data_sensitivity"] = self.data_sensitivity.value if self.data_sensitivity else None
+        return d
 
-if __name__ == "__main__":
-    example = CompanyProfile(
-        company_name="Acme Analytics Pvt Ltd",
-        industry=Industry.SOFTWARE_SAAS,
-        employee_count=40,
-        data_sensitivity=DataSensitivity.FINANCIAL,
-        handles_cross_border_data=True,
-        is_women_led=True,
-        self_description=(
-            "We build analytics software for e-commerce clients and process "
-            "customer payment data. Most of our team works remotely."
-        ),
-    )
-    print(example.to_matching_text())
+    @classmethod
+    def from_dict(cls, d: dict) -> "CompanyProfile":
+        d = dict(d)
+        if d.get("industry"):
+            d["industry"] = Industry(d["industry"])
+        if d.get("data_sensitivity"):
+            d["data_sensitivity"] = DataSensitivity(d["data_sensitivity"])
+        known = {f.name for f in fields(cls)}
+        unexpected = set(d) - known
+        if unexpected:
+            raise ValueError(f"Unknown profile fields: {sorted(unexpected)}")
+        return cls(**d)
+
+    @classmethod
+    def load(cls, path: str) -> "CompanyProfile":
+        with open(path, encoding="utf-8") as f:
+            return cls.from_dict(json.load(f))
+
+    def save(self, path: str) -> None:
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(self.to_dict(), f, indent=2, ensure_ascii=False)

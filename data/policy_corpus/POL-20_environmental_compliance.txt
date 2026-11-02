@@ -1,0 +1,18 @@
+POLICY ID: POL-20
+TITLE: Environmental Compliance Policy
+CATEGORY: Environmental
+EFFECTIVE DATE: 2024-01-01
+OWNER: Sustainability and Compliance Office
+
+1. PURPOSE
+This policy sets environmental compliance expectations for company operations and suppliers.
+
+2. REQUIREMENTS
+2.1 Suppliers must comply with all applicable environmental laws and hold valid permits for any activity with material environmental impact.
+2.2 Manufacturing suppliers with annual contract value above USD 1,000,000 must hold ISO 14001 certification or an equivalent environmental management certification.
+2.3 Any environmental incident or regulatory notice relating to the services provided to the company must be reported to the company within forty-eight (48) hours.
+2.4 Environmental permits, monitoring results, and compliance records must be retained for a minimum of five (5) years.
+2.5 Hazardous waste arising from work for the company must be handled and disposed of only by licensed handlers.
+
+3. APPLICABILITY
+Applies to company operations and to all suppliers and manufacturing partners.

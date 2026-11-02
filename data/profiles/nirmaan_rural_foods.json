@@ -1,0 +1,57 @@
+{
+  "company_name": "Nirmaan Rural Foods LLP",
+  "industry": "food_processing",
+  "sector_description": "Rural food processing",
+  "legal_form": "LLP",
+  "founded_year": null,
+  "age_years": 1.5,
+  "annual_turnover_inr": 6000000.0,
+  "employee_count": 8,
+  "is_women_led": true,
+  "women_ownership_pct": 100.0,
+  "has_rural_impact": true,
+  "is_manufacturing": true,
+  "is_sc_st_led": true,
+  "is_trans_or_differently_abled_led": false,
+  "has_patent": false,
+  "patent_details": null,
+  "has_innovation": true,
+  "has_scalable_model": true,
+  "formed_by_split_or_reconstruction": false,
+  "is_social_entrepreneur": true,
+  "grand_challenge_winner": false,
+  "located_beyond_bengaluru_urban": true,
+  "incubated_in_govt_supported_incubator": false,
+  "intl_marketing_spend_inr": null,
+  "has_quality_certifications": null,
+  "is_green_tech": null,
+  "is_first_time_founder": null,
+  "is_remote_first": null,
+  "handles_cross_border_data": null,
+  "data_sensitivity": null,
+  "environmental_footprint_notes": "",
+  "state_context": {
+    "Tamil Nadu": {
+      "recognized_by_state_startup_agency": false
+    },
+    "Karnataka": {
+      "incorporated_in_state": false,
+      "recognized_by_state_startup_agency": false
+    }
+  },
+  "internal_policy_doc_paths": [],
+  "operating_in_states": [],
+  "self_description": "SC/ST woman-led rural food processing unit with 8 employees.",
+  "is_demo_profile": true,
+  "assumptions": [
+    "Fictional company designed to exercise inclusion rules (women, SC/ST, rural) and employee-count thresholds",
+    "Not yet recognized by either state startup agency"
+  ],
+  "is_early_stage": true,
+  "technology_areas": [],
+  "impact_areas": [
+    "rural development",
+    "food security",
+    "SDG"
+  ]
+}

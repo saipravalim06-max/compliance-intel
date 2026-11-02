@@ -1,0 +1,18 @@
+varsha_old_id,varsha_old_name,canonical_id,canonical_name,note
+POL-01,Vendor Management Policy,POL-01,Vendor Management Policy,same topic
+POL-02,Data Privacy Protection Policy,POL-02,Data Privacy and Protection Policy,same topic
+POL-03,Payment Terms Policy,POL-03,Payment Terms Policy,same topic
+POL-04,Confidentiality Policy,POL-04,Confidentiality and Non-Disclosure Policy,same topic
+POL-05,Termination Notice Policy,POL-05,Contract Termination and Notice Policy,same topic
+POL-06,Limitation of Liability Policy,POL-06,Limitation of Liability Policy,same topic
+POL-07,Information Security Policy,POL-18,Information Security Policy,renumbered; rewritten with thresholds
+POL-08,Data Retention Policy,POL-19,Data Retention Policy,renumbered; rewritten with thresholds
+POL-09,Third-Party Data Sharing Policy,POL-21,Third-Party Data Sharing Policy,renumbered; rewritten with thresholds
+POL-10,Insurance Requirements Policy,POL-10,Insurance Requirements Policy,same topic
+POL-11,Intellectual Property Policy,POL-08,Intellectual Property Assignment Policy,renumbered
+POL-12,Dispute Resolution Policy,POL-12,Dispute Resolution and Governing Law Policy,same topic
+POL-13,Audit Rights Policy,POL-11,Audit Rights Policy,renumbered
+POL-14,Indemnification Policy,POL-07,Indemnification Policy,renumbered
+POL-15,Renewal Policy,POL-14,Auto-Renewal and Contract Renewal Policy,renumbered
+POL-16,Environmental Compliance Policy,POL-20,Environmental Compliance Policy,renumbered; rewritten with thresholds
+POL-17,Warranty Policy,POL-17,Warranty Policy,same topic

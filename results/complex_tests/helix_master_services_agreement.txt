@@ -1,0 +1,20 @@
+MASTER SERVICES AGREEMENT
+This Master Services Agreement is entered into between Northwind Technologies Private Limited (the Company) and Helix Cloud Solutions LLP (the Supplier).
+1.1 Services. Services means the cloud hosting, analytics and support services described in each Statement of Work issued under this Agreement.
+1.2 Term. This Agreement takes effect on the Effective Date and continues for an initial term of 36 months.
+2.1 Payment. The Company must pay valid supplier invoices within 20 days of receipt.
+2.2 Late Fees. Late payments will accrue interest at two percent per month until paid in full.
+3.1 Renewal. This Agreement renews automatically for successive 12 month terms unless either party gives 15 days written notice of non-renewal.
+3.2 Termination. Either party may terminate this Agreement without cause by giving 15 days written notice.
+4.1 Limitation of Liability. The Supplier liability cap must be 3 months of fees paid under the agreement.
+4.2 Insurance. The Supplier must maintain professional indemnity insurance of INR 1 crore throughout the term.
+4.3 Warranty. The Supplier must provide a warranty period of 24 months from delivery.
+5.1 Data Sharing. The Supplier may disclose customer data to third parties, including analytics partners, without prior written approval from the Company.
+5.2 Breach Notification. The Supplier must notify the Company of any personal data breach within 7 days of discovery.
+5.3 Data Deletion. The Supplier must delete all Company data within 5 years after termination of the agreement.
+5.4 Confidentiality. The Supplier must keep Company information confidential for at least 5 years after termination.
+6.1 Audit. The Company may audit supplier records once per year on 30 days notice.
+6.2 Assignment. The Supplier may assign this agreement to any affiliate or successor without the prior written consent of the Company.
+6.3 Governing Law. This agreement must be governed by the laws of India.
+6.4 Subcontracting. The Supplier may subcontract core services to third parties without prior written approval from the Company.
+6.5 Notices. Notices under this Agreement must be sent by email to the addresses stated in the Order Form.

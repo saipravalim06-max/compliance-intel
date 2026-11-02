@@ -1,65 +1,49 @@
 """
-load_policies.py
+load_policies.py — loads the canonical policy corpus.
 
-Utility to load the synthetic company policy corpus into a pandas DataFrame,
-ready for embedding and semantic matching against CUAD contract clauses.
+policy_index.csv is the single source of truth (unique policy_id per file).
+Columns: policy_id, policy_name, domain, file_name,
+         key_quantifiable_requirements, cuad_coverage
 
 Usage:
-    from load_policies import load_policy_corpus
-    df = load_policy_corpus("policy_corpus")
-    print(df.head())
+    from data.policy_corpus.load_policies import load_policy_corpus, get_requirement_lines
+    corpus = load_policy_corpus("data/policy_corpus")
 """
-
-import os
 import csv
+import os
+import re
+
+_REQ = re.compile(r"^\d+\.\d+\s")
 
 
 def load_policy_corpus(corpus_dir: str):
-    """
-    Loads policy_index.csv + the full text of each policy file.
-
-    Returns a list of dicts, one per policy, with keys:
-        policy_id, title, category, file_name, key_quantifiable_requirements, full_text
-    (Convert to a pandas DataFrame yourself if you have pandas installed:
-        import pandas as pd
-        df = pd.DataFrame(load_policy_corpus("policy_corpus"))
-    )
-    """
-    index_path = os.path.join(corpus_dir, "policy_index.csv")
-    records = []
-
-    with open(index_path, newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            file_path = os.path.join(corpus_dir, row["file_name"])
-            with open(file_path, encoding="utf-8") as pf:
-                full_text = pf.read()
-            row["full_text"] = full_text
+    """Return a list of dicts: index columns + full_text. Fails loudly on
+    missing files or duplicate policy IDs (no silent glob guessing)."""
+    records, seen = [], set()
+    with open(os.path.join(corpus_dir, "policy_index.csv"), newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            pid = row["policy_id"]
+            if pid in seen:
+                raise ValueError(f"Duplicate policy_id in policy_index.csv: {pid}")
+            seen.add(pid)
+            path = os.path.join(corpus_dir, row["file_name"])
+            with open(path, encoding="utf-8") as pf:
+                row["full_text"] = pf.read()
             records.append(row)
-
     return records
 
 
-def get_requirement_sections(full_text: str):
-    """
-    Splits a policy's full text into individual numbered requirement lines
-    (e.g. '2.1 ...', '2.2 ...') for finer-grained embedding/matching than
-    whole-document comparison. Useful because a contract clause usually
-    maps to ONE specific requirement line, not an entire policy document.
-    """
-    lines = full_text.splitlines()
-    requirements = []
-    for line in lines:
-        stripped = line.strip()
-        # crude heuristic: requirement lines start with "N.N " (e.g. "2.3 ")
-        if len(stripped) > 4 and stripped[0].isdigit() and "." in stripped[:4]:
-            requirements.append(stripped)
-    return requirements
+def get_requirement_lines(full_text: str):
+    """Numbered requirement lines ('2.1 ...') — the unit used for matching."""
+    return [ln.strip() for ln in full_text.splitlines() if _REQ.match(ln.strip())]
 
 
 if __name__ == "__main__":
-    corpus = load_policy_corpus(os.path.dirname(__file__) or ".")
-    print(f"Loaded {len(corpus)} policy documents.\n")
-    for policy in corpus:
-        reqs = get_requirement_sections(policy["full_text"])
-        print(f"{policy['policy_id']} — {policy['title']} ({len(reqs)} requirement lines)")
+    here = os.path.dirname(os.path.abspath(__file__))
+    corpus = load_policy_corpus(here)
+    total = 0
+    for p in corpus:
+        n = len(get_requirement_lines(p["full_text"]))
+        total += n
+        print(f"{p['policy_id']}  {p['policy_name']:<45} {n} requirement lines")
+    print(f"\n{len(corpus)} policies, {total} requirement lines")

@@ -1,0 +1,20 @@
+Kaveri Healthcare Private Limited - Procurement and Vendor Risk Policy
+Policy No. KH-PRC-12 | Version 1.4 | Owner: Procurement and Legal
+Purpose: This policy sets minimum terms for vendor agreements that involve patient data or clinical systems.
+1. Commercial
+1.1 Vendors must give the Company at least thirty (30) days written notice before terminating an agreement for convenience.
+1.2 The Company must pay undisputed invoices within forty-five (45) days of receipt.
+1.3 Vendor liability under any agreement must be no less than 12 months of fees paid.
+1.4 Agreements must not renew automatically for a term longer than 12 months.
+2. Security and Data
+2.1 The vendor must maintain cyber liability insurance of at least INR 2 crore.
+2.2 The vendor must report any security incident to the Company within 48 hours of becoming aware of it.
+2.3 The vendor must not transfer patient data outside India without the prior written consent of the Company.
+2.4 The vendor must delete all Company data within 60 days after termination.
+2.5 The vendor must not engage sub-processors without the prior written approval of the Company.
+3. Governance
+3.1 The Company may audit vendor facilities and records on ten (10) business days notice.
+3.2 The vendor must not use the Company's name or logo in marketing material without prior written approval.
+3.3 The vendor must provide a warranty of at least 18 months.
+3.4 The vendor must not assign or novate the agreement without the prior written consent of the Company.
+3.5 The vendor must keep Company information confidential for at least 5 years after termination.

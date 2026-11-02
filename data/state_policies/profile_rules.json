@@ -1,0 +1,3269 @@
+{
+ "TN-ELIG-001": {
+  "kind": "eligibility",
+  "checks": [
+   {
+    "fact": "legal_form",
+    "op": "in",
+    "value": [
+     "private limited",
+     "llp",
+     "limited liability partnership",
+     "partnership",
+     "registered partnership",
+     "partnership firm"
+    ],
+    "label": "legal form is private limited / partnership / LLP"
+   }
+  ]
+ },
+ "TN-ELIG-002": {
+  "kind": "eligibility",
+  "checks": [
+   {
+    "fact": "age_years",
+    "op": "<=",
+    "value": 10,
+    "label": "age ≤ 10 years from incorporation"
+   }
+  ]
+ },
+ "TN-ELIG-003": {
+  "kind": "eligibility",
+  "checks": [
+   {
+    "fact": "annual_turnover_inr",
+    "op": "<=",
+    "value": 500000000.0,
+    "label": "turnover ≤ ₹50 crore"
+   }
+  ]
+ },
+ "TN-ELIG-004": {
+  "kind": "eligibility",
+  "checks": [
+   {
+    "fact": "formed_by_split_or_reconstruction",
+    "op": "==",
+    "value": false,
+    "label": "not formed by splitting / reconstructing an existing business"
+   }
+  ]
+ },
+ "TN-ELIG-005": {
+  "kind": "eligibility",
+  "checks": [
+   {
+    "fact": "has_innovation",
+    "op": "==",
+    "value": true,
+    "label": "works on innovation / improvement of products, services or processes"
+   }
+  ]
+ },
+ "TN-ELIG-006": {
+  "kind": "eligibility",
+  "checks": [
+   {
+    "fact": "has_scalable_model",
+    "op": "==",
+    "value": true,
+    "label": "scalable model with employment / wealth potential"
+   }
+  ]
+ },
+ "TN-ELIG-007": {
+  "kind": "eligibility",
+  "checks": [
+   {
+    "fact": "state.recognized_by_state_startup_agency",
+    "op": "==",
+    "value": true,
+    "label": "recognised by the state startup agency",
+    "actionable": true
+   }
+  ]
+ },
+ "TN-FUND-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   },
+   {
+    "any_of": [
+     {
+      "fact": "is_women_led",
+      "op": "==",
+      "value": true,
+      "label": "women-led"
+     },
+     {
+      "fact": "has_rural_impact",
+      "op": "==",
+      "value": true,
+      "label": "rural impact"
+     },
+     {
+      "fact": "is_green_tech",
+      "op": "==",
+      "value": true,
+      "label": "climate-action / green-tech"
+     }
+    ],
+    "label": "enhanced-support category"
+   }
+  ],
+  "needs": [
+   {
+    "fact": "is_early_stage",
+    "op": "==",
+    "value": true,
+    "label": "early-stage / proof-of-concept stage"
+   }
+  ]
+ },
+ "TN-FUND-002": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   },
+   {
+    "none_of": [
+     {
+      "fact": "is_women_led",
+      "op": "==",
+      "value": true,
+      "label": "women-led"
+     },
+     {
+      "fact": "has_rural_impact",
+      "op": "==",
+      "value": true,
+      "label": "rural impact"
+     },
+     {
+      "fact": "is_green_tech",
+      "op": "==",
+      "value": true,
+      "label": "climate-action / green-tech"
+     }
+    ],
+    "label": "not in an enhanced-support category"
+   }
+  ],
+  "needs": [
+   {
+    "fact": "is_early_stage",
+    "op": "==",
+    "value": true,
+    "label": "early-stage / proof-of-concept stage"
+   }
+  ]
+ },
+ "TN-FUND-003": {
+  "kind": "applies",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   }
+  ],
+  "note": "If TANSEED is received, the state takes a 3% support stake."
+ },
+ "TN-FUND-004": {
+  "kind": "applies",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   }
+  ],
+  "note": "Applies if the company becomes a TANSEED beneficiary."
+ },
+ "TN-FUND-005": {
+  "kind": "applies",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   },
+   {
+    "fact": "is_women_led",
+    "op": "==",
+    "value": true,
+    "label": "women-led"
+   }
+  ],
+  "note": "25% of TANSEED assistance is earmarked for women-led startups."
+ },
+ "TN-FUND-006": {
+  "kind": "applies",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   },
+   {
+    "fact": "has_rural_impact",
+    "op": "==",
+    "value": true,
+    "label": "rural impact"
+   }
+  ],
+  "note": "10% of TANSEED assistance is earmarked for rural-impact startups."
+ },
+ "TN-FUND-007": {
+  "kind": "discretionary",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   }
+  ],
+  "needs": [
+   {
+    "fact": "is_growth_stage",
+    "op": "==",
+    "value": true,
+    "label": "growth-stage startup"
+   }
+  ],
+  "note": "TANSCALE investment is selective."
+ },
+ "TN-FUND-008": {
+  "kind": "info",
+  "note": "Programme size (10 growth-stage startups a year), not a company test."
+ },
+ "TN-FUND-009": {
+  "kind": "info",
+  "note": "Programme budget, not a company test."
+ },
+ "TN-SCST-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   },
+   {
+    "fact": "is_sc_st_led",
+    "op": "==",
+    "value": true,
+    "label": "SC/ST-led"
+   }
+  ]
+ },
+ "TN-SCST-002": {
+  "kind": "info",
+  "note": "Programme target (200 supported startups), not a benefit to a single company."
+ },
+ "TN-SCST-003": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   },
+   {
+    "fact": "is_sc_st_led",
+    "op": "==",
+    "value": true,
+    "label": "SC/ST-led"
+   }
+  ]
+ },
+ "TN-WOM-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   },
+   {
+    "fact": "is_women_led",
+    "op": "==",
+    "value": true,
+    "label": "women-led"
+   }
+  ]
+ },
+ "TN-WOM-002": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   },
+   {
+    "fact": "is_women_led",
+    "op": "==",
+    "value": true,
+    "label": "women-led"
+   }
+  ],
+  "needs": [
+   {
+    "fact": "incubated_in_govt_supported_incubator",
+    "op": "==",
+    "value": true,
+    "label": "uses a state-supported incubation centre"
+   }
+  ]
+ },
+ "TN-WOM-003": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   },
+   {
+    "fact": "is_women_led",
+    "op": "==",
+    "value": true,
+    "label": "women-led"
+   }
+  ]
+ },
+ "TN-INCL-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   },
+   {
+    "fact": "is_trans_or_differently_abled_led",
+    "op": "==",
+    "value": true,
+    "label": "trans / differently-abled-led"
+   }
+  ]
+ },
+ "TN-INCL-002": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   },
+   {
+    "fact": "is_trans_or_differently_abled_led",
+    "op": "==",
+    "value": true,
+    "label": "trans / differently-abled-led"
+   }
+  ]
+ },
+ "TN-PROC-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   }
+  ]
+ },
+ "TN-PROC-002": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   }
+  ]
+ },
+ "TN-PROC-003": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   }
+  ]
+ },
+ "TN-PROC-004": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   }
+  ]
+ },
+ "TN-PROC-005": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   },
+   {
+    "fact": "is_manufacturing",
+    "op": "==",
+    "value": true,
+    "label": "manufacturing startup"
+   }
+  ]
+ },
+ "TN-IP-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   },
+   {
+    "fact": "has_patent",
+    "op": "==",
+    "value": true,
+    "label": "holds a patent"
+   }
+  ],
+  "needs": [
+   {
+    "fact": "patent_stage",
+    "op": "known",
+    "label": "patent filing / registration details"
+   }
+  ]
+ },
+ "TN-IP-002": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   },
+   {
+    "fact": "has_trademark",
+    "op": "==",
+    "value": true,
+    "label": "has a trademark filing / registration"
+   }
+  ]
+ },
+ "TN-COMP-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   }
+  ]
+ },
+ "TN-COMP-002": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   }
+  ]
+ },
+ "TN-COMP-003": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   }
+  ],
+  "checks": [
+   {
+    "fact": "startup_recognition_age_years",
+    "op": "<=",
+    "value": 3,
+    "label": "within 3 years of state recognition"
+   }
+  ]
+ },
+ "TN-COMP-004": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   }
+  ],
+  "checks": [
+   {
+    "fact": "startup_recognition_age_years",
+    "op": "<=",
+    "value": 3,
+    "label": "within the 3-year booster-kit period"
+   }
+  ]
+ },
+ "TN-MFG-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   },
+   {
+    "fact": "is_manufacturing",
+    "op": "==",
+    "value": true,
+    "label": "manufacturing startup"
+   }
+  ]
+ },
+ "TN-MFG-002": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   },
+   {
+    "fact": "is_manufacturing",
+    "op": "==",
+    "value": true,
+    "label": "manufacturing startup"
+   }
+  ]
+ },
+ "TN-MFG-003": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   },
+   {
+    "fact": "is_manufacturing",
+    "op": "==",
+    "value": true,
+    "label": "manufacturing startup"
+   },
+   {
+    "fact": "employee_count",
+    "op": ">",
+    "value": 20,
+    "label": "more than 20 employees"
+   }
+  ]
+ },
+ "TN-MFG-004": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   },
+   {
+    "fact": "is_manufacturing",
+    "op": "==",
+    "value": true,
+    "label": "manufacturing startup"
+   }
+  ]
+ },
+ "TN-MFG-005": {
+  "kind": "discretionary",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   }
+  ],
+  "needs": [
+   {
+    "fact": "is_msme",
+    "op": "==",
+    "value": true,
+    "label": "MSME / SME-exchange listing eligibility"
+   }
+  ]
+ },
+ "TN-INFRA-001": {
+  "kind": "discretionary",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   }
+  ],
+  "note": "Subsidised facilities; no automatic entitlement to a specific facility."
+ },
+ "TN-INFRA-002": {
+  "kind": "discretionary",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "legal_form",
+      "op": "in",
+      "value": [
+       "private limited",
+       "llp",
+       "limited liability partnership",
+       "partnership",
+       "registered partnership",
+       "partnership firm"
+      ],
+      "label": "legal form is private limited / partnership / LLP"
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 500000000.0,
+      "label": "turnover ≤ ₹50 crore"
+     }
+    ],
+    "label": "meets the Tamil Nadu startup definition and is StartupTN-recognised"
+   }
+  ],
+  "note": "Innovation infrastructure; facility-specific eligibility is not automatic."
+ },
+ "TN-POL-001": {
+  "kind": "info",
+  "note": "Policy validity period."
+ },
+ "KA-ELIG-001": {
+  "kind": "eligibility",
+  "checks": [
+   {
+    "fact": "state.recognized_by_state_startup_agency",
+    "op": "==",
+    "value": true,
+    "label": "recognised by the state startup agency",
+    "actionable": true
+   }
+  ]
+ },
+ "KA-ELIG-002": {
+  "kind": "eligibility",
+  "checks": [
+   {
+    "fact": "legal_form",
+    "op": "in",
+    "value": [
+     "private limited",
+     "llp",
+     "limited liability partnership",
+     "partnership",
+     "registered partnership",
+     "partnership firm"
+    ],
+    "label": "legal form is private limited / partnership / LLP"
+   },
+   {
+    "fact": "state.incorporated_in_state",
+    "op": "==",
+    "value": true,
+    "label": "incorporated in the state",
+    "actionable": true
+   }
+  ]
+ },
+ "KA-ELIG-003": {
+  "kind": "eligibility",
+  "checks": [
+   {
+    "fact": "annual_turnover_inr",
+    "op": "<=",
+    "value": 1000000000.0,
+    "label": "turnover ≤ ₹100 crore"
+   }
+  ]
+ },
+ "KA-ELIG-004": {
+  "kind": "eligibility",
+  "checks": [
+   {
+    "fact": "age_years",
+    "op": "<=",
+    "value": 10,
+    "label": "age ≤ 10 years from incorporation"
+   }
+  ]
+ },
+ "KA-ELIG-005": {
+  "kind": "eligibility",
+  "checks": [
+   {
+    "fact": "has_innovation",
+    "op": "==",
+    "value": true,
+    "label": "works on innovation / improvement of products, services or processes"
+   }
+  ]
+ },
+ "KA-ELIG-006": {
+  "kind": "eligibility",
+  "checks": [
+   {
+    "fact": "formed_by_split_or_reconstruction",
+    "op": "==",
+    "value": false,
+    "label": "not formed by splitting / reconstructing an existing business"
+   }
+  ]
+ },
+ "KA-ELIG-007": {
+  "kind": "eligibility",
+  "checks": [
+   {
+    "fact": "age_years",
+    "op": "<=",
+    "value": 10,
+    "label": "age ≤ 10 years from incorporation"
+   }
+  ],
+  "duplicate_of": "KA-ELIG-004"
+ },
+ "KA-ELIG-008": {
+  "kind": "eligibility",
+  "checks": [
+   {
+    "fact": "annual_turnover_inr",
+    "op": "<=",
+    "value": 1000000000.0,
+    "label": "turnover ≤ ₹100 crore"
+   }
+  ],
+  "duplicate_of": "KA-ELIG-003"
+ },
+ "KA-FUND-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   }
+  ],
+  "needs": [
+   {
+    "fact": "is_early_stage",
+    "op": "==",
+    "value": true,
+    "label": "early-stage / proof-of-concept stage"
+   }
+  ]
+ },
+ "KA-FUND-002": {
+  "kind": "applies",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "any_of": [
+     {
+      "fact": "technology_areas",
+      "op": "any_in",
+      "value": [
+       "ai",
+       "artificial intelligence",
+       "ml",
+       "machine learning",
+       "robotics",
+       "drones",
+       "medtech",
+       "electric vehicles",
+       "deep tech",
+       "quantum",
+       "blockchain",
+       "iot",
+       "assistive technology"
+      ],
+      "label": "works in a deep-tech / emerging-technology area"
+     },
+     {
+      "fact": "impact_areas",
+      "op": "any_in",
+      "value": [
+       "sdg",
+       "sustainable development",
+       "circular economy",
+       "assistive technology"
+      ],
+      "label": "works on SDG / sustainability areas"
+     }
+    ],
+    "label": "deep-tech / assistive / SDG area"
+   }
+  ],
+  "note": "10% of the Idea2PoC fund is earmarked for these areas."
+ },
+ "KA-FUND-003": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   }
+  ],
+  "needs": [
+   {
+    "fact": "state.elevate_programme_recognised",
+    "op": "==",
+    "value": true,
+    "label": "recognised under the ELEVATE programme"
+   }
+  ]
+ },
+ "KA-FUND-004": {
+  "kind": "discretionary",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "technology_areas",
+    "op": "any_in",
+    "value": [
+     "ai",
+     "artificial intelligence",
+     "ml",
+     "machine learning",
+     "robotics",
+     "drones",
+     "medtech",
+     "electric vehicles",
+     "deep tech",
+     "quantum",
+     "blockchain",
+     "iot",
+     "assistive technology"
+    ],
+    "label": "works in a deep-tech / emerging-technology area"
+   }
+  ],
+  "note": "Venture-capital funding is competitive."
+ },
+ "KA-FUND-005": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "located_beyond_bengaluru_urban",
+    "op": "==",
+    "value": true,
+    "label": "located beyond Bengaluru Urban"
+   }
+  ],
+  "needs": [
+   {
+    "fact": "is_growth_stage",
+    "op": "==",
+    "value": true,
+    "label": "growth-stage startup"
+   }
+  ]
+ },
+ "KA-FUND-006": {
+  "kind": "info",
+  "note": "Platform the government will create; not a company test."
+ },
+ "KA-WOM-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "is_women_led",
+    "op": "==",
+    "value": true,
+    "label": "women-led"
+   },
+   {
+    "fact": "located_beyond_bengaluru_urban",
+    "op": "==",
+    "value": true,
+    "label": "located beyond Bengaluru Urban"
+   }
+  ]
+ },
+ "KA-WOM-002": {
+  "kind": "applies",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "is_women_led",
+    "op": "==",
+    "value": true,
+    "label": "women-led"
+   }
+  ],
+  "note": "25% of the venture-capital fund is earmarked for women startups."
+ },
+ "KA-WOM-003": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "is_women_led",
+    "op": "==",
+    "value": true,
+    "label": "women-led"
+   }
+  ]
+ },
+ "KA-WOM-004": {
+  "kind": "applies",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "is_women_led",
+    "op": "==",
+    "value": true,
+    "label": "women-led"
+   }
+  ],
+  "note": "20% of seats at supported incubators are reserved for women startups."
+ },
+ "KA-WOM-005": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "is_women_led",
+    "op": "==",
+    "value": true,
+    "label": "women-led"
+   }
+  ]
+ },
+ "KA-SOC-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "is_sc_st_led",
+    "op": "==",
+    "value": true,
+    "label": "SC/ST-led"
+   }
+  ]
+ },
+ "KA-SOC-002": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "is_obc_or_minority_led",
+    "op": "==",
+    "value": true,
+    "label": "OBC / minority-led"
+   }
+  ]
+ },
+ "KA-RURAL-001": {
+  "kind": "info",
+  "note": "Funding for a Rural Innovation Centre at an institution; not an individual company benefit."
+ },
+ "KA-RURAL-002": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "hires_interns_from_beyond_bengaluru",
+    "op": "==",
+    "value": true,
+    "label": "hires interns from Beyond Bengaluru"
+   }
+  ]
+ },
+ "KA-RURAL-003": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "hires_interns_from_beyond_bengaluru",
+    "op": "==",
+    "value": true,
+    "label": "hires interns from Beyond Bengaluru"
+   }
+  ],
+  "checks": [
+   {
+    "fact": "intern_duration_months",
+    "op": ">=",
+    "value": 6,
+    "label": "internship of at least 6 months"
+   }
+  ]
+ },
+ "KA-RURAL-004": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "hires_interns_from_beyond_bengaluru",
+    "op": "==",
+    "value": true,
+    "label": "hires interns from Beyond Bengaluru"
+   }
+  ],
+  "checks": [
+   {
+    "fact": "has_availed_rural_internship_subsidy",
+    "op": "==",
+    "value": false,
+    "label": "has not already used the internship subsidy"
+   }
+  ]
+ },
+ "KA-GCK-001": {
+  "kind": "info",
+  "note": "Challenge opportunity; participation is not automatic eligibility."
+ },
+ "KA-GCK-002": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "grand_challenge_winner",
+    "op": "==",
+    "value": true,
+    "label": "won a Grand Challenge"
+   }
+  ]
+ },
+ "KA-GCK-003": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "grand_challenge_winner",
+    "op": "==",
+    "value": true,
+    "label": "won a Grand Challenge"
+   }
+  ]
+ },
+ "KA-CIRC-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "has_circular_economy_focus",
+    "op": "==",
+    "value": true,
+    "label": "works on circular economy"
+   }
+  ]
+ },
+ "KA-CIRC-002": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "has_circular_economy_focus",
+    "op": "==",
+    "value": true,
+    "label": "works on circular economy"
+   }
+  ]
+ },
+ "KA-CIRC-003": {
+  "kind": "discretionary",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "impact_areas",
+    "op": "any_in",
+    "value": [
+     "sdg",
+     "sustainable development",
+     "circular economy",
+     "assistive technology"
+    ],
+    "label": "works on SDG / sustainability areas"
+   }
+  ],
+  "note": "Acceleration-programme places are competitive."
+ },
+ "KA-EODB-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   }
+  ]
+ },
+ "KA-EODB-002": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "has_women_night_shift_operations",
+    "op": "==",
+    "value": true,
+    "label": "runs 3-shift operations with women at night"
+   }
+  ]
+ },
+ "KA-PROC-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   }
+  ]
+ },
+ "KA-SAND-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "is_sandbox_operator",
+    "op": "==",
+    "value": true,
+    "label": "is a regulatory-sandbox operator"
+   }
+  ]
+ },
+ "KA-SAND-002": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "is_sandbox_participant",
+    "op": "==",
+    "value": true,
+    "label": "participates in a regulatory sandbox"
+   }
+  ]
+ },
+ "KA-SGST-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "located_beyond_bengaluru_urban",
+    "op": "==",
+    "value": true,
+    "label": "located beyond Bengaluru Urban"
+   },
+   {
+    "fact": "incubated_in_govt_supported_incubator",
+    "op": "==",
+    "value": true,
+    "label": "incubated in a government-supported incubator"
+   }
+  ]
+ },
+ "KA-SGST-002": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   }
+  ],
+  "checks": [
+   {
+    "fact": "annual_turnover_inr",
+    "op": "<=",
+    "value": 10000000.0,
+    "label": "annual turnover ≤ ₹1 crore (SGST reimbursement cap)"
+   }
+  ]
+ },
+ "KA-SGST-003": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   }
+  ],
+  "checks": [
+   {
+    "fact": "incubation_age_years",
+    "op": "<=",
+    "value": 3,
+    "label": "within the first 3 years of being incubated"
+   }
+  ]
+ },
+ "KA-MKT-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "intl_marketing_spend_inr",
+    "op": ">",
+    "value": 0,
+    "label": "has international marketing spend"
+   }
+  ]
+ },
+ "KA-MKT-002": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "intl_marketing_spend_inr",
+    "op": ">",
+    "value": 0,
+    "label": "has international marketing spend"
+   }
+  ]
+ },
+ "KA-IP-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "has_patent",
+    "op": "==",
+    "value": true,
+    "label": "holds a patent"
+   }
+  ],
+  "checks": [
+   {
+    "fact": "incubated_in_govt_supported_incubator",
+    "op": "==",
+    "value": true,
+    "label": "incubated in a government-supported incubator"
+   }
+  ]
+ },
+ "KA-IP-002": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "has_foreign_patent",
+    "op": "==",
+    "value": true,
+    "label": "holds a foreign patent"
+   }
+  ]
+ },
+ "KA-IP-003": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "has_patent",
+    "op": "==",
+    "value": true,
+    "label": "holds a patent"
+   }
+  ],
+  "checks": [
+   {
+    "fact": "patent_stage",
+    "op": "known",
+    "label": "patent filing stage"
+   }
+  ]
+ },
+ "KA-IP-004": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "has_patent",
+    "op": "==",
+    "value": true,
+    "label": "holds a patent"
+   }
+  ],
+  "checks": [
+   {
+    "fact": "patent_stage",
+    "op": "==",
+    "value": "granted",
+    "label": "patent has been granted"
+   }
+  ]
+ },
+ "KA-QC-001": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "located_beyond_bengaluru_urban",
+    "op": "==",
+    "value": true,
+    "label": "located beyond Bengaluru Urban"
+   }
+  ]
+ },
+ "KA-QC-002": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   }
+  ],
+  "checks": [
+   {
+    "fact": "quality_certification_spend_inr",
+    "op": "known",
+    "label": "has certification expenses"
+   }
+  ]
+ },
+ "KA-QC-003": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   }
+  ],
+  "checks": [
+   {
+    "fact": "quality_certification_count",
+    "op": "<=",
+    "value": 3,
+    "label": "at most 3 quality certifications"
+   }
+  ]
+ },
+ "KA-WOM-006": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   }
+  ],
+  "checks": [
+   {
+    "fact": "women_ownership_pct",
+    "op": ">=",
+    "value": 51,
+    "label": "women hold at least 51% stake"
+   }
+  ]
+ },
+ "KA-WOM-007": {
+  "kind": "benefit",
+  "gates": [
+   {
+    "all_of": [
+     {
+      "fact": "state.recognized_by_state_startup_agency",
+      "op": "==",
+      "value": true,
+      "label": "recognised by the state startup agency",
+      "actionable": true
+     },
+     {
+      "fact": "age_years",
+      "op": "<=",
+      "value": 10,
+      "label": "age ≤ 10 years from incorporation"
+     },
+     {
+      "fact": "annual_turnover_inr",
+      "op": "<=",
+      "value": 1000000000.0,
+      "label": "turnover ≤ ₹100 crore"
+     }
+    ],
+    "label": "meets the Karnataka startup definition and is registered with the Startup Cell"
+   },
+   {
+    "fact": "women_ownership_pct",
+    "op": "<",
+    "value": 51,
+    "label": "women stake below 51%"
+   }
+  ],
+  "needs": [
+   {
+    "fact": "women_employment_pct",
+    "op": ">=",
+    "value": 51,
+    "label": "at least 51% of jobs go to women"
+   }
+  ]
+ }
+}

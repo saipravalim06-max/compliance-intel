@@ -1,0 +1,17 @@
+1. Termination for Convenience
+Either party may terminate this agreement at any time for convenience with 7 days written notice to the other party.
+
+2. Commercial Payment Terms
+The customer shall pay all undisputed vendor invoices within 90 days of invoice receipt.
+
+3. Restraint of Trade and Non-Compete
+The vendor covenants that during the term and for a period of 2 years following termination, it shall not engage in or provide competing services in the state.
+
+4. Public Procurement and Turnover Criteria
+The supplier warrants that it possesses an annual turnover of not less than 50 crore INR in each of the preceding three financial years.
+
+5. Cybersecurity and Incident Notification
+The vendor shall maintain cybersecurity safeguards and notify the client of any unauthorized data disclosure or breach within 30 days.
+
+6. State Formalities and Stamp Duty
+This commercial agreement shall be executed and performed without requiring separate state stamp duty or local registration.

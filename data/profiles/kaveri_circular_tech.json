@@ -1,0 +1,76 @@
+{
+  "company_name": "Kaveri Circular Tech Pvt Ltd",
+  "industry": "greentech",
+  "sector_description": "Circular-economy materials, Mysuru",
+  "legal_form": "Private Limited",
+  "founded_year": null,
+  "age_years": 2,
+  "annual_turnover_inr": 8000000.0,
+  "employee_count": 18,
+  "is_women_led": true,
+  "women_ownership_pct": 60.0,
+  "has_rural_impact": false,
+  "is_manufacturing": false,
+  "is_sc_st_led": false,
+  "is_trans_or_differently_abled_led": false,
+  "has_patent": true,
+  "patent_details": null,
+  "has_innovation": true,
+  "has_scalable_model": true,
+  "formed_by_split_or_reconstruction": false,
+  "is_social_entrepreneur": false,
+  "grand_challenge_winner": true,
+  "located_beyond_bengaluru_urban": true,
+  "incubated_in_govt_supported_incubator": true,
+  "intl_marketing_spend_inr": 500000.0,
+  "has_quality_certifications": true,
+  "is_green_tech": true,
+  "is_first_time_founder": true,
+  "is_remote_first": null,
+  "handles_cross_border_data": null,
+  "data_sensitivity": null,
+  "environmental_footprint_notes": "",
+  "state_context": {
+    "Tamil Nadu": {
+      "recognized_by_state_startup_agency": true
+    },
+    "Karnataka": {
+      "incorporated_in_state": true,
+      "recognized_by_state_startup_agency": true
+    }
+  },
+  "internal_policy_doc_paths": [],
+  "operating_in_states": [],
+  "self_description": "Mysuru-based startup turning industrial waste into construction materials.",
+  "is_demo_profile": true,
+  "assumptions": [
+    "Fictional demo profile designed to favour Karnataka's Elevate and rural-location incentives",
+    "State recognition assumed in both states"
+  ],
+  "technology_areas": [
+    "circular economy",
+    "materials"
+  ],
+  "impact_areas": [
+    "sustainability"
+  ],
+  "is_obc_or_minority_led": false,
+  "patent_stage": "granted",
+  "has_foreign_patent": true,
+  "hires_interns_from_beyond_bengaluru": true,
+  "intern_duration_months": 6,
+  "has_availed_rural_internship_subsidy": false,
+  "incubation_age_years": 1.5,
+  "quality_certification_count": 2,
+  "quality_certification_spend_inr": 300000.0,
+  "has_circular_economy_focus": true,
+  "is_early_stage": true,
+  "is_growth_stage": false,
+  "is_msme": true,
+  "has_trademark": false,
+  "is_sandbox_operator": false,
+  "is_sandbox_participant": false,
+  "has_women_night_shift_operations": false,
+  "women_employment_pct": 45.0,
+  "startup_recognition_age_years": 1.0
+}

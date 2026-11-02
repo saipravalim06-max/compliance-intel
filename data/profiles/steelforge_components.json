@@ -1,0 +1,55 @@
+{
+  "company_name": "SteelForge Components Ltd",
+  "industry": "auto_components",
+  "sector_description": "Auto components manufacturing",
+  "legal_form": "Public Limited",
+  "founded_year": null,
+  "age_years": 12,
+  "annual_turnover_inr": 1200000000.0,
+  "employee_count": 340,
+  "is_women_led": false,
+  "women_ownership_pct": null,
+  "has_rural_impact": false,
+  "is_manufacturing": true,
+  "is_sc_st_led": false,
+  "is_trans_or_differently_abled_led": false,
+  "has_patent": false,
+  "patent_details": null,
+  "has_innovation": false,
+  "has_scalable_model": null,
+  "formed_by_split_or_reconstruction": false,
+  "is_social_entrepreneur": null,
+  "grand_challenge_winner": false,
+  "located_beyond_bengaluru_urban": null,
+  "incubated_in_govt_supported_incubator": null,
+  "intl_marketing_spend_inr": null,
+  "has_quality_certifications": null,
+  "is_green_tech": false,
+  "is_first_time_founder": null,
+  "is_remote_first": null,
+  "handles_cross_border_data": null,
+  "data_sensitivity": null,
+  "environmental_footprint_notes": "",
+  "state_context": {
+    "Tamil Nadu": {
+      "recognized_by_state_startup_agency": false
+    },
+    "Karnataka": {
+      "incorporated_in_state": false,
+      "recognized_by_state_startup_agency": false
+    }
+  },
+  "internal_policy_doc_paths": [],
+  "operating_in_states": [],
+  "self_description": "Established auto-parts manufacturer with 340 employees.",
+  "is_demo_profile": true,
+  "assumptions": [
+    "Fictional company designed to FAIL age/turnover eligibility caps in both states"
+  ],
+  "is_early_stage": false,
+  "is_growth_stage": true,
+  "technology_areas": [
+    "automotive manufacturing"
+  ],
+  "impact_areas": []
+}

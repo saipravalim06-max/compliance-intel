@@ -1,0 +1,19 @@
+POLICY ID: POL-18
+TITLE: Information Security Policy
+CATEGORY: Information Security
+EFFECTIVE DATE: 2024-01-01
+OWNER: Information Security Office
+
+1. PURPOSE
+This policy sets minimum security safeguards for third parties that store, process, or have access to company or customer information.
+
+2. REQUIREMENTS
+2.1 Company and customer data must be encrypted in transit and at rest using industry-standard encryption (AES-256 or equivalent).
+2.2 Multi-factor authentication is required for all administrative and remote access to systems holding company or customer data.
+2.3 Third-party user access rights to company data must be reviewed at least once every ninety (90) days and revoked when no longer required.
+2.4 Critical security vulnerabilities in systems handling company data must be remediated within fifteen (15) days of identification.
+2.5 Vendors handling company data must undergo an independent security assessment or penetration test at least once every twelve (12) months and share a summary of results on request.
+2.6 Any security incident affecting company or customer data must be reported to the Information Security Office within twenty-four (24) hours of discovery.
+
+3. APPLICABILITY
+Applies to all vendors, contractors, and service providers with access to company systems or information, and must be reflected in the applicable agreements.
