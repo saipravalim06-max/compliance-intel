@@ -1,0 +1,22 @@
+SOFTWARE LICENCE AND SUPPORT AGREEMENT
+This Agreement is made between Kaveri Healthcare Private Limited (the Company) and Orbit Analytics LLP (Orbit).
+1.1 Definitions. Software means the clinical analytics platform and any updates that Orbit makes available to the Company.
+1.2 Term. This Agreement commences on the Effective Date and runs for an initial term of thirty-six (36) months.
+2.1 Payment. The Company shall pay each undisputed invoice within thirty (30) business days of receipt.
+2.2 Late Fees. Overdue amounts will accrue interest at two percent per month until paid in full.
+3.1 Termination. Orbit may terminate this Agreement for convenience by giving the Company not less than four weeks written notice.
+3.2 Renewal. Unless a party gives notice of non-renewal, this Agreement renews automatically for successive terms of twenty-four (24) months.
+4.1 Liability. Orbit's aggregate liability under this Agreement shall not exceed six (6) months of the fees paid.
+4.2 Insurance. Orbit shall maintain cyber liability insurance cover. The minimum limit of that cover shall be INR 150 lakh.
+4.3 Warranty. Orbit warrants that the Software will conform to its documentation for twenty-four (24) months from delivery.
+5.1 Incident Reporting. Orbit shall notify the Company of any security incident without undue delay and in any event within two (2) days of discovery.
+5.2 Data Location. Orbit may host patient data in data centres located in Singapore, provided that the Company has approved that location in writing beforehand.
+5.3 Data Return. After termination Orbit shall delete all Company data within ninety (90) days, except where retention is required by applicable law.
+5.4 Sub-processors. Orbit shall not appoint any sub-processor unless the Company has given its prior written approval.
+5.5 Confidentiality. Orbit's confidentiality obligations shall continue for three (3) years after termination.
+6.1 Audit. The Company may audit Orbit's records on fifteen (15) business days notice.
+6.2 Publicity. Orbit shall not use the Company's name or logo in any publicity without the Company's prior written approval.
+6.3 Transfer. Either party may novate this Agreement to a group company without notice to the other party.
+6.4 Support. Orbit shall provide telephone support from 9 am to 6 pm, Monday to Saturday, excluding public holidays.
+6.5 Governing Law. This Agreement is governed by the laws of India and the courts at Bengaluru have exclusive jurisdiction.
+6.6 Force Majeure. Neither party shall be liable for any delay caused by events beyond its reasonable control.

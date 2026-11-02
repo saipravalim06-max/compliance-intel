@@ -57,6 +57,12 @@ _REQUIRES_AUTH = re.compile(
     rf"\b(?:prior\s+(?:written\s+)?{_AUTH_WORD}|{_AUTH_WORD}\s+(?:is|are)\s+required|"
     rf"(?:requires?|subject\s+to|only\s+with|upon|with\s+the)\s+(?:the\s+)?(?:[\w'’-]+\s+){{0,3}}?(?:prior\s+)?(?:written\s+)?{_AUTH_WORD})\b"
 )
+_APPROVED_IN_WRITING = re.compile(
+    r"\b(?:approved|authorized|consented|permitted)\b[^.;]{0,40}\b(?:in writing|beforehand|prior|advance)\b|"
+    r"\b(?:prior|advance|beforehand)\b[^.;]{0,40}\b(?:in writing\s+)?(?:approval|consent|permission|authori[sz]ation)\b|"
+    r"\b(?:in writing)\b[^.;]{0,30}\b(?:beforehand|prior|advance)\b",
+    re.IGNORECASE,
+)
 
 # approvals by the COMPANY's own functions are internal governance, not consent from the counterparty
 _INTERNAL_APPROVER = re.compile(
@@ -66,22 +72,53 @@ _INTERNAL_APPROVER = re.compile(
 
 # ------------------------------------------------------------------- action
 _ACTIONS = [
-    ("share", r"shar\w*"), ("disclose", r"disclos\w*"), ("provide", r"provid\w*"), ("transfer", r"transfer\w*"),
-    ("collect", r"collect\w*"), ("store", r"stor(?:e|es|ed|ing|age)"), ("retain", r"retain\w*|retention"),
+    ("share", r"shar\w*"), ("disclose", r"disclos\w*"),
+    ("provide", r"provid(?:e|es|ed|ing)\b(?!\s+that\b)"),
+    ("transfer", r"transfer\w*"),
+    ("collect", r"collect\w*"), ("store", r"stor(?:e|es|ed|ing|age)|host\w*"), ("retain", r"retain\w*|retention"),
     ("delete", r"delet\w*|destr(?:oy|uction)\w*|purg\w*"), ("pay", r"pay\w*"), ("terminate", r"terminat\w*"),
-    ("assign", r"assign\w*"), ("audit", r"audit\w*"), ("notify", r"notif\w*|notice"), ("report", r"report\w*"),
+    ("assign", r"assign\w*|novat\w*"), ("audit", r"audit\w*"), ("notify", r"notif\w*|notice"), ("report", r"report\w*"),
     ("maintain", r"maintain\w*"), ("submit", r"submit\w*"), ("renew", r"renew\w*"), ("indemnify", r"indemnif\w*"),
     ("insure", r"insur\w*"), ("warrant", r"warrant\w*"), ("compete", r"compet\w*"), ("solicit", r"solicit\w*"),
-    ("remediate", r"remediat\w*"),
-]
+    ("remediate", r"remediat\w*"),("engage", r"engag\w*"),("engage", r"sub[- ]?process(?:ing|ors?)"),
+    ("subcontract", r"sub[- ]?contract\w*"), ("govern", r"govern\w*"),
+    ("publicize", r"publici\w*|marketing\b|use\b[^.;]{0,35}\b(?:name|logo)"),
+    ]
 _ACTION_RES = [(name, re.compile(rf"\b(?:{rx})\b")) for name, rx in _ACTIONS]
 _RECIPIENT_ACTIONS = {"share", "disclose", "provide", "transfer", "submit"}
 
 _OBJECTS = [
-    "customer data", "personal data", "confidential information", "customer information", "company information",
-    "intellectual property", "payments", "payment", "services", "liability", "insurance", "warranty", "fees",
+    "customer or confidential data",
+    "company or customer data",
+    "customer data",
+    "confidential data",
+    "personal data",
+    "patient data",
+    "clinical data",
+    "health data",
+    "customer information",
+    "company information",
+    "confidential information",
+    "intellectual property",
+    "sub-processors",
+    "subprocessors",
+    "subcontractors",
+    "core services",
+    "company's name or logo",
+    "company name or logo",
+    "name or logo",
+    "marketing material",
+    "publicity",
+    "payments",
+    "payment",
+    "services",
+    "liability",
+    "insurance",
+    "warranty",
+    "fees",
+    "agreement",
+    "contract",
 ]
-
 _APPLIES_TO = re.compile(
     r"^\s*(?:\d+\.\d+\s+)?((?:vendors?|suppliers?|contractors?|contracts?|agreements?|third parties)\s+"
     r"(?:classified|designated|categori[sz]ed|deemed)\s+as\s+[^,]*?)(?=\s+(?:must|shall|should|are\s+required|will)\b)"
@@ -110,17 +147,38 @@ def extract_requirement(
         authorization = "REQUIRED" if restrictive else "NOT_REQUIRED"
     elif _REQUIRES_AUTH.search(lower):
         authorization = "REQUIRED"
+    elif _APPROVED_IN_WRITING.search(lower):
+        authorization = "REQUIRED"
+    elif re.search(
+    r"\b(?:shall|must|will)\b.{0,100}"
+    r"\b(?:first\s+)?(?:have\s+been\s+)?obtained\b.{0,50}"
+    r"\b(?:written\s+)?(?:consent|approval|authorization|authorisation|permission)\b",
+    lower,
+    ):
+        authorization = "REQUIRED"
 
     if authorization and _INTERNAL_APPROVER.search(lower) and not re.search(r"\b(?:counterparty|vendor|supplier|customer|other party|licensor|licensee)'?s?\s+(?:prior\s+)?(?:written\s+)?(?:consent|approval)", lower):
         authorization = None
 
-    # action = whichever action word appears first in the sentence
+    # action = whichever action word appears first in the operative sentence.
+    # If the clause begins with a section heading (e.g., "6.3 Transfer. Either party may novate..."),
+    # prefer the action from the body sentence over a heading verb.
+    heading_match = re.match(r"^\s*(?:\d+(?:\.\d+)*\s+)?([A-Za-z\s]{1,30}\.)\s+(.+)$", lower, re.DOTALL)
+    search_target = heading_match.group(2) if heading_match else lower
+
     action, best = None, None
     for name, rx in _ACTION_RES:
-        m = rx.search(lower)
+        m = rx.search(search_target)
         if m and (best is None or m.start() < best):
             action, best = name, m.start()
 
+    if not action:
+        for name, rx in _ACTION_RES:
+            m = rx.search(lower)
+            if m and (best is None or m.start() < best):
+                action, best = name, m.start()
+
+    
     # recipient (only meaningful for disclosure-type actions)
     recipient = None
     if action in _RECIPIENT_ACTIONS:
@@ -132,7 +190,31 @@ def extract_requirement(
         if m:
             recipient = m.group(1).strip()
 
-    obj = next((o for o in _OBJECTS if o in lower), None)
+    # Object extraction must run for every action, not only recipient actions.
+    if action == "engage":
+        obj = next(
+            (
+                o for o in (
+                    "sub-processors",
+                    "subprocessors",
+                    "subcontractors",
+                )
+                if o in lower
+            ),
+            None,
+        )
+    elif action == "govern":
+        m_gov = re.search(r"\bgoverned\s+by\s+(?:the\s+)?(laws\s+of\s+[^.,;\n]+|[a-z\s]+jurisdiction|[a-z\s]+law)", lower)
+        if m_gov:
+            obj = m_gov.group(1).strip()
+        else:
+            obj = next((o for o in _OBJECTS if o in lower), None)
+    else:
+        obj = next((o for o in _OBJECTS if o in lower), None)
+
+    if action == "assign" and obj is None and ("agreement" in lower or "contract" in lower):
+        obj = "agreement"
+
 
     # quantities
     prohibition = modality == ObligationType.PROHIBITION

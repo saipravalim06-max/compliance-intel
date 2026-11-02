@@ -47,19 +47,62 @@ class MatchResult:
 # Stage 1: Ingestion
 # ---------------------------------------------------------------------------
 
+
 def ingest_document(file_path: str) -> str:
     """
-    Extract raw text from a PDF/DOCX/TXT file.
-    TODO: wire up PyMuPDF (fitz) for PDF, python-docx for DOCX.
-    For .txt files (like the policy corpus), just read directly.
+    Extract text from PDF, DOCX, or TXT documents.
+    Raises a clear error for unsupported or empty documents.
     """
-    if file_path.endswith(".txt"):
-        with open(file_path, encoding="utf-8") as f:
-            return f.read()
-    raise NotImplementedError(
-        f"Wire up a PDF/DOCX extractor for: {file_path}. "
-        "Use PyMuPDF for PDF, python-docx for DOCX."
-    )
+    from pathlib import Path
+
+    path = Path(file_path)
+    extension = path.suffix.lower()
+
+    if not path.is_file():
+        raise FileNotFoundError(f"Document not found: {file_path}")
+
+    if extension == ".txt":
+        text = path.read_text(encoding="utf-8-sig")
+
+    elif extension == ".pdf":
+        import pymupdf  # PyMuPDF
+
+        pages = []
+        with pymupdf.open(str(path)) as pdf:
+            for page in pdf:
+                pages.append(page.get_text("text"))
+        text = "\n".join(pages)
+
+    elif extension == ".docx":
+        from docx import Document as WordDocument
+
+        document = WordDocument(str(path))
+        paragraphs = [p.text for p in document.paragraphs if p.text.strip()]
+
+        # Include table contents, which may contain important obligations.
+        tables = [
+            "\n".join(
+                " | ".join(cell.text.strip() for cell in row.cells)
+                for row in table.rows
+            )
+            for table in document.tables
+        ]
+        text = "\n".join(paragraphs + tables)
+
+    else:
+        raise ValueError(
+            f"Unsupported file type: {extension}. "
+            "Supported formats: PDF, DOCX, TXT."
+        )
+
+    text = text.strip()
+    if not text:
+        raise ValueError(
+            f"No extractable text found in {path.name}. "
+            "If this is a scanned PDF, OCR may be required."
+        )
+
+    return text
 
 
 # ---------------------------------------------------------------------------

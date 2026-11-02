@@ -20,6 +20,7 @@ UNCERTAIN is returned, never a guess, when the two sides are not comparable
 (different units such as months-of-fees vs a fixed amount, different rate periods,
 no number on one side) or when business-day vs calendar-day results are borderline.
 """
+import re
 from typing import List, Optional
 
 from core.quantities import KIND_DEFAULT_BOUND, compare_values
@@ -33,11 +34,75 @@ _PER_IGNORED_KINDS = {"INSURANCE_GENERAL", "INSURANCE_CYBER", "INSURANCE_PROFESS
 
 _DISPOSAL = {"share", "disclose", "provide", "transfer", "assign", "submit"}
 
-
 def _same_action(a: Optional[str], b: Optional[str]) -> bool:
-    """Authorization rules are only comparable when both sides are about the same kind of act."""
-    return a is None or b is None or a == b or (a in _DISPOSAL and b in _DISPOSAL)
+    """Compare actions only when they are known and equivalent."""
+    if not a or not b:
+        return False
 
+    if a == b:
+        return True
+
+    # Sharing and disclosing can describe the same data-handling action;
+    # assigning and novating are interchangeable transfer concepts for contracts.
+    pair = {a, b}
+    if pair in ({"share", "disclose"}, {"assign", "novate"}, {"store", "transfer"}):
+        return True
+    return False
+
+def _same_object(a: Optional[str], b: Optional[str]) -> bool:
+    """Match known equivalent objects, including two unspecified objects."""
+    if a is None or b is None:
+        return a is None and b is None
+
+    def normalize(value: str) -> str:
+        value = value.lower().strip()
+        value = value.replace("sub-processors", "subcontractors")
+        value = value.replace("subprocessors", "subcontractors")
+        value = re.sub(r"\bthe\s+", "", value)
+        if "india" in value:
+            return "laws of india"
+        return value
+
+    a_norm = normalize(a)
+    b_norm = normalize(b)
+
+    if a_norm == b_norm:
+        return True
+
+    data_objects = {
+        "customer data",
+        "confidential data",
+        "customer or confidential data",
+        "company or customer data",
+        "personal data",
+        "patient data",
+        "clinical data",
+        "health data",
+        "customer information",
+        "company information",
+        "confidential information",
+    }
+
+    if a_norm in data_objects and b_norm in data_objects:
+        return True
+
+    publicity_objects = {
+        "name or logo",
+        "company name or logo",
+        "company's name or logo",
+        "marketing material",
+        "publicity",
+    }
+    if a_norm in publicity_objects and b_norm in publicity_objects:
+        return True
+
+    if {a_norm, b_norm} <= {"agreement", "contract", "this agreement", "the agreement"}:
+        return True
+
+    if {a_norm, b_norm} <= {"services", "core services"}:
+        return True
+
+    return False
 
 def _norm_per(p: Optional[str]) -> Optional[str]:
     return _EVENT_PER.get(p, p)
@@ -83,13 +148,27 @@ def _compare_quantities(contract: Requirement, policy: Requirement) -> List[dict
 
             p_val = pq["value"]
             if status == "APPROX":                       # business days <-> calendar days
-                ratio = (c_val / p_val) if p_val else 0
-                violated = ratio > 1.5 if bound == "UPPER" else ratio < 0.67
-                satisfied = ratio < 0.67 if bound == "UPPER" else ratio > 1.5
-                if not violated and not satisfied:
-                    out.append({**entry, "result": "INCOMPARABLE",
-                                "why": "business days and calendar days differ and the figures are too close to call"})
-                    continue
+                # 1 business day ~ 1.4 calendar days (7/5).
+                # Mark satisfied when converted value safely complies with the bound.
+                # Mark violation when clearly exceeding the threshold.
+                if bound == "UPPER":
+                    if c_val <= p_val:
+                        violated = False
+                    elif c_val > p_val * 1.15:
+                        violated = True
+                    else:
+                        out.append({**entry, "result": "INCOMPARABLE",
+                                    "why": "business days and calendar days differ and the figures are too close to call"})
+                        continue
+                else: # bound == "LOWER"
+                    if c_val >= p_val:
+                        violated = False
+                    elif c_val < p_val * 0.85:
+                        violated = True
+                    else:
+                        out.append({**entry, "result": "INCOMPARABLE",
+                                    "why": "business days and calendar days differ and the figures are too close to call"})
+                        continue
             else:
                 violated = c_val > p_val + 1e-9 if bound == "UPPER" else c_val < p_val - 1e-9
 
@@ -116,7 +195,10 @@ def detect_conflict(contract: Requirement, policy: Requirement) -> dict:
     stricter_only = False
 
     # ---- AUTH ------------------------------------------------------------
-    auth_ok = _same_action(contract.action, policy.action)
+    auth_ok = (
+        _same_action(contract.action, policy.action)
+        and _same_object(contract.object, policy.object)
+        )
     if not auth_ok:
         pass
     elif contract.authorization == "NOT_REQUIRED" and policy.authorization == "REQUIRED":
@@ -139,13 +221,67 @@ def detect_conflict(contract: Requirement, policy: Requirement) -> dict:
                             "policy": policy.authorization.lower().replace("_", " "), "result": "SATISFIED"})
 
     # ---- MODALITY (same action AND same object only) -----------------------------
-    same_topic = contract.action and contract.action == policy.action and contract.object and contract.object == policy.object
-    if same_topic and not policy.authorization and not contract.authorization:
-        if policy.obligation_type == "PROHIBITION" and contract.obligation_type == "PERMISSION":
-            reasons.append(f"The policy prohibits '{policy.action}' of {policy.object}, but the contract permits it.")
+    comparable_numeric_kind = any(
+        cq.get("kind")
+        and cq.get("kind") == pq.get("kind")
+        for cq in (contract.quantities or [])
+        for pq in (policy.quantities or [])
+        )
+    same_topic = (
+        contract.action
+        and policy.action
+        and _same_action(contract.action, policy.action)
+        and _same_object(contract.object, policy.object)
+        and not comparable_numeric_kind
+        )
+
+    if same_topic:
+        # A policy prohibition can conflict with an explicit contract
+        # permission even when the policy also requires authorization.
+        if (
+            policy.obligation_type == "PROHIBITION"
+            and contract.obligation_type == "PERMISSION"
+            and contract.authorization != "REQUIRED"
+        ):
+            act = "assignment or novation" if policy.action in ("assign", "novate") else policy.action
+            obj_phrase = f" of {policy.object}" if policy.object and str(policy.object).lower() != "none" else ""
+            reasons.append(
+                f"The policy prohibits '{act}'{obj_phrase} "
+                "without the required authorization, but the contract permits it."
+            )
             rules.append("MODALITY")
             severities.append("MEDIUM")
             violations += 1
+
+
+    # ---- GOVERNING LAW ----------------------------------------------------
+    if contract.action == "govern" and policy.action == "govern":
+        c_law = contract.object or "unspecified"
+        p_law = policy.object or "unspecified"
+        if _same_object(contract.object, policy.object):
+            satisfied += 1
+            comparisons.append({
+                "kind": "GOVERNING_LAW",
+                "contract": c_law,
+                "policy": p_law,
+                "result": "SATISFIED",
+                "why": f"governing law: both contract and policy require {p_law}",
+            })
+        else:
+            reasons.append(
+                f"Governing law mismatch: the contract specifies {c_law}, "
+                f"but the company policy requires {p_law}."
+            )
+            rules.append("GOVERNING_LAW")
+            severities.append("HIGH")
+            violations += 1
+            comparisons.append({
+                "kind": "GOVERNING_LAW",
+                "contract": c_law,
+                "policy": p_law,
+                "result": "VIOLATION",
+                "why": f"governing law: the contract specifies {c_law}, but the policy requires {p_law}",
+            })
 
     # ---- NUMERIC -----------------------------------------------------------
     seen, numeric = set(), []
@@ -184,9 +320,12 @@ def detect_conflict(contract: Requirement, policy: Requirement) -> dict:
         return {"conflict": True, "severity": severity, "reason": " ".join(reasons), "label": label, **base}
 
     if satisfied:
-        return {"conflict": False, "severity": "NONE", "label": "NO_CONFLICT", **base,
-                "reason": " ".join(c["why"][0].upper() + c["why"][1:] + "." for c in numeric if c["result"] == "SATISFIED")
-                          or "The contract and the policy agree on the authorization requirement."}
+        sat_numeric = [c["why"][0].upper() + c["why"][1:] + "." for c in numeric if c.get("result") == "SATISFIED" and c.get("why")]
+        sat_other = [c["why"][0].upper() + c["why"][1:] + "." for c in comparisons if c.get("result") == "SATISFIED" and c.get("why") and c not in numeric]
+        reason_text = " ".join(sat_numeric + sat_other)
+        if not reason_text:
+            reason_text = "The contract and the policy agree on the authorization requirement."
+        return {"conflict": False, "severity": "NONE", "label": "NO_CONFLICT", **base, "reason": reason_text}
 
     if incomparable:
         return {"conflict": False, "severity": "NONE", "label": "UNCERTAIN", **base,

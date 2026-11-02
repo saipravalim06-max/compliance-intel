@@ -1,0 +1,21 @@
+Northwind Technologies Private Limited - Vendor Contract Governance Policy
+Policy No. NW-GOV-07 | Version 3.2 | Owner: Legal & Compliance
+Purpose: This policy sets the minimum commercial, data protection and legal terms that every vendor agreement must satisfy before signature. Contract clauses that fall below these requirements must be escalated to Legal & Compliance.
+1. Commercial Terms
+1.1 The Company must pay valid supplier invoices within 60 days of receipt.
+1.2 Either party must give at least 90 days written notice before terminating a vendor agreement without cause.
+1.3 Vendor agreements must not renew automatically unless the Company receives at least 60 days written notice of the upcoming renewal.
+2. Liability and Insurance
+2.1 The supplier liability cap must be at least 24 months of fees paid under the agreement.
+2.2 The supplier must maintain professional indemnity insurance of at least INR 5 crore throughout the term.
+2.3 The supplier must provide a warranty period of at least 12 months from delivery.
+3. Data Protection and Confidentiality
+3.1 The supplier must not disclose customer data to third parties without prior written approval from the Company.
+3.2 The supplier must notify the Company of any personal data breach within 24 hours of discovery.
+3.3 The supplier must delete all Company data within 30 days after termination of the agreement.
+3.4 The supplier must keep Company information confidential for at least 3 years after termination.
+4. Audit, Assignment and Legal
+4.1 The Company may audit supplier records on 5 business days notice.
+4.2 The supplier must not assign this agreement without the prior written consent of the Company.
+4.3 Vendor agreements must be governed by the laws of India.
+4.4 The supplier must not subcontract core services without prior written approval from the Company.

@@ -182,7 +182,17 @@ def load_state_requirements(path: Optional[str] = None) -> List[dict]:
     for rec in pd.read_csv(path).to_dict("records"):
         rec = {k: (None if isinstance(v, float) and math.isnan(v) else v) for k, v in rec.items()}
         if rec.get("page_number") is not None:
-            rec["page_number"] = int(rec["page_number"])
+            page_value = str(rec["page_number"]).strip()
+
+            try:
+                numeric_page = float(page_value)
+                if numeric_page.is_integer():
+                    rec["page_number"] = int(numeric_page)
+                else:
+                    rec["page_number"] = page_value
+            except (ValueError, TypeError):
+                # Preserve page ranges such as "18-19".
+                rec["page_number"] = page_value
         rows.append(rec)
     return rows
 

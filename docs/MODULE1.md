@@ -36,7 +36,7 @@ Rules were written from the policy wording, not from her labels. The 9 differenc
 | KA-CIRC-001, KA-CIRC-002 | POTENTIAL | UNKNOWN | a missing eligibility fact is UNKNOWN for "Beyond Bengaluru" but POTENTIAL for "circular economy" | pick one convention (engine: missing eligibility fact = UNKNOWN; POTENTIAL = eligible so far, more evidence or an award decision needed) |
 
 ## Open data items
-- KA-MKT-002 has no page number (the only one of 93).
+**Page-reference correction:** The canonical dataset now preserves the source workbook's page range for `KA-MKT-002` as `18-19`. The earlier missing-page data-gap note is resolved. This confirms consistency with the workbook reference; it does not independently establish the legal status or current applicability of the underlying requirement.
 - 3 Tamil Nadu and 4 Karnataka requirements (TANSCALE rows, KA-ELIG-007/008 mirrors, KA-FUND-006, KA-SOC-002) have no hand label; the engine evaluates them.
 - Regulatory friction (labour, approvals) is thin: 6 of 93 requirements. Module 1 currently measures **incentive and eligibility fit**.
 

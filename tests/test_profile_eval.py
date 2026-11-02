@@ -98,7 +98,9 @@ def test_every_verdict_carries_its_evidence():
     checks = evaluate_profile(AGRI, REQS, RULES)
     assert all(c.evidence_text and c.reasoning and c.source_url for c in checks)
     missing_page = [c.requirement_id for c in checks if c.page_number is None]
-    assert missing_page == ["KA-MKT-002"], missing_page      # known data gap, logged in docs/MODULE1.md
+    assert missing_page == [], missing_page
+    ka_market = next(c for c in checks if c.requirement_id == "KA-MKT-002")
+    assert str(ka_market.page_number) == "18-19"   # known data gap, logged in docs/MODULE1.md
 
 
 def test_compare_states_returns_both_states_without_a_single_score():

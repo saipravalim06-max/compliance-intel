@@ -261,8 +261,40 @@ def _detect_kind(text: str, q: Quantity) -> Optional[str]:
             return "FM_TERMINATION_RIGHT"
         if has("force majeure") and has("notice", "notif", "inform"):
             return "FM_NOTICE"
-        if has("cure"):
+        # Classify a duration by the nearest relevant cue, not by
+        # unrelated wording elsewhere in the same contract clause.
+        if q.pos >= 0 and not q.inferred:
+            before = t[max(0, q.pos - 100):q.pos]
+            after = t[q.end:min(len(t), q.end + 120)]
+
+            def nearest_cue(pattern, left, right):
+                matches = list(re.finditer(pattern, left + " " + right))
+                if not matches:
+                    return None
+                split = len(left) + 1
+                return min(
+                    abs(m.start() - split)
+                    for m in matches
+                )
+
+            cure_distance = nearest_cue(r"\bcure\w*\b", before, after)
+            notice_distance = nearest_cue(
+                r"\b(?:notice|notif\w*|prior|advance)\b", before, after
+            )
+
+            if cure_distance is not None and (notice_distance is None or cure_distance < notice_distance):
+                return "CURE_PERIOD"
+        elif has("cure"):
             return "CURE_PERIOD"
+        if has("renew") and (has("term", "period", "duration", "successive") or _TERM_AFTER.match(t[q.end:])):
+            if q.pos >= 0 and not q.inferred:
+                before = t[max(0, q.pos - 80):q.pos]
+                after = t[q.end:min(len(t), q.end + 80)]
+                local = before + " " + after
+                if re.search(r"\b(?:term|terms|successive|longer than|period|periods)\b", local) and not re.search(r"\b(?:notice|notif\w*|prior|advance)\b", after[:40]):
+                    return "RENEWAL_TERM"
+            elif has("term", "longer than") and not has("notice", "notif"):
+                return "RENEWAL_TERM"
         if has("renew") and has("notice", "notif", "non-renewal", "nonrenewal"):
             return "RENEWAL_NOTICE"
         if has("change of control", "merger", "acquisition") and has("notice", "notif", "inform") and not has("terminat"):
@@ -271,9 +303,23 @@ def _detect_kind(text: str, q: Quantity) -> Optional[str]:
             return "INSURANCE_NOTICE"
         if has("audit") and has("notice", "notif"):
             return "AUDIT_NOTICE"
-        if has("breach", "incident", "unauthorized disclosure", "unauthorised disclosure", "security event") \
-                and has("notif", "report", "inform", "notice", "discover"):
-            return "BREACH_NOTIFICATION"
+        if has("breach", "incident", "unauthorized disclosure", "unauthorised disclosure", "security event"):
+            # Only classify this duration as breach notification when the
+            # nearby wording links it to reporting or notifying the incident.
+            if q.pos >= 0 and not q.inferred:
+                before = t[max(0, q.pos - 100):q.pos]
+                after = t[q.end:min(len(t), q.end + 100)]
+                local = before + " " + after
+
+                if re.search(
+                    r"\b(?:notify|notifies|notified|notification|notifications|"
+                    r"report|reports|reported|inform|informs|informed|"
+                    r"discover|discovered|awareness)\b",
+                    local,
+                ):
+                    return "BREACH_NOTIFICATION"
+            elif has("notif", "report", "inform", "notice", "discover"):
+                return "BREACH_NOTIFICATION"
         if has("non-compete", "noncompete", "not compete", "shall not compete", "compete with", "competing", "competitive"):
             return "NON_COMPETE_DURATION"
         if has("solicit"):
@@ -308,6 +354,7 @@ KIND_DEFAULT_BOUND = {
     "LIABILITY_CAP": "LOWER", "LIABILITY_CAP_AMOUNT": "LOWER",
     "INSURANCE_GENERAL": "LOWER", "INSURANCE_CYBER": "LOWER", "INSURANCE_PROFESSIONAL": "LOWER",
     "NON_COMPETE_DURATION": "UPPER", "NON_SOLICIT_DURATION": "UPPER", "EXCLUSIVITY_DURATION": "UPPER",
+    "RENEWAL_TERM": "UPPER",
     "LATE_FEE_RATE": "UPPER", "PRICE_INCREASE": "UPPER", "ADVANCE_PAYMENT": "UPPER",
     "RENEWAL_NOTICE": "UPPER", "AUDIT_NOTICE": "UPPER", "BREACH_NOTIFICATION": "UPPER",
     "DATA_DELETION": "UPPER", "BACKUP_PURGE": "UPPER", "VULN_REMEDIATION": "UPPER", "ENV_INCIDENT_REPORT": "UPPER",

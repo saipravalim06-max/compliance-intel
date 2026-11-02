@@ -1,0 +1,76 @@
+{
+  "company_name": "Sahyadri Health Analytics Pvt Ltd",
+  "industry": "healthtech",
+  "sector_description": "AI diagnostics for small clinics",
+  "legal_form": "Private Limited",
+  "founded_year": null,
+  "age_years": 1.0,
+  "annual_turnover_inr": 2500000.0,
+  "employee_count": 9,
+  "is_women_led": true,
+  "women_ownership_pct": 55.0,
+  "has_rural_impact": null,
+  "is_manufacturing": false,
+  "is_sc_st_led": null,
+  "is_trans_or_differently_abled_led": false,
+  "has_patent": false,
+  "patent_details": null,
+  "has_innovation": true,
+  "has_scalable_model": true,
+  "formed_by_split_or_reconstruction": false,
+  "is_social_entrepreneur": null,
+  "grand_challenge_winner": false,
+  "located_beyond_bengaluru_urban": null,
+  "incubated_in_govt_supported_incubator": true,
+  "intl_marketing_spend_inr": 0.0,
+  "has_quality_certifications": null,
+  "is_green_tech": false,
+  "is_first_time_founder": null,
+  "is_early_stage": true,
+  "is_growth_stage": false,
+  "is_msme": true,
+  "technology_areas": [
+    "AI",
+    "healthcare"
+  ],
+  "impact_areas": [
+    "healthcare access"
+  ],
+  "has_circular_economy_focus": false,
+  "is_obc_or_minority_led": true,
+  "women_employment_pct": 38.0,
+  "patent_stage": null,
+  "has_foreign_patent": false,
+  "has_trademark": true,
+  "quality_certification_count": 1,
+  "quality_certification_spend_inr": 150000.0,
+  "is_sandbox_operator": false,
+  "is_sandbox_participant": true,
+  "has_women_night_shift_operations": false,
+  "hires_interns_from_beyond_bengaluru": false,
+  "intern_duration_months": null,
+  "has_availed_rural_internship_subsidy": false,
+  "incubation_age_years": 0.8,
+  "startup_recognition_age_years": 0.5,
+  "is_remote_first": null,
+  "handles_cross_border_data": null,
+  "data_sensitivity": null,
+  "environmental_footprint_notes": "",
+  "state_context": {
+    "Tamil Nadu": {
+      "recognized_by_state_startup_agency": true
+    },
+    "Karnataka": {
+      "incorporated_in_state": true,
+      "recognized_by_state_startup_agency": true
+    }
+  },
+  "internal_policy_doc_paths": [],
+  "operating_in_states": [],
+  "self_description": "Fictional healthtech startup used to test saved-profile upload. A few facts are intentionally left unknown (patent stage, Karnataka Elevate, internship duration, location).",
+  "is_demo_profile": true,
+  "assumptions": [
+    "Fictional profile for upload testing",
+    "Unknown facts are left as null on purpose and evaluate to UNKNOWN"
+  ]
+}

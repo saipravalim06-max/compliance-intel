@@ -15,7 +15,7 @@ This policy defines the company's requirements regarding assignment of contracts
 2.4 Notice of any change of control must be provided to the company within fifteen (15) business days of the event.
 
 3. APPLICABILITY
-Applies to all commercial contracts entered into by the company.",strong,80,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts entered into by the company.",strong,80,True,False,UNCERTAIN,"The clause refers to assignments violating Section 14.1, but the provided clause does not state what Section 14.1 requires. The policy cannot be compared against the referenced section from this excerpt alone.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-002,"BELLICUMPHARMACEUTICALS,INC_05_07_2019-EX-10.1-Supply Agreement",Anti-Assignment,Any assignment of this Agreement in contravention of this Article 17 shall be null and void.,POL-15,Assignment and Change of Control Policy,"POLICY ID: POL-15
 TITLE: Assignment and Change of Control Policy
 CATEGORY: Assignment
@@ -32,7 +32,7 @@ This policy defines the company's requirements regarding assignment of contracts
 2.4 Notice of any change of control must be provided to the company within fifteen (15) business days of the event.
 
 3. APPLICABILITY
-Applies to all commercial contracts entered into by the company.",strong,92,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts entered into by the company.",strong,92,True,False,UNCERTAIN,"The clause refers to assignments violating Article 17, but the provided excerpt does not state what Article 17 requires. The policy comparison cannot be resolved from this clause alone.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-003,SANDRIDGEENERGYINC_08_06_2009-EX-10.6-OPERATIONS AND MAINTENANCE AGREEMENT,Anti-Assignment,"Operator shall not make any assignment of all or any part of this Agreement or any of the rights or obligations hereunder unless there first shall  have been obtained the written consent thereto of Owner, which consent shall not be unreasonably withheld, conditioned, or delayed.",POL-15,Assignment and Change of Control Policy,"POLICY ID: POL-15
 TITLE: Assignment and Change of Control Policy
 CATEGORY: Assignment
@@ -49,7 +49,7 @@ This policy defines the company's requirements regarding assignment of contracts
 2.4 Notice of any change of control must be provided to the company within fifteen (15) business days of the event.
 
 3. APPLICABILITY
-Applies to all commercial contracts entered into by the company.",strong,279,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts entered into by the company.",strong,279,False,False,NO_CONFLICT,"The clause requires the Operator to obtain the Owner's written consent before assignment and says consent cannot be unreasonably withheld. This is consistent with the policy's requirement for prior written company consent that is not unreasonably withheld, assuming the Owner is the relevant company party.",Assumes company = Owner (the customer; the Operator runs the facility for it).,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-004,"PHREESIA,INC_05_28_2019-EX-10.18-STRATEGIC ALLIANCE AGREEMENT",Anti-Assignment,"Neither Party may assign or otherwise transfer any of its rights, or delegate or otherwise transfer any of its obligations or performance, under this Agreement, in each case whether voluntarily or involuntarily, without the other Party's prior written consent, which will not be unreasonably withheld, conditioned, or delayed.",POL-15,Assignment and Change of Control Policy,"POLICY ID: POL-15
 TITLE: Assignment and Change of Control Policy
 CATEGORY: Assignment
@@ -66,7 +66,7 @@ This policy defines the company's requirements regarding assignment of contracts
 2.4 Notice of any change of control must be provided to the company within fifteen (15) business days of the event.
 
 3. APPLICABILITY
-Applies to all commercial contracts entered into by the company.",strong,326,False,False,,,,PARTIAL_CONFLICT,POL-15#2.3,"The contract requires prior authorization, while the company policy permits the action without it; this is stricter than the policy and is a conflict only if it restricts the company's own freedom."
+Applies to all commercial contracts entered into by the company.",strong,326,False,False,CONFLICT,"The clause requires either party to obtain the other party's prior written consent before assignment or transfer. This would restrict the company's policy-reserved right to assign its own contract to an affiliate or successor without counterparty consent, provided the obligations are assumed.","Mutual consent requirement binds the company too, so it contradicts POL-15 2.3 (right to assign to an affiliate/successor without consent). Baseline suggested PARTIAL_CONFLICT.",PARTIAL_CONFLICT,POL-15#2.3,"The contract requires prior authorization, while the company policy permits the action without it; this is stricter than the policy and is a conflict only if it restricts the company's own freedom."
 CP-005,AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT,Audit Rights,"If an inspection discloses an underpayment to AIRSOPURE of 2% or more of the total amount that should have been paid to AIRSOPURE, You shall, in addition to repayment of such understated amount with interest, reimburse AIRSOPURE for any and all costs and expenses incurred in connection with the inspection or audit (including, without limitation,
 
 
@@ -89,7 +89,7 @@ This policy defines the company's minimum audit rights in contracts with vendors
 2.4 Vendors must cooperate with regulatory audits or inquiries relevant to the services provided to the company.
 
 3. APPLICABILITY
-Applies to vendor, outsourcing, and data processing agreements.",strong,396,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, outsourcing, and data processing agreements.",strong,396,True,False,NO_CONFLICT,The clause shifts audit costs after a specified underpayment; it does not reduce the policy's minimum audit rights in the excerpt.,Targeted audit recommendation (medium confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-006,EuromediaHoldingsCorp_20070215_10SB12G_EX-10.B(01)_525118_EX-10.B(01)_Content License Agreement,Audit Rights,"During the Term, and for a period of twelve (12) months thereafter, Rogers (and its representatives) shall have the right, upon reasonable prior written notice to Licensor, and during regular business hours, to inspect and/or audit Licensor's books and records to confirm compliance with Licensor's obligations under this Section.",POL-11,Audit Rights Policy,"POLICY ID: POL-11
 TITLE: Audit Rights Policy
 CATEGORY: Audit
@@ -106,7 +106,7 @@ This policy defines the company's minimum audit rights in contracts with vendors
 2.4 Vendors must cooperate with regulatory audits or inquiries relevant to the services provided to the company.
 
 3. APPLICABILITY
-Applies to vendor, outsourcing, and data processing agreements.",strong,330,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, outsourcing, and data processing agreements.",strong,330,True,False,UNCERTAIN,The contract says 'reasonable prior written notice'; the policy specifies at least 15 business days. The excerpt does not establish that 'reasonable' meets that minimum.,Targeted audit recommendation (high confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-007,BellringBrandsInc_20190920_S-1_EX-10.12_11817081_EX-10.12_Manufacturing Agreement1,Audit Rights,"Upon reasonable notice, Heritage shall allow, and Heritage shall ensure that Japer allows, Premier access to such records during normal working hours.",POL-11,Audit Rights Policy,"POLICY ID: POL-11
 TITLE: Audit Rights Policy
 CATEGORY: Audit
@@ -123,7 +123,7 @@ This policy defines the company's minimum audit rights in contracts with vendors
 2.4 Vendors must cooperate with regulatory audits or inquiries relevant to the services provided to the company.
 
 3. APPLICABILITY
-Applies to vendor, outsourcing, and data processing agreements.",strong,150,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, outsourcing, and data processing agreements.",strong,150,False,False,UNCERTAIN,The contract says only 'reasonable notice'; it does not establish the policy's minimum of 15 business days or the full audit scope.,Targeted audit recommendation (high confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-008,SimplicityEsportsGamingCompany_20181130_8-K_EX-10.1_11444071_EX-10.1_Franchise Agreement,Audit Rights,"Franchisee shall be under an obligation to provide any information as may be requested by Franchisor with respect to the Smaaash Centres, including the books of accounts and other relevant documents or records maintained in relation to the Smaaash Centres.",POL-11,Audit Rights Policy,"POLICY ID: POL-11
 TITLE: Audit Rights Policy
 CATEGORY: Audit
@@ -140,7 +140,7 @@ This policy defines the company's minimum audit rights in contracts with vendors
 2.4 Vendors must cooperate with regulatory audits or inquiries relevant to the services provided to the company.
 
 3. APPLICABILITY
-Applies to vendor, outsourcing, and data processing agreements.",strong,256,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, outsourcing, and data processing agreements.",strong,256,False,False,UNCERTAIN,The full contract section provides audit rights on five days' written notice. That conflicts with the 15-business-day minimum if the focal company is the franchisor; party mapping is not recorded in the dataset.,Targeted audit recommendation (high confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-009,HPILHOLDING_01_07_2015-EX-99.1-COOPERATION AGREEMENT,Cap On Liability,GINARES  agrees that the sole and exclusive remedy for money damages related to this Agreement and the transactions contemplated hereby shall be the rights to indemnification set forth in this Section 9.,POL-06,Limitation of Liability Policy,"POLICY ID: POL-06
 TITLE: Limitation of Liability Policy
 CATEGORY: Liability
@@ -157,7 +157,7 @@ This policy establishes acceptable standards for liability caps and exclusions i
 2.4 Any mutual liability cap must apply equally to both parties unless a business justification for asymmetry is documented and approved.
 
 3. APPLICABILITY
-Applies to all commercial contracts where the company is a counterparty, particularly vendor, software licensing, and services agreements.",strong,203,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts where the company is a counterparty, particularly vendor, software licensing, and services agreements.",strong,203,True,False,UNCERTAIN,"The clause makes indemnification the sole and exclusive remedy for money damages, which could limit remedies required by the policy, but the excerpt does not specify the indemnity scope or whether gross negligence, willful misconduct, confidentiality, and reportable data-breach liabilities are carved out.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-010,EhaveInc_20190515_20-F_EX-4.44_11678816_EX-4.44_License Agreement_ Reseller Agreement,Cap On Liability,"Subject to Section 17(c), in no event shall either Party's liability under this Agreement exceed the aggregate of all amounts paid under this Agreement and amounts that have accrued but not yet been paid in the twelve (12) months preceding the event giving rise to the claim.",POL-06,Limitation of Liability Policy,"POLICY ID: POL-06
 TITLE: Limitation of Liability Policy
 CATEGORY: Liability
@@ -174,7 +174,7 @@ This policy establishes acceptable standards for liability caps and exclusions i
 2.4 Any mutual liability cap must apply equally to both parties unless a business justification for asymmetry is documented and approved.
 
 3. APPLICABILITY
-Applies to all commercial contracts where the company is a counterparty, particularly vendor, software licensing, and services agreements.",strong,275,True,False,,,,NO_CONFLICT,POL-06#2.1,Liability cap: 12 months of fees meets the policy's at least 12 months of fees.
+Applies to all commercial contracts where the company is a counterparty, particularly vendor, software licensing, and services agreements.",strong,275,True,False,NO_CONFLICT,"Mutual cap equal to 12 months of amounts paid and accrued, which matches POL-06 2.1 and 2.4. Early in the term the look-back is shorter than 12 months, and Section 17(c) carve-outs are not shown, so confidence is medium.",,NO_CONFLICT,POL-06#2.1,Liability cap: 12 months of fees meets the policy's at least 12 months of fees.
 CP-011,SANDRIDGEENERGYINC_08_06_2009-EX-10.6-OPERATIONS AND MAINTENANCE AGREEMENT,Cap On Liability,"IN FURTHERANCE OF THE FOREGOING, EACH PARTY RELEASES THE OTHER PARTY AND  WAIVES ANY RIGHT OF RECOVERY FOR SPECIAL, INDIRECT, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES SUFFERED BY SUCH PARTY  REGARDLESS OF WHETHER ANY SUCH DAMAGES ARE CAUSED BY THE OTHER PARTY'S NEGLIGENCE (AND REGARDLESS OF WHETHER SUCH  NEGLIGENCE IS SOLE, JOINT, CONCURRENT, ACTIVE, PASSIVE, OR GROSS NEGLIGENCE), FAULT, OR LIABILITY WITHOUT FAULT.",POL-06,Limitation of Liability Policy,"POLICY ID: POL-06
 TITLE: Limitation of Liability Policy
 CATEGORY: Liability
@@ -191,7 +191,7 @@ This policy establishes acceptable standards for liability caps and exclusions i
 2.4 Any mutual liability cap must apply equally to both parties unless a business justification for asymmetry is documented and approved.
 
 3. APPLICABILITY
-Applies to all commercial contracts where the company is a counterparty, particularly vendor, software licensing, and services agreements.",strong,423,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts where the company is a counterparty, particularly vendor, software licensing, and services agreements.",strong,423,False,False,CONFLICT,"The clause excludes special, indirect, consequential, punitive, and exemplary damages even where caused by gross negligence. The policy expressly requires gross-negligence liability to be carved out of liability exclusions, so the clause conflicts with that requirement.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-012,ReynoldsConsumerProductsInc_20191115_S-1_EX-10.18_11896469_EX-10.18_Supply Agreement,Cap On Liability,A Party that breaches this Agreement will only be liable to the other Party for direct damages arising from the breach.,POL-06,Limitation of Liability Policy,"POLICY ID: POL-06
 TITLE: Limitation of Liability Policy
 CATEGORY: Liability
@@ -208,7 +208,7 @@ This policy establishes acceptable standards for liability caps and exclusions i
 2.4 Any mutual liability cap must apply equally to both parties unless a business justification for asymmetry is documented and approved.
 
 3. APPLICABILITY
-Applies to all commercial contracts where the company is a counterparty, particularly vendor, software licensing, and services agreements.",strong,119,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts where the company is a counterparty, particularly vendor, software licensing, and services agreements.",strong,119,False,False,CONFLICT,"The clause limits liability to direct damages only, broadly excluding other damage categories. As written, it does not preserve the policy-required carve-outs for gross negligence, willful misconduct, confidentiality breaches, or uncapped liability for reportable data breaches.",Self-contained 'only liable for direct damages' limit with no carve-outs or cross-reference.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-013,CardlyticsInc_20180112_S-1_EX-10.16_11002987_EX-10.16_Maintenance Agreement1,Change Of Control,"(c) Supplier either: (i) merges with another entity, (ii) suffers a transfer involving fifty (50%) percent or more of any class of its voting securities or (iii) transfers all, or substantially all, of its assets;",POL-15,Assignment and Change of Control Policy,"POLICY ID: POL-15
 TITLE: Assignment and Change of Control Policy
 CATEGORY: Assignment
@@ -225,7 +225,7 @@ This policy defines the company's requirements regarding assignment of contracts
 2.4 Notice of any change of control must be provided to the company within fifteen (15) business days of the event.
 
 3. APPLICABILITY
-Applies to all commercial contracts entered into by the company.",strong,213,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts entered into by the company.",strong,213,True,False,UNCERTAIN,The excerpt lists events that constitute a change of control but does not show the operative consequences or obligations attached to those events. It is not possible to determine whether the full provision conflicts with the policy.,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-014,ELANDIAINTERNATIONALINC_04_25_2007-EX-10.21-Outsourcing Agreement,Change Of Control,"If the BSP gives such a notice of termination, then:
 
   (a) if the change of control:
@@ -250,7 +250,7 @@ This policy defines the company's requirements regarding assignment of contracts
 2.4 Notice of any change of control must be provided to the company within fifteen (15) business days of the event.
 
 3. APPLICABILITY
-Applies to all commercial contracts entered into by the company.",strong,433,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts entered into by the company.",strong,433,True,False,UNCERTAIN,The clause makes BSP pay Datec under the termination provisions after a qualifying change of control. Whether that is a penalty and whether the focal company is BSP cannot be established from the excerpt alone.,Assumes company = BSP (the customer; Datec provides the services). Targeted audit recommendation (high confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-015,PhasebioPharmaceuticalsInc_20200330_10-K_EX-10.21_12086810_EX-10.21_Development Agreement,Change Of Control,"FJ may, in its sole discretion, terminate this Agreement in its entirety at any time following a Change of Control of PB that occurs prior to the date of payment by PB of the final Approval Payment.",POL-15,Assignment and Change of Control Policy,"POLICY ID: POL-15
 TITLE: Assignment and Change of Control Policy
 CATEGORY: Assignment
@@ -267,7 +267,7 @@ This policy defines the company's requirements regarding assignment of contracts
 2.4 Notice of any change of control must be provided to the company within fifteen (15) business days of the event.
 
 3. APPLICABILITY
-Applies to all commercial contracts entered into by the company.",strong,198,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts entered into by the company.",strong,198,False,False,UNCERTAIN,"The clause concerns FJ's termination right after a change of control of PB. The dataset does not establish which named party is the company using this system, so the clause's effect on the company's policy cannot be determined reliably.",Assumes company = PB (the party paying the Approval Payment). Targeted audit: party identity is not established; retained as UNCERTAIN.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-016,"INNOVIVA,INC_08_07_2014-EX-10.1-COLLABORATION AGREEMENT",Change Of Control,"GSK may sublicense or subcontract its rights to Develop, Manufacture or Commercialize the Collaboration Products in whole or in part to one or more of its Affiliates, provided that the rights sublicensed or subcontracted to such Affiliate shall automatically terminate upon a change of control of such Affiliate in connection with which such Affiliate ceases to be an Affiliate of GSK.",POL-15,Assignment and Change of Control Policy,"POLICY ID: POL-15
 TITLE: Assignment and Change of Control Policy
 CATEGORY: Assignment
@@ -284,7 +284,7 @@ This policy defines the company's requirements regarding assignment of contracts
 2.4 Notice of any change of control must be provided to the company within fifteen (15) business days of the event.
 
 3. APPLICABILITY
-Applies to all commercial contracts entered into by the company.",strong,385,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts entered into by the company.",strong,385,False,False,NO_CONFLICT,"Affiliate sublicensing with termination when the affiliate leaves the group does not itself contradict the policy requirements shown. The policy's assignment rule is not identical to sublicensing, so avoid claiming this proves full compliance.",Targeted audit recommendation (medium confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-017,"DUOSTECHNOLOGIESGROUP,INC_04_21_2009-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",Exclusivity,"Rubicon hereby grants to ISA during the Term and subject to the exclusions described in 2.4 below an exclusive, non-transferable  license in the United States to grant licenses to use, display, perform and distribute the Rubicon Offerings and the Documentation to other  resellers, including, but not limited to, distributors, Original Equipment Manufacturers, system integrators and Value-Added Resellers, for further  sale and distribution to End Users for their use as described above, subject to the conditions set forth in this Agreement.",POL-16,Exclusivity and Most-Favored-Nation Policy,"POLICY ID: POL-16
 TITLE: Exclusivity and Most-Favored-Nation Policy
 CATEGORY: Exclusivity
@@ -301,7 +301,7 @@ This policy governs the use of exclusivity and most-favored-nation (MFN) provisi
 2.4 Category-wide exclusivity (restricting the company from engaging any competing vendor in an entire product category) is discouraged and requires General Counsel sign-off.
 
 3. APPLICABILITY
-Applies to vendor, supply, and strategic partnership agreements.",strong,543,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, supply, and strategic partnership agreements.",strong,543,True,False,UNCERTAIN,"The clause grants ISA an exclusive reseller-licensing right. Whether this binds the focal company to a single partner depends on which party is the focal company, the duration, and the full exclusivity terms.","Assumes company = buyer/customer/licensee side (the side POL policies protect). If the company were Rubicon, the Term length would decide it. Targeted audit recommendation (high confidence); see adjudication review for caveats.",UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-018,"PACIRA PHARMACEUTICALS, INC. - A_R STRATEGIC LICENSING, DISTRIBUTION AND MARKETING AGREEMENT ",Exclusivity,PPI hereby grants to EKR a royalty free and exclusive license (with the right to sublicense) to use the  Trademarks in the Territory solely in connection with the exercise of the Distribution Rights in the Territory during the Term (and thereafter  as set forth in Section 17.4) and EKR shall market and sell the Products under the Trademarks.,POL-16,Exclusivity and Most-Favored-Nation Policy,"POLICY ID: POL-16
 TITLE: Exclusivity and Most-Favored-Nation Policy
 CATEGORY: Exclusivity
@@ -318,7 +318,7 @@ This policy governs the use of exclusivity and most-favored-nation (MFN) provisi
 2.4 Category-wide exclusivity (restricting the company from engaging any competing vendor in an entire product category) is discouraged and requires General Counsel sign-off.
 
 3. APPLICABILITY
-Applies to vendor, supply, and strategic partnership agreements.",strong,343,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, supply, and strategic partnership agreements.",strong,343,True,False,UNCERTAIN,The clause grants EKR exclusive trademark rights and the full agreement defines exclusivity broadly. Whether that restricts the focal company's ability to engage other providers depends on which party is the focal company and the complete commercial arrangement.,Assumes company = buyer/customer/licensee side (the side POL policies protect). Targeted audit recommendation (high confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-019,"OPTIMIZEDTRANSPORTATIONMANAGEMENT,INC_07_26_2000-EX-6.6-DISTRIBUTOR AGREEMENT",Exclusivity,"Upon the effective date of this agreement COMWARE shall have the exclusive right to purchase, at the DISCOUNTS described below, and resell Products to potential customers during the Initial Distribution Period,",POL-16,Exclusivity and Most-Favored-Nation Policy,"POLICY ID: POL-16
 TITLE: Exclusivity and Most-Favored-Nation Policy
 CATEGORY: Exclusivity
@@ -335,7 +335,7 @@ This policy governs the use of exclusivity and most-favored-nation (MFN) provisi
 2.4 Category-wide exclusivity (restricting the company from engaging any competing vendor in an entire product category) is discouraged and requires General Counsel sign-off.
 
 3. APPLICABILITY
-Applies to vendor, supply, and strategic partnership agreements.",strong,210,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, supply, and strategic partnership agreements.",strong,210,False,False,UNCERTAIN,The clause gives COMWARE exclusive purchase/resale rights in a territory. Its effect under the company's exclusivity policy depends on which party is the focal company and the duration/performance terms.,Assumes company = buyer/customer/licensee side (the side POL policies protect). Targeted audit recommendation (high confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-020,TubeMediaCorp_20060310_8-K_EX-10.1_513921_EX-10.1_Affiliate Agreement,Exclusivity,"If condition (A) or (B) applies, the Acquired Station shall have no obligations hereunder, and Network shall have the right to license the transmission of the Service to another Broadcast Television station in such DMA, including on an exclusive basis.",POL-16,Exclusivity and Most-Favored-Nation Policy,"POLICY ID: POL-16
 TITLE: Exclusivity and Most-Favored-Nation Policy
 CATEGORY: Exclusivity
@@ -352,7 +352,7 @@ This policy governs the use of exclusivity and most-favored-nation (MFN) provisi
 2.4 Category-wide exclusivity (restricting the company from engaging any competing vendor in an entire product category) is discouraged and requires General Counsel sign-off.
 
 3. APPLICABILITY
-Applies to vendor, supply, and strategic partnership agreements.",strong,252,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, supply, and strategic partnership agreements.",strong,252,False,False,NO_CONFLICT,This excerpt permits Network to license another station when the acquired station cannot perform under specified conditions; it does not itself impose a single-vendor restriction on the focal company.,Assumes company = buyer/customer/licensee side (the side POL policies protect). Targeted audit recommendation (medium confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-021,"ADIANUTRITION,INC_04_01_2005-EX-10.D2-RESELLER AGREEMENT",Governing Law,"This Agreement shall be governed by and construed under the laws of the State of California, excluding conflict of laws provisions and excluding the 1980 United Nations Convention on Contracts for the International Sale of Goods.",POL-12,Dispute Resolution and Governing Law Policy,"POLICY ID: POL-12
 TITLE: Dispute Resolution and Governing Law Policy
 CATEGORY: Dispute Resolution
@@ -369,7 +369,7 @@ This policy establishes the company's preferred approach to dispute resolution a
 2.4 Venue for any litigation or arbitration should be reasonably convenient and must not be unilaterally set solely at the counterparty's home jurisdiction without justification.
 
 3. APPLICABILITY
-Applies to all commercial contracts entered into by the company.",strong,229,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts entered into by the company.",strong,229,True,False,UNCERTAIN,"The clause selects California law, but the policy requires governing law consistent with the company's principal place of business unless a different jurisdiction is justified and approved. The company's principal place of business and any approval are not provided.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-022,BUFFALOWILDWINGSINC_06_05_1998-EX-10.3-FRANCHISE AGREEMENT,Governing Law,"THIS AGREEMENT TAKES EFFECT UPON ITS ACCEPTANCE AND EXECUTION BY US, AND SHALL BE INTERPRETED AND CONSTRUED UNDER THE LAWS OF THE STATE IN WHICH THE FRANCHISED RESTAURANT IS LOCATED, EXCEPT TO THE EXTENT GOVERNED BY THE UNITED STATES TRADEMARK ACT OF 1946 (LANHAM ACT, 15, U.S.C. SECTIONS 1051 ET SEQ).",POL-12,Dispute Resolution and Governing Law Policy,"POLICY ID: POL-12
 TITLE: Dispute Resolution and Governing Law Policy
 CATEGORY: Dispute Resolution
@@ -386,7 +386,7 @@ This policy establishes the company's preferred approach to dispute resolution a
 2.4 Venue for any litigation or arbitration should be reasonably convenient and must not be unilaterally set solely at the counterparty's home jurisdiction without justification.
 
 3. APPLICABILITY
-Applies to all commercial contracts entered into by the company.",strong,302,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts entered into by the company.",strong,302,True,False,UNCERTAIN,"The clause selects the law of the state where the franchise restaurant is located. The company's principal place of business and whether the location is justified or approved are not provided, so a conflict cannot be established from this excerpt.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-023,LohaCompanyltd_20191209_F-1_EX-10.16_11917878_EX-10.16_Supply Agreement,Governing Law,"It will be governed by the law of the People's Republic of China ,otherwise it is governed by United Nations Convention on Contract for the International Sale of Goods.",POL-12,Dispute Resolution and Governing Law Policy,"POLICY ID: POL-12
 TITLE: Dispute Resolution and Governing Law Policy
 CATEGORY: Dispute Resolution
@@ -403,7 +403,7 @@ This policy establishes the company's preferred approach to dispute resolution a
 2.4 Venue for any litigation or arbitration should be reasonably convenient and must not be unilaterally set solely at the counterparty's home jurisdiction without justification.
 
 3. APPLICABILITY
-Applies to all commercial contracts entered into by the company.",strong,168,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts entered into by the company.",strong,168,False,False,UNCERTAIN,"The clause selects PRC law and the CISG, but the company's principal place of business and any Legal-approved exception are not provided. The excerpt is insufficient to determine whether the governing-law choice conflicts with policy.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-024,AULAMERICANUNITTRUST_04_24_2020-EX-99.8.77-SERVICING AGREEMENT,Governing Law,This Agreement will be construed in accordance with the laws of the State of Delaware and is assignable only upon the written consent by all the parties hereto,POL-12,Dispute Resolution and Governing Law Policy,"POLICY ID: POL-12
 TITLE: Dispute Resolution and Governing Law Policy
 CATEGORY: Dispute Resolution
@@ -420,7 +420,7 @@ This policy establishes the company's preferred approach to dispute resolution a
 2.4 Venue for any litigation or arbitration should be reasonably convenient and must not be unilaterally set solely at the counterparty's home jurisdiction without justification.
 
 3. APPLICABILITY
-Applies to all commercial contracts entered into by the company.",strong,159,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts entered into by the company.",strong,159,False,False,UNCERTAIN,"The clause selects Delaware law and requires all parties' written consent for assignment. The policy excerpt addresses governing law and dispute resolution, not assignment, and the facts needed to assess governing-law alignment are missing.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-025,AzulSa_20170303_F-1A_EX-10.3_9943903_EX-10.3_Maintenance Agreement1,Insurance,"Lease of Stock (Exhibit 8 Clause 2.2) and Advanced Pool Service (Exhibit 15): the Items of the Stock shall be insured by theCompany under Spares All Risk Insurance for not less than the full replacement value; and,",POL-10,Insurance Requirements Policy,"POLICY ID: POL-10
 TITLE: Insurance Requirements Policy
 CATEGORY: Insurance
@@ -437,7 +437,7 @@ This policy sets minimum insurance coverage requirements for third parties contr
 2.4 Proof of insurance (certificate of insurance) must be provided prior to contract execution and renewed annually.
 
 3. APPLICABILITY
-Applies to all vendors, contractors, and service providers engaged by the company.",strong,214,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all vendors, contractors, and service providers engaged by the company.",strong,214,True,False,NO_CONFLICT,"The clause requires property insurance on leased stock, while the mapped policy specifies vendor general-liability, cyber, and professional-indemnity minimums. No contradiction is visible in this excerpt.",Targeted audit recommendation (medium confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-026,MOSSIMOINC_04_14_2000-EX-10.14-ENDORSEMENT AGREEMENT,Insurance,"Within thirty (30) days from the date hereof, Company will submit to Licensor evidence of such policy, requiring that the insurer shall not terminate or materially modify such without written notice to Licensor at least twenty (20) days in advance thereof.",POL-10,Insurance Requirements Policy,"POLICY ID: POL-10
 TITLE: Insurance Requirements Policy
 CATEGORY: Insurance
@@ -454,7 +454,7 @@ This policy sets minimum insurance coverage requirements for third parties contr
 2.4 Proof of insurance (certificate of insurance) must be provided prior to contract execution and renewed annually.
 
 3. APPLICABILITY
-Applies to all vendors, contractors, and service providers engaged by the company.",strong,256,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all vendors, contractors, and service providers engaged by the company.",strong,256,True,False,UNCERTAIN,"The full clause requires insurance evidence within 30 days after signing, while policy POL-10 requires proof before execution. This is a conflict if the insured 'Company' is the vendor/counterparty subject to the policy; the focal party is not mapped.",Party that must insure is mapped to the policy's 'vendor'. Targeted audit recommendation (high confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-027,INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT,Insurance,"Franchisee agrees to participate in any governmental  Worker's  Compensation  Program,  unemployment  insurance program, hospitalization  program and any other similar  program which may be required by the laws of the country where the Franchised Restaurant is located.",POL-10,Insurance Requirements Policy,"POLICY ID: POL-10
 TITLE: Insurance Requirements Policy
 CATEGORY: Insurance
@@ -471,7 +471,7 @@ This policy sets minimum insurance coverage requirements for third parties contr
 2.4 Proof of insurance (certificate of insurance) must be provided prior to contract execution and renewed annually.
 
 3. APPLICABILITY
-Applies to all vendors, contractors, and service providers engaged by the company.",strong,269,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all vendors, contractors, and service providers engaged by the company.",strong,269,False,False,NO_CONFLICT,"Participation in legally required workers' compensation and similar programs does not contradict the mapped policy's stated coverage minimums, though it does not prove those minimums are met.",Targeted audit recommendation (medium confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-028,TubeMediaCorp_20060310_8-K_EX-10.1_513921_EX-10.1_Affiliate Agreement,Insurance,"Affiliate shall be named as an additional insured on the policies, and, prior to the Affiliate Launch Date, shall receive certificates evidencing such insurance, providing that such coverage will not be cancelled or materially changed except upon 30 days' prior written notice to Affiliate.",POL-10,Insurance Requirements Policy,"POLICY ID: POL-10
 TITLE: Insurance Requirements Policy
 CATEGORY: Insurance
@@ -488,7 +488,7 @@ This policy sets minimum insurance coverage requirements for third parties contr
 2.4 Proof of insurance (certificate of insurance) must be provided prior to contract execution and renewed annually.
 
 3. APPLICABILITY
-Applies to all vendors, contractors, and service providers engaged by the company.",strong,290,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all vendors, contractors, and service providers engaged by the company.",strong,290,True,False,UNCERTAIN,"The clause requires additional-insured status and certificates before launch, with 30 days' notice of cancellation or material change. It does not specify policy types or coverage limits, and the policy's applicability to this affiliate agreement is unclear.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-029,PhasebioPharmaceuticalsInc_20200330_10-K_EX-10.21_12086810_EX-10.21_Development Agreement,Ip Ownership Assignment,"SFJ shall cause each employee and individual consultant of such SFJ or its Affiliates (but excluding Permitted Third Parties of SFJ and its Affiliates, which are separately addressed in Section 11.1.1.3(c)) who conceives, discovers, develops or otherwise makes any Trial Invention to be under an obligation to assign to PB their rights in any such Trial Invention.",POL-08,Intellectual Property Assignment Policy,"POLICY ID: POL-08
 TITLE: Intellectual Property Assignment Policy
 CATEGORY: Intellectual Property
@@ -505,7 +505,7 @@ This policy defines the company's standards for ownership of intellectual proper
 2.4 Any exceptions to full IP assignment require review and written approval by the Legal Department.
 
 3. APPLICABILITY
-Applies to all consulting, development, design, and custom software engagements entered into by the company.",strong,364,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all consulting, development, design, and custom software engagements entered into by the company.",strong,364,True,False,UNCERTAIN,"The clause obligates SFJ to cause personnel to assign inventions to PB, while policy POL-08 requires rights to vest upon creation or payment. An obligation to assign may be weaker than present assignment; the focal party is not recorded.",Assumes company = PB (the recipient of the inventions). Targeted audit recommendation (high confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-030,GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement,Ip Ownership Assignment,"Any HOFV Works created pursuant to this Agreement shall exclusively be owned by the Village Media Company; provided, however, that, (i) PFHOF shall own all right, title, interest, and copyright in and to the underlying PFHOF Work(s) as further set forth in Section 2.5 and (ii) the Village Media Company's ownership is subject in all events to any Rights Restrictions and the terms of the license (including the term of such license) granted by PFHOF in connection with such HOFV Work pursuant to Section 2.3.",POL-08,Intellectual Property Assignment Policy,"POLICY ID: POL-08
 TITLE: Intellectual Property Assignment Policy
 CATEGORY: Intellectual Property
@@ -522,7 +522,7 @@ This policy defines the company's standards for ownership of intellectual proper
 2.4 Any exceptions to full IP assignment require review and written approval by the Legal Department.
 
 3. APPLICABILITY
-Applies to all consulting, development, design, and custom software engagements entered into by the company.",strong,509,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all consulting, development, design, and custom software engagements entered into by the company.",strong,509,True,False,UNCERTAIN,"The clause gives ownership of HOFV Works to Village Media Company, subject to rights restrictions and a license from PFHOF. The excerpt does not establish which party is the company or whether the works are custom developments created for it, so a policy conflict cannot be confirmed.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-031,GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1,Ip Ownership Assignment,"Licensee further agrees to execute one or more copyright assignments at Fox's request, or any other subsequent document as further evidence of this assignment, and to cooperate with Fox in perfecting the assignment of any rights to the Fox Intellectual Property, and hereby appoints Fox as its attorney-in-fact to execute any documents required in connection with such assignment.",POL-08,Intellectual Property Assignment Policy,"POLICY ID: POL-08
 TITLE: Intellectual Property Assignment Policy
 CATEGORY: Intellectual Property
@@ -539,7 +539,7 @@ This policy defines the company's standards for ownership of intellectual proper
 2.4 Any exceptions to full IP assignment require review and written approval by the Legal Department.
 
 3. APPLICABILITY
-Applies to all consulting, development, design, and custom software engagements entered into by the company.",strong,380,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all consulting, development, design, and custom software engagements entered into by the company.",strong,380,False,False,NO_CONFLICT,The clause concerns assignment of Fox's existing IP back to Fox; it does not on its face grant a vendor ownership of custom work product created for the focal company.,Targeted audit recommendation (medium confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-032,ParatekPharmaceuticalsInc_20170505_10-KA_EX-10.29_10323872_EX-10.29_Outsourcing Agreement,Ip Ownership Assignment,"Supplier agrees to assign (and cause its employees or permitted subcontractors to assign), and does hereby assign, any and all rights, title and interests of Supplier in, to or under any Inventions to Customer.",POL-08,Intellectual Property Assignment Policy,"POLICY ID: POL-08
 TITLE: Intellectual Property Assignment Policy
 CATEGORY: Intellectual Property
@@ -556,7 +556,7 @@ This policy defines the company's standards for ownership of intellectual proper
 2.4 Any exceptions to full IP assignment require review and written approval by the Legal Department.
 
 3. APPLICABILITY
-Applies to all consulting, development, design, and custom software engagements entered into by the company.",strong,210,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all consulting, development, design, and custom software engagements entered into by the company.",strong,210,False,False,NO_CONFLICT,"The supplier assigns all rights, title, and interests in inventions to the customer. This is consistent with the policy's requirement that covered work product be assigned to the company, assuming the customer is the company and the inventions are within the covered engagement.",POL-08 fixes the company as the customer receiving the work product. Scope of 'Inventions' is not defined in the excerpt.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-033,MPLXLP_06_17_2015-EX-10.1-TRANSPORTATION SERVICES AGREEMENT,Most Favored Nation,"Upon termination of this Agreement for reasons other than a default by Shipper, pursuant to any provisions of this Agreement or any other termination of this Agreement initiated by Shipper pursuant to Section 5, Shipper shall have the right to require MPL to enter into a new transportation service agreement with Shipper that (a) is consistent with the terms and objectives set forth in this Agreement and (b) has commercial terms that are, in the aggregate, equal to or more favorable to Shipper than fair market value terms as would be agreed by similarly-situated parties negotiating at arm's length provided.",POL-16,Exclusivity and Most-Favored-Nation Policy,"POLICY ID: POL-16
 TITLE: Exclusivity and Most-Favored-Nation Policy
 CATEGORY: Exclusivity
@@ -573,7 +573,7 @@ This policy governs the use of exclusivity and most-favored-nation (MFN) provisi
 2.4 Category-wide exclusivity (restricting the company from engaging any competing vendor in an entire product category) is discouraged and requires General Counsel sign-off.
 
 3. APPLICABILITY
-Applies to vendor, supply, and strategic partnership agreements.",strong,613,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, supply, and strategic partnership agreements.",strong,613,True,False,NO_CONFLICT,"The clause grants a right to a replacement transportation agreement on fair-market-value terms; it does not clearly require terms no less favorable than those offered to other customers, so it is not the mapped MFN requirement.",Targeted audit recommendation (medium confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-034,AURASYSTEMSINC_06_16_2010-EX-10.25-STRATEGIC ALLIANCE AGREEMENT,Most Favored Nation,"Zanotti shall notify Aura  in writing of any such MFN Terms within fifteen (15) calendar days after agreeing thereto, and shall make the MFN Terms available to Aura as of  the effective date of such agreement and thereafter for the greater of (i) three (3) months or (ii) such time that the MFN Terms remain in effect.",POL-16,Exclusivity and Most-Favored-Nation Policy,"POLICY ID: POL-16
 TITLE: Exclusivity and Most-Favored-Nation Policy
 CATEGORY: Exclusivity
@@ -590,7 +590,7 @@ This policy governs the use of exclusivity and most-favored-nation (MFN) provisi
 2.4 Category-wide exclusivity (restricting the company from engaging any competing vendor in an entire product category) is discouraged and requires General Counsel sign-off.
 
 3. APPLICABILITY
-Applies to vendor, supply, and strategic partnership agreements.",strong,318,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, supply, and strategic partnership agreements.",strong,318,True,False,UNCERTAIN,"This is an MFN clause. The policy requires Legal review before acceptance, but the contract text does not show whether that review occurred.",Flag for Legal review under POL-16 2.2. Targeted audit recommendation (high confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-035,EuromediaHoldingsCorp_20070215_10SB12G_EX-10.B(01)_525118_EX-10.B(01)_Content License Agreement,Most Favored Nation,"In the event that Licensor grants to another VOD or Pay-Per-View (""PPV"") service provider in the U.S. or the Territory the right to distribute or exhibit any Licensed Program on an earlier availability date, then Licensor shall also grant to Rogers the right to distribute and exhibit such Licensed Program on such earlier availability date, on the terms provided herein.",POL-16,Exclusivity and Most-Favored-Nation Policy,"POLICY ID: POL-16
 TITLE: Exclusivity and Most-Favored-Nation Policy
 CATEGORY: Exclusivity
@@ -607,7 +607,7 @@ This policy governs the use of exclusivity and most-favored-nation (MFN) provisi
 2.4 Category-wide exclusivity (restricting the company from engaging any competing vendor in an entire product category) is discouraged and requires General Counsel sign-off.
 
 3. APPLICABILITY
-Applies to vendor, supply, and strategic partnership agreements.",strong,371,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, supply, and strategic partnership agreements.",strong,371,False,False,UNCERTAIN,"The earlier-availability provision is MFN-like. The policy requires Legal review before acceptance, but approval status is absent.",Flag for Legal review under POL-16 2.2. Targeted audit recommendation (high confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-036,SENMIAOTECHNOLOGYLTD_02_19_2019-EX-10.5-Collaboration Agreement,Most Favored Nation,Party B guarantees that the Driver User will enjoy the most favorable treatment in accordance with the terms and conditions stipulated in This Agreement during the Period of Cooperation.,POL-16,Exclusivity and Most-Favored-Nation Policy,"POLICY ID: POL-16
 TITLE: Exclusivity and Most-Favored-Nation Policy
 CATEGORY: Exclusivity
@@ -624,7 +624,7 @@ This policy governs the use of exclusivity and most-favored-nation (MFN) provisi
 2.4 Category-wide exclusivity (restricting the company from engaging any competing vendor in an entire product category) is discouraged and requires General Counsel sign-off.
 
 3. APPLICABILITY
-Applies to vendor, supply, and strategic partnership agreements.",strong,186,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, supply, and strategic partnership agreements.",strong,186,False,False,UNCERTAIN,"The full contract continues beyond the excerpt and includes a most-favorable-terms clause comparing terms offered to other entities. That triggers POL-16's Legal-review requirement, but review status is unknown.",Targeted audit recommendation (high confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-037,"Zounds Hearing, Inc. - MANUFACTURING DESIGN MARKETING AGREEMENT",No-Solicit Of Employees,"During the term hereof and for a period of five (5) years thereafter, each Party agrees not to, either directly or indirectly, for itself or on behalf of any other person, firm, partnership, corporation or other entity hire, solicit, contract for, attempt to solicit, or cause to be solicited, the employment or services of any current or previous employee of the other Party (unless a period of sixty months has elapsed from the last date that such employee was employed by such party) without the prior written consent of such other Party.",POL-09,Non-Compete and Non-Solicitation Policy,"POLICY ID: POL-09
 TITLE: Non-Compete and Non-Solicitation Policy
 CATEGORY: Non-Compete
@@ -641,7 +641,7 @@ This policy establishes acceptable limits for non-compete and non-solicitation p
 2.4 Non-compete clauses that would restrict the company's ability to engage other providers in the same market segment are not acceptable without General Counsel approval.
 
 3. APPLICABILITY
-Applies to vendor, partnership, franchise, and consulting agreements that include restrictive covenants.",strong,541,True,False,,,,CONFLICT,POL-09#2.3,"Non solicit duration: the contract gives 5 years, but the policy requires no more than 24 months. Non solicit duration: the contract gives 60 months, but the policy requires no more than 24 months."
+Applies to vendor, partnership, franchise, and consulting agreements that include restrictive covenants.",strong,541,True,False,CONFLICT,"The clause imposes a five-year post-term employee non-solicitation restriction. The policy allows employee non-solicitation provisions for up to 24 months after termination, so the five-year duration exceeds the policy limit.",,CONFLICT,POL-09#2.3,"Non solicit duration: the contract gives 5 years, but the policy requires no more than 24 months. Non solicit duration: the contract gives 60 months, but the policy requires no more than 24 months."
 CP-038,PfHospitalityGroupInc_20150923_10-12G_EX-10.1_9266710_EX-10.1_Franchise Agreement1,No-Solicit Of Employees,17.1.3. Induce any person to leave his or her employment with us.,POL-09,Non-Compete and Non-Solicitation Policy,"POLICY ID: POL-09
 TITLE: Non-Compete and Non-Solicitation Policy
 CATEGORY: Non-Compete
@@ -658,7 +658,7 @@ This policy establishes acceptable limits for non-compete and non-solicitation p
 2.4 Non-compete clauses that would restrict the company's ability to engage other providers in the same market segment are not acceptable without General Counsel approval.
 
 3. APPLICABILITY
-Applies to vendor, partnership, franchise, and consulting agreements that include restrictive covenants.",strong,65,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, partnership, franchise, and consulting agreements that include restrictive covenants.",strong,65,True,False,UNCERTAIN,"The excerpt prohibits inducing a person to leave employment but does not state the duration, mutuality, or full scope of the restriction. The policy's 24-month post-termination limit cannot be assessed from this fragment.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-039,"GOOSEHEADINSURANCE,INC_04_02_2018-EX-10.6-Franchise Agreement",No-Solicit Of Employees,"Member covenants and agrees that during the term of the Franchise Agreement, except as otherwise approved in writing by Franchisor, Member will not, either directly or indirectly, for itself, or through, on behalf of, or in conjunction with any person, persons, partnership, corporation, or entity:",POL-09,Non-Compete and Non-Solicitation Policy,"POLICY ID: POL-09
 TITLE: Non-Compete and Non-Solicitation Policy
 CATEGORY: Non-Compete
@@ -675,7 +675,7 @@ This policy establishes acceptable limits for non-compete and non-solicitation p
 2.4 Non-compete clauses that would restrict the company's ability to engage other providers in the same market segment are not acceptable without General Counsel approval.
 
 3. APPLICABILITY
-Applies to vendor, partnership, franchise, and consulting agreements that include restrictive covenants.",strong,298,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, partnership, franchise, and consulting agreements that include restrictive covenants.",strong,298,False,False,UNCERTAIN,The excerpt introduces a restriction during the franchise term but omits the activities being restricted and any post-termination duration. There is insufficient information to compare it with the policy's limits.,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-040,"VIRTUALSCOPICS,INC_11_12_2010-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",No-Solicit Of Employees,"Neither party will solicit for employment any employee of the other party during the active term of this Agreement and further, where applicable, the term of any active Work Order.",POL-09,Non-Compete and Non-Solicitation Policy,"POLICY ID: POL-09
 TITLE: Non-Compete and Non-Solicitation Policy
 CATEGORY: Non-Compete
@@ -692,7 +692,7 @@ This policy establishes acceptable limits for non-compete and non-solicitation p
 2.4 Non-compete clauses that would restrict the company's ability to engage other providers in the same market segment are not acceptable without General Counsel approval.
 
 3. APPLICABILITY
-Applies to vendor, partnership, franchise, and consulting agreements that include restrictive covenants.",strong,180,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, partnership, franchise, and consulting agreements that include restrictive covenants.",strong,180,False,False,NO_CONFLICT,"The clause prohibits either party from soliciting the other's employees during the active agreement/work-order term only. It does not extend beyond termination, and the restriction is mutual, consistent with the policy's preference for mutual non-solicitation provisions where possible.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-041,ElPolloLocoHoldingsInc_20200306_10-K_EX-10.16_12041700_EX-10.16_Development Agreement,Non-Compete,"For purposes of this Section 20.1, a Competitive Business shall mean a self-service restaurant or fast-food business which sells chicken and/or Mexican food products, which products individually or collectively represent more than twenty percent (20%) of the revenues from such self-service restaurant or fast-food business operated at any one location during any calendar quarter.",POL-09,Non-Compete and Non-Solicitation Policy,"POLICY ID: POL-09
 TITLE: Non-Compete and Non-Solicitation Policy
 CATEGORY: Non-Compete
@@ -709,7 +709,7 @@ This policy establishes acceptable limits for non-compete and non-solicitation p
 2.4 Non-compete clauses that would restrict the company's ability to engage other providers in the same market segment are not acceptable without General Counsel approval.
 
 3. APPLICABILITY
-Applies to vendor, partnership, franchise, and consulting agreements that include restrictive covenants.",strong,381,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, partnership, franchise, and consulting agreements that include restrictive covenants.",strong,381,True,False,UNCERTAIN,"The excerpt defines a Competitive Business but does not provide the operative restriction, duration, or geographic scope. The policy's duration and scope requirements cannot be assessed from this definition alone.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-042,"GOOSEHEADINSURANCE,INC_04_02_2018-EX-10.6-Franchise Agreement",Non-Compete,"19.3.3 Own, maintain, develop, operate, engage in, franchise or license, make loans to, lease real or personal property to, be associated with, accept any compensation or remuneration from, and/or have any whatsoever interest in, or render services or give advice to, any Competitive Business.",POL-09,Non-Compete and Non-Solicitation Policy,"POLICY ID: POL-09
 TITLE: Non-Compete and Non-Solicitation Policy
 CATEGORY: Non-Compete
@@ -726,7 +726,7 @@ This policy establishes acceptable limits for non-compete and non-solicitation p
 2.4 Non-compete clauses that would restrict the company's ability to engage other providers in the same market segment are not acceptable without General Counsel approval.
 
 3. APPLICABILITY
-Applies to vendor, partnership, franchise, and consulting agreements that include restrictive covenants.",strong,293,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, partnership, franchise, and consulting agreements that include restrictive covenants.",strong,293,True,False,UNCERTAIN,"The excerpt lists activities prohibited in relation to a Competitive Business but does not provide the definition, duration, geographic scope, or full surrounding clause. A policy conflict cannot be determined from this fragment.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-043,GAINSCOINC_01_21_2010-EX-10.41-SPONSORSHIP AGREEMENT,Non-Compete,"(v) prohibiting the endorsement by Racing and any members of Racing, including the drivers, of any entities, products or  services which are in direct competition or otherwise inconsistent with the Sponsor or it products or services, unless such  endorsement activity is approved in writing by Racing and the Sponsor;",POL-09,Non-Compete and Non-Solicitation Policy,"POLICY ID: POL-09
 TITLE: Non-Compete and Non-Solicitation Policy
 CATEGORY: Non-Compete
@@ -743,7 +743,7 @@ This policy establishes acceptable limits for non-compete and non-solicitation p
 2.4 Non-compete clauses that would restrict the company's ability to engage other providers in the same market segment are not acceptable without General Counsel approval.
 
 3. APPLICABILITY
-Applies to vendor, partnership, franchise, and consulting agreements that include restrictive covenants.",strong,317,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, partnership, franchise, and consulting agreements that include restrictive covenants.",strong,317,False,False,UNCERTAIN,"The clause restricts endorsements of competing or inconsistent entities/products/services unless approved, but the excerpt does not establish duration, geographic scope, or whether it restricts the company's ability to engage other providers.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-044,EhaveInc_20190515_20-F_EX-4.44_11678816_EX-4.44_License Agreement_ Reseller Agreement,Non-Compete,"For so long as the appointment set out in Section 2(a) is exclusive, CHT shall not enter into an agreement (a ""Competitive Transaction"") with any other Person related to the license, sub-license, sale, resale or provide service, solutions, goods or products, that are substantially similar to or competitive with the Ehave Companion Solution.",POL-09,Non-Compete and Non-Solicitation Policy,"POLICY ID: POL-09
 TITLE: Non-Compete and Non-Solicitation Policy
 CATEGORY: Non-Compete
@@ -760,7 +760,7 @@ This policy establishes acceptable limits for non-compete and non-solicitation p
 2.4 Non-compete clauses that would restrict the company's ability to engage other providers in the same market segment are not acceptable without General Counsel approval.
 
 3. APPLICABILITY
-Applies to vendor, partnership, franchise, and consulting agreements that include restrictive covenants.",strong,342,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to vendor, partnership, franchise, and consulting agreements that include restrictive covenants.",strong,342,True,False,UNCERTAIN,The full contract restricts CHT from competing transactions during an exclusive appointment. This conflicts with POL-09 if CHT is the focal company and no General Counsel approval exists; it may not restrict the focal company if the other party is the focal company.,Assumes company = CHT (the distributor/appointee). Targeted audit recommendation (high confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-045,CENTRACKINTERNATIONALINC_10_29_1999-EX-10.3-WEB SITE HOSTING AGREEMENT,Notice Period To Terminate Renewal,"Agreement, which notice must be given not less than fifteen (15) days before the end of the respective initial or renewal term.",POL-14,Auto-Renewal and Contract Renewal Policy,"POLICY ID: POL-14
 TITLE: Auto-Renewal and Contract Renewal Policy
 CATEGORY: Renewal
@@ -777,7 +777,7 @@ This policy governs the use of automatic renewal provisions in company contracts
 2.4 Multi-year automatic renewal commitments (renewal terms exceeding twelve months) require Director-level approval before signature.
 
 3. APPLICABILITY
-Applies to all subscription, licensing, and service contracts containing automatic renewal provisions.",strong,127,True,False,,,,NO_CONFLICT,POL-14#2.1,Renewal notice: 15 days meets the policy's no more than 60 days.
+Applies to all subscription, licensing, and service contracts containing automatic renewal provisions.",strong,127,True,False,NO_CONFLICT,"The clause requires notice at least 15 days before the end of the term. The policy says the company must not be required to give non-renewal notice more than 60 days before renewal; 15 days is within that maximum, assuming this policy applies.",,NO_CONFLICT,POL-14#2.1,Renewal notice: 15 days meets the policy's no more than 60 days.
 CP-046,BUFFALOWILDWINGSINC_06_05_1998-EX-10.3-FRANCHISE AGREEMENT,Notice Period To Terminate Renewal,We shall give you written notice of our election not to renew the franchise at least three (3) months prior to the expiration of the initial or first renewal term of this Agreement.,POL-14,Auto-Renewal and Contract Renewal Policy,"POLICY ID: POL-14
 TITLE: Auto-Renewal and Contract Renewal Policy
 CATEGORY: Renewal
@@ -794,7 +794,7 @@ This policy governs the use of automatic renewal provisions in company contracts
 2.4 Multi-year automatic renewal commitments (renewal terms exceeding twelve months) require Director-level approval before signature.
 
 3. APPLICABILITY
-Applies to all subscription, licensing, and service contracts containing automatic renewal provisions.",strong,181,True,False,,,,CONFLICT,POL-14#2.1,"Renewal notice: the contract gives 3 months, but the policy requires no more than 60 days."
+Applies to all subscription, licensing, and service contracts containing automatic renewal provisions.",strong,181,True,False,NO_CONFLICT,The clause gives the franchisor a three-month non-renewal notice obligation. POL-14 requires a notice window of at least 60 days; three months is not shorter than that minimum. The excerpt does not establish all other renewal-policy requirements.,"Assumes company = buyer/customer/licensee side (the side POL policies protect). If the company were the franchisor, 3 months exceeds the 60-day limit and this would be CONFLICT. Targeted audit recommendation (medium confidence); see adjudication review for caveats.",CONFLICT,POL-14#2.1,"Renewal notice: the contract gives 3 months, but the policy requires no more than 60 days."
 CP-047,BOLIVARMININGCORP_05_23_2003-EX-2.1-VISP WEB SITE BUILDING AND HOSTING AGREEMENT,Notice Period To Terminate Renewal,"This agreement shall renew automatically each year thereafter, unless either party serves written notice of its intention not to renew, on the other at least 90 days prior to the expiration of the then current term of this agreement.",POL-14,Auto-Renewal and Contract Renewal Policy,"POLICY ID: POL-14
 TITLE: Auto-Renewal and Contract Renewal Policy
 CATEGORY: Renewal
@@ -811,7 +811,7 @@ This policy governs the use of automatic renewal provisions in company contracts
 2.4 Multi-year automatic renewal commitments (renewal terms exceeding twelve months) require Director-level approval before signature.
 
 3. APPLICABILITY
-Applies to all subscription, licensing, and service contracts containing automatic renewal provisions.",strong,233,True,False,,,,CONFLICT,POL-14#2.1,"Renewal notice: the contract gives 90 days, but the policy requires no more than 60 days."
+Applies to all subscription, licensing, and service contracts containing automatic renewal provisions.",strong,233,True,False,CONFLICT,"The clause requires non-renewal notice at least 90 days before expiry, exceeding the policy's maximum of 60 calendar days, assuming the policy applies to this agreement.",,CONFLICT,POL-14#2.1,"Renewal notice: the contract gives 90 days, but the policy requires no more than 60 days."
 CP-048,EdietsComInc_20001030_10QSB_EX-10.4_2606646_EX-10.4_Co-Branding Agreement,Notice Period To Terminate Renewal,"This agreement shall automatically renew for additional successive terms of twelve (12) months each at the end of the Initial Term (""Renewal Terms""), unless either party notifies the other in writing at least sixty (60) days prior to the end of the Initial Term.",POL-14,Auto-Renewal and Contract Renewal Policy,"POLICY ID: POL-14
 TITLE: Auto-Renewal and Contract Renewal Policy
 CATEGORY: Renewal
@@ -828,7 +828,7 @@ This policy governs the use of automatic renewal provisions in company contracts
 2.4 Multi-year automatic renewal commitments (renewal terms exceeding twelve months) require Director-level approval before signature.
 
 3. APPLICABILITY
-Applies to all subscription, licensing, and service contracts containing automatic renewal provisions.",strong,262,True,False,,,,NO_CONFLICT,POL-14#2.1,Renewal notice: 60 days meets the policy's no more than 60 days.
+Applies to all subscription, licensing, and service contracts containing automatic renewal provisions.",strong,262,True,False,NO_CONFLICT,"The clause requires 60 days' notice before the end of the initial term. This matches the policy's maximum of 60 calendar days, assuming the policy applies to this contract.",,NO_CONFLICT,POL-14#2.1,Renewal notice: 60 days meets the policy's no more than 60 days.
 CP-049,LegacyEducationAllianceInc_20200330_10-K_EX-10.18_12090678_EX-10.18_Development Agreement,Renewal Term,The Term shall automatically renew thereafter for successive 5-year terms unless either party provides prior written notice of termination not less than 90 days prior to the end of such five-year term.,POL-14,Auto-Renewal and Contract Renewal Policy,"POLICY ID: POL-14
 TITLE: Auto-Renewal and Contract Renewal Policy
 CATEGORY: Renewal
@@ -845,7 +845,7 @@ This policy governs the use of automatic renewal provisions in company contracts
 2.4 Multi-year automatic renewal commitments (renewal terms exceeding twelve months) require Director-level approval before signature.
 
 3. APPLICABILITY
-Applies to all subscription, licensing, and service contracts containing automatic renewal provisions.",strong,201,True,False,,,,CONFLICT,POL-14#2.1,"Renewal notice: the contract gives 90 days, but the policy requires no more than 60 days."
+Applies to all subscription, licensing, and service contracts containing automatic renewal provisions.",strong,201,True,False,CONFLICT,"The clause requires written notice at least 90 days before the end of each five-year renewal term. The policy says the company must not be required to give non-renewal notice more than 60 calendar days before renewal. This exceeds the policy limit, assuming the policy applies to this agreement.",,CONFLICT,POL-14#2.1,"Renewal notice: the contract gives 90 days, but the policy requires no more than 60 days."
 CP-050,MusclepharmCorp_20170208_10-KA_EX-10.38_9893581_EX-10.38_Co-Branding Agreement,Renewal Term,"If this Agreement is renewed for the Second Additional Term, then the Second Additional Term shall commence on July 23, 2019 and the Agreement shall expire and terminate automatically without further notice on July 22, 2022.",POL-14,Auto-Renewal and Contract Renewal Policy,"POLICY ID: POL-14
 TITLE: Auto-Renewal and Contract Renewal Policy
 CATEGORY: Renewal
@@ -862,7 +862,7 @@ This policy governs the use of automatic renewal provisions in company contracts
 2.4 Multi-year automatic renewal commitments (renewal terms exceeding twelve months) require Director-level approval before signature.
 
 3. APPLICABILITY
-Applies to all subscription, licensing, and service contracts containing automatic renewal provisions.",strong,224,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all subscription, licensing, and service contracts containing automatic renewal provisions.",strong,224,True,False,UNCERTAIN,"The clause describes a three-year additional term. POL-14 requires Director-level approval for multi-year automatic renewal commitments, but approval status and whether this is an automatic renewal are not established.",Targeted audit recommendation (high confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-051,CCAINDUSTRIESINC_04_14_2014-EX-10.1-OUTSOURCING AGREEMENT,Renewal Term,This agreement shall automatically renew for successive six (6) month periods unless written notice is provided of either party's intent not to renew at least six (6) months before the end of the then-current term.,POL-14,Auto-Renewal and Contract Renewal Policy,"POLICY ID: POL-14
 TITLE: Auto-Renewal and Contract Renewal Policy
 CATEGORY: Renewal
@@ -879,7 +879,7 @@ This policy governs the use of automatic renewal provisions in company contracts
 2.4 Multi-year automatic renewal commitments (renewal terms exceeding twelve months) require Director-level approval before signature.
 
 3. APPLICABILITY
-Applies to all subscription, licensing, and service contracts containing automatic renewal provisions.",strong,214,True,False,,,,CONFLICT,POL-14#2.1,"Renewal notice: the contract gives 6 months, but the policy requires no more than 60 days."
+Applies to all subscription, licensing, and service contracts containing automatic renewal provisions.",strong,214,True,False,CONFLICT,"The clause requires notice of non-renewal at least six months before the current term ends. The policy caps the company's required non-renewal notice at 60 calendar days, so six months exceeds that limit, assuming the policy applies.",,CONFLICT,POL-14#2.1,"Renewal notice: the contract gives 6 months, but the policy requires no more than 60 days."
 CP-052,CENTRACKINTERNATIONALINC_10_29_1999-EX-10.3-WEB SITE HOSTING AGREEMENT,Renewal Term,This Agreement shall automatically be renewed for one (1) or more one (1) month periods unless either the Customer or i-on gives notice to the other party of its intention not to renew the,POL-14,Auto-Renewal and Contract Renewal Policy,"POLICY ID: POL-14
 TITLE: Auto-Renewal and Contract Renewal Policy
 CATEGORY: Renewal
@@ -896,7 +896,7 @@ This policy governs the use of automatic renewal provisions in company contracts
 2.4 Multi-year automatic renewal commitments (renewal terms exceeding twelve months) require Director-level approval before signature.
 
 3. APPLICABILITY
-Applies to all subscription, licensing, and service contracts containing automatic renewal provisions.",strong,188,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all subscription, licensing, and service contracts containing automatic renewal provisions.",strong,188,True,False,UNCERTAIN,"The clause is truncated before the notice deadline is stated. Without the full notice period, it is not possible to compare it with the policy's 60-calendar-day maximum.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-053,TELKOMSALTD_01_30_2003-EX-10-LICENCE AND MAINTENANCE AGREEMENT,Termination For Convenience,This AGREEMENT and the licence granted hereunder shall terminate should any   of the following events occur:   6. 2. 1.        30 (thirty) days after TELKOM gives SAP AFRICA written notice of   TELKOM's wish to terminate this AGREEMENT for any reason. Any such   termination shall be subject to accrued rights and obligations but only after   payment of all Licence and Maintenance Fees then due and owing;,POL-05,Contract Termination and Notice Policy,"POLICY ID: POL-05
 TITLE: Contract Termination and Notice Policy
 CATEGORY: Termination
@@ -913,7 +913,7 @@ This policy defines minimum notice periods required for termination of company c
 2.4 Contracts must not permit unilateral termination by a counterparty with less than fifteen (15) days notice under any circumstance.
 
 3. APPLICABILITY
-Applies to all commercial contracts entered into by the company, unless superseded by a more specific policy for a given contract category.",strong,406,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts entered into by the company, unless superseded by a more specific policy for a given contract category.",strong,406,True,False,NO_CONFLICT,"The clause permits termination for convenience after 30 days' written notice. This meets the policy's minimum 30-calendar-day notice period, assuming no more specific category policy applies.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-054,TRICITYBANKSHARESCORP_05_15_1998-EX-10-OUTSOURCING AGREEMENT,Termination For Convenience,"Customer may terminate this Agreement during the Term upon at least one (1) years' written notice to M&I, provided that Customer pays M&I an early termination fee (""Termination for Convenience Fee"") in an amount equal to REDACTED of the Estimated Remaining Value.",POL-05,Contract Termination and Notice Policy,"POLICY ID: POL-05
 TITLE: Contract Termination and Notice Policy
 CATEGORY: Termination
@@ -930,7 +930,7 @@ This policy defines minimum notice periods required for termination of company c
 2.4 Contracts must not permit unilateral termination by a counterparty with less than fifteen (15) days notice under any circumstance.
 
 3. APPLICABILITY
-Applies to all commercial contracts entered into by the company, unless superseded by a more specific policy for a given contract category.",strong,263,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts entered into by the company, unless superseded by a more specific policy for a given contract category.",strong,263,True,False,NO_CONFLICT,"The clause requires one year's written notice for termination for convenience, which is longer than the policy's minimum 30-day notice period. The policy excerpt does not prohibit a longer notice period or address the stated termination fee.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-055,BLUEFLYINC_03_27_2002-EX-10.27-e-business Hosting Agreement,Termination For Convenience,"If Customer disagrees with any such changes, Customer may in its sole discretion terminate this Agreement (or some or all of the affected Service Option Attachments) without the payment of termination charges upon notice to IBM at least thirty (30) days prior to the effective date of the applicable change.",POL-05,Contract Termination and Notice Policy,"POLICY ID: POL-05
 TITLE: Contract Termination and Notice Policy
 CATEGORY: Termination
@@ -947,7 +947,7 @@ This policy defines minimum notice periods required for termination of company c
 2.4 Contracts must not permit unilateral termination by a counterparty with less than fifteen (15) days notice under any circumstance.
 
 3. APPLICABILITY
-Applies to all commercial contracts entered into by the company, unless superseded by a more specific policy for a given contract category.",strong,307,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts entered into by the company, unless superseded by a more specific policy for a given contract category.",strong,307,True,False,NO_CONFLICT,"The clause allows the customer to terminate after giving at least 30 days' notice. This meets the policy's minimum 30-calendar-day notice period, based on the excerpt provided.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-056,TALCOTTRESOLUTIONLIFEINSURANCECO-SEPARATEACCOUNTTWELVE_04_30_2020-EX-99.8(L)-SERVICE AGREEMENT,Termination For Convenience,"This Agreement shall terminate (a) at the option of any party, upon 90 days' advance written notice to the other parties hereto;",POL-05,Contract Termination and Notice Policy,"POLICY ID: POL-05
 TITLE: Contract Termination and Notice Policy
 CATEGORY: Termination
@@ -964,7 +964,7 @@ This policy defines minimum notice periods required for termination of company c
 2.4 Contracts must not permit unilateral termination by a counterparty with less than fifteen (15) days notice under any circumstance.
 
 3. APPLICABILITY
-Applies to all commercial contracts entered into by the company, unless superseded by a more specific policy for a given contract category.",strong,128,True,False,,,,NO_CONFLICT,POL-05#2.1,Termination notice: 90 days meets the policy's at least 30 days.
+Applies to all commercial contracts entered into by the company, unless superseded by a more specific policy for a given contract category.",strong,128,True,False,NO_CONFLICT,The clause permits termination by any party with 90 days' advance written notice. This exceeds the policy's minimum 30-day notice period and does not violate its 15-day minimum notice rule.,,NO_CONFLICT,POL-05#2.1,Termination notice: 90 days meets the policy's at least 30 days.
 CP-057,ACCURAYINC_09_01_2010-EX-10.31-DISTRIBUTOR AGREEMENT,Uncapped Liability,"WITHOUT AFFECTING STRICT PRODUCT LIABILITY UNDER MANDATORY APPLICABLE LAW,  SECTION 10, OR THE RESPECTIVE OBLIGATIONS OF THE PARTIES UNDER THE CONFIDENTIAILITY AGREEMENT AND  EXCEPT FOR BREACHES ASSOCIATED WITH THE UNAUTHORIZED USE OF INTELLECTUAL PROPERTY, IN NO EVENT  SHALL EITHER PARTY BE LIABLE TO THE OTHER PARTY FOR SPECIAL, INCIDENTAL, CONSEQUENTIAL, PUNITIVE OR  TORT DAMAGES, INCLUDING WITHOUT LIMITATION, ANY DAMAGES RESULTING FROM LOSS OF USE, LOSS OF DATA,  LOSS OF PROFITS OR LOSS OF BUSINESS ARISING OUT OF OR IN CONNECTION WITH THE MATTERS CONTEMPLATED  BY THIS AGREEMENT, WHETHER OR NOT A PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.",POL-06,Limitation of Liability Policy,"POLICY ID: POL-06
 TITLE: Limitation of Liability Policy
 CATEGORY: Liability
@@ -981,7 +981,7 @@ This policy establishes acceptable standards for liability caps and exclusions i
 2.4 Any mutual liability cap must apply equally to both parties unless a business justification for asymmetry is documented and approved.
 
 3. APPLICABILITY
-Applies to all commercial contracts where the company is a counterparty, particularly vendor, software licensing, and services agreements.",strong,664,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts where the company is a counterparty, particularly vendor, software licensing, and services agreements.",strong,664,True,False,CONFLICT,"The full agreement's Section 10 concerns indemnity/IP claims and does not visibly carve out gross negligence, willful misconduct, or reportable data-breach liability from the broad damages exclusion. This conflicts with POL-06 if applicable and no other clause supplies the carve-outs.",Targeted audit recommendation (medium confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-058,ImpresseCorp_20000322_S-1A_EX-10.11_5199234_EX-10.11_Co-Branding Agreement,Uncapped Liability,Except for claims under Sections 9.4  [INDEMNIFICATION BY IMPRESSE] and 9.5  [INDEMNIFICATION BY VERTICALNET],POL-06,Limitation of Liability Policy,"POLICY ID: POL-06
 TITLE: Limitation of Liability Policy
 CATEGORY: Liability
@@ -998,7 +998,7 @@ This policy establishes acceptable standards for liability caps and exclusions i
 2.4 Any mutual liability cap must apply equally to both parties unless a business justification for asymmetry is documented and approved.
 
 3. APPLICABILITY
-Applies to all commercial contracts where the company is a counterparty, particularly vendor, software licensing, and services agreements.",strong,109,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts where the company is a counterparty, particularly vendor, software licensing, and services agreements.",strong,109,True,False,UNCERTAIN,The excerpt only identifies exceptions for indemnification claims and does not include the operative liability cap or the full carve-outs. There is not enough information to determine whether the policy-required liability protections are preserved.,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-059,AtnInternationalInc_20191108_10-Q_EX-10.1_11878541_EX-10.1_Maintenance Agreement,Uncapped Liability,"NOTWITHSTANDING ANY OTHER PROVISION IN THIS AGREEMENT TO THE CONTRARY (AND WHETHER OR NOT SUCH A PROVISION CONTAINS LANGUAGE TO THE EFFECT THAT THE PROVISION TAKES PRECEDENCE OVER OTHER PROVISIONS CONTRARY TO IT), WHETHER EXPRESS OR IMPLIED, NONE OF THE LIMITATIONS OF LIABILITY (INCLUDING ANY LIMITATIONS REGARDING TYPES OF OR AMOUNTS OF DAMAGES OR LIABILITIES) CONTAINED ANYWHERE IN THIS AGREEMENT WILL APPLY TO VENDOR'S OBLIGATIONS UNDER THIS SECTION.",POL-06,Limitation of Liability Policy,"POLICY ID: POL-06
 TITLE: Limitation of Liability Policy
 CATEGORY: Liability
@@ -1015,7 +1015,7 @@ This policy establishes acceptable standards for liability caps and exclusions i
 2.4 Any mutual liability cap must apply equally to both parties unless a business justification for asymmetry is documented and approved.
 
 3. APPLICABILITY
-Applies to all commercial contracts where the company is a counterparty, particularly vendor, software licensing, and services agreements.",strong,454,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts where the company is a counterparty, particularly vendor, software licensing, and services agreements.",strong,454,False,False,UNCERTAIN,"The clause removes liability limits for Vendor obligations under a referenced section, but the excerpt does not identify that section's subject. It may be protective or irrelevant depending on what obligations it covers.",Targeted audit recommendation (high confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-060,SteelVaultCorp_20081224_10-K_EX-10.16_3074935_EX-10.16_Affiliate Agreement,Uncapped Liability,"IN NO EVENT WILL  EQUIDATA BE LIABLE FOR ANY INDIRECT, EXEMPLARY, PUNITIVE, SPECIAL, OR CONSEQUENTIAL DAMAGES  INCLUDING WITHOUT LIMITATION LOST PROFITS OR OTHER ECONOMIC LOSS, LOST REIMBURSEMENTS, AND  LOST DATA, OR FOR ANY CLAIM BY ANY THIRD PARTY.",POL-06,Limitation of Liability Policy,"POLICY ID: POL-06
 TITLE: Limitation of Liability Policy
 CATEGORY: Liability
@@ -1032,7 +1032,7 @@ This policy establishes acceptable standards for liability caps and exclusions i
 2.4 Any mutual liability cap must apply equally to both parties unless a business justification for asymmetry is documented and approved.
 
 3. APPLICABILITY
-Applies to all commercial contracts where the company is a counterparty, particularly vendor, software licensing, and services agreements.",strong,250,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all commercial contracts where the company is a counterparty, particularly vendor, software licensing, and services agreements.",strong,250,False,False,CONFLICT,The full clause broadly excludes lost data and third-party claims and appears asymmetric. This conflicts with POL-06's required uncapped liability for reportable data-protection breaches if the policy applies to the focal company and no separate carve-out controls.,Targeted audit recommendation (medium confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-061,ScansourceInc_20190822_10-K_EX-10.38_11793958_EX-10.38_Distributor Agreement2,Warranty Duration,"Cisco warrants that commencing from the date of shipment to Customer (but in case of resale by an authorized Cisco reseller, commencing not more than ninety (90) days after original shipment by Cisco), and continuing for a period of the longer of (a) ninety (90) days or (b) the software warranty period (if any) set forth in the warranty card accompanying the Product (if any): (a) the media on which the Software is furnished will be free of defects in materials and workmanship under normal use; and (b) the Software substantially conforms to its published specifications.",POL-17,Warranty Policy,"POLICY ID: POL-17
 TITLE: Warranty Policy
 CATEGORY: Warranty
@@ -1049,7 +1049,7 @@ This policy defines minimum warranty standards required in vendor and supplier c
 2.4 Warranty remedies should include, at minimum, repair, replacement, or refund at the company's option.
 
 3. APPLICABILITY
-Applies to all agreements involving the purchase or licensing of goods, software, or services by the company.",strong,575,True,False,,,,NO_CONFLICT,POL-17#2.1,Warranty period: 90 days meets the policy's at least 90 days.
+Applies to all agreements involving the purchase or licensing of goods, software, or services by the company.",strong,575,True,False,UNCERTAIN,"The warranty period is at least 90 days, but the reseller wording does not clearly establish a minimum 90 days from delivery or go-live as required by POL-17.",Baseline also said NO_CONFLICT. Targeted audit recommendation (high confidence); see adjudication review for caveats.,NO_CONFLICT,POL-17#2.1,Warranty period: 90 days meets the policy's at least 90 days.
 CP-062,PROFOUNDMEDICALCORP_08_29_2019-EX-4.5-SUPPLY AGREEMENT,Warranty Duration,"Without prejudice to any other rights accruing under this Agreement or law, the warranties set forth in clause 7.1 will extend for a period of [Redacted - Commercially Sensitive - Warranty Details].",POL-17,Warranty Policy,"POLICY ID: POL-17
 TITLE: Warranty Policy
 CATEGORY: Warranty
@@ -1066,7 +1066,7 @@ This policy defines minimum warranty standards required in vendor and supplier c
 2.4 Warranty remedies should include, at minimum, repair, replacement, or refund at the company's option.
 
 3. APPLICABILITY
-Applies to all agreements involving the purchase or licensing of goods, software, or services by the company.",strong,198,True,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all agreements involving the purchase or licensing of goods, software, or services by the company.",strong,198,True,False,UNCERTAIN,"The warranty duration is redacted, so it cannot be compared with the policy's minimum 90-day warranty period. The excerpt also does not state the remedy terms.",,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
 CP-063,"ETELOS,INC_03_09_2004-EX-10.8-DISTRIBUTOR AGREEMENT",Warranty Duration,"Tripath provides an end user limited warranty for retail Products, and one-year limited warranty for OEM products.",POL-17,Warranty Policy,"POLICY ID: POL-17
 TITLE: Warranty Policy
 CATEGORY: Warranty
@@ -1083,7 +1083,7 @@ This policy defines minimum warranty standards required in vendor and supplier c
 2.4 Warranty remedies should include, at minimum, repair, replacement, or refund at the company's option.
 
 3. APPLICABILITY
-Applies to all agreements involving the purchase or licensing of goods, software, or services by the company.",strong,114,False,False,,,,NO_CONFLICT,POL-17#2.1,Warranty period: 1 years meets the policy's at least 90 days.
+Applies to all agreements involving the purchase or licensing of goods, software, or services by the company.",strong,114,False,False,NO_CONFLICT,"The clause provides a one-year limited warranty for OEM products, which exceeds the policy's minimum 90-day warranty duration. The excerpt does not address all other warranty requirements, so this label applies only to the duration shown.",The retail Product warranty has no stated duration; only the OEM one-year warranty is shown.,NO_CONFLICT,POL-17#2.1,Warranty period: 1 years meets the policy's at least 90 days.
 CP-064,LIMEENERGYCO_09_09_1999-EX-10-DISTRIBUTOR AGREEMENT,Warranty Duration,"In the event that Company is unable or unwilling to                   promptly  perform any warranty work without  reasonable  cause                   and following  full and fair  opportunity  to do so, or in the                   event of the necessity  for  emergency  repairs of a defective                   Product  for  which  there  is no  reasonable  possibility  of                   performance by Company,  Distributor may perform such warranty                   work or hire a third party to perform such  warranty  work and                   the reasonable cost thereof shall be paid by Company.",POL-17,Warranty Policy,"POLICY ID: POL-17
 TITLE: Warranty Policy
 CATEGORY: Warranty
@@ -1100,4 +1100,4 @@ This policy defines minimum warranty standards required in vendor and supplier c
 2.4 Warranty remedies should include, at minimum, repair, replacement, or refund at the company's option.
 
 3. APPLICABILITY
-Applies to all agreements involving the purchase or licensing of goods, software, or services by the company.",strong,609,False,False,,,,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."
+Applies to all agreements involving the purchase or licensing of goods, software, or services by the company.",strong,609,False,False,NO_CONFLICT,This clause adds a remedy allowing the distributor to arrange warranty work and recover reasonable costs; it does not contradict the mapped minimum warranty requirements in the excerpt.,Targeted audit recommendation (medium confidence); see adjudication review for caveats.,UNCERTAIN,,"No structured conflict was detected, and no comparable figure or authorization rule was found on both sides."

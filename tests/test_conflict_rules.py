@@ -2,6 +2,9 @@ import unittest
 
 from core.schemas import Requirement
 from core.conflict import detect_conflict
+from core.quantities import find_quantities, detect_kind
+
+
 
 
 def make_requirement(
@@ -11,14 +14,32 @@ def make_requirement(
     unit=None,
     operator=None,
 ):
+    quantities = []
+
+    for q in find_quantities(text):
+        kind = detect_kind(text, q)
+        if kind:
+            quantities.append({
+                "value": q.value,
+                "unit": q.unit.value,
+                "bound": q.bound,
+                "per": q.per,
+                "kind": kind,
+                "raw": q.raw,
+                "inferred": q.inferred,
+            })
+
     return Requirement(
         requirement_id=requirement_id,
         source_document_id=requirement_id,
         source_text=text,
-        threshold=threshold,
+        threshold=str(threshold) if threshold is not None else None,
         unit=unit,
         operator=operator,
+        quantities=quantities,
     )
+
+
 
 
 class TestConflictRules(unittest.TestCase):
@@ -105,7 +126,7 @@ class TestConflictRules(unittest.TestCase):
         )
         policy = make_requirement(
             "POL-10-001",
-            "Vendors processing company data need USD 2000000 cyber coverage.",
+            "Vendors processing company data need cyber insurance coverage of USD 2000000.",
             threshold=2_000_000,
             unit="usd",
             operator=">=",
@@ -131,6 +152,37 @@ class TestConflictRules(unittest.TestCase):
 
         result = detect_conflict(contract, policy)
         self.assertFalse(result["conflict"])
+
+    
+    def test_policy_prohibition_conflicts_with_contract_permission(self):
+        contract = Requirement(
+            requirement_id="CON-MOD-001",
+            source_document_id="CON-MOD-001",
+            source_text="The vendor may disclose customer data to third parties.",
+            action="disclose",
+            object="customer data",
+            obligation_type="PERMISSION",
+        )
+
+        policy = Requirement(
+            requirement_id="POL-MOD-001",
+            source_document_id="POL-MOD-001",
+            source_text=(
+                "The vendor must not disclose customer data to third parties "
+                "without prior written authorization."
+            ),
+            action="disclose",
+            object="customer data",
+            obligation_type="PROHIBITION",
+            authorization="REQUIRED",
+        )
+
+        result = detect_conflict(contract, policy)
+
+        self.assertTrue(result["conflict"])
+        self.assertEqual(result["label"], "CONFLICT")
+        self.assertIn("MODALITY", result["rules"])
+
 
 
 if __name__ == "__main__":

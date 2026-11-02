@@ -110,10 +110,10 @@ class Requirement(BaseModel):
             condition=clean(row.get("condition")),
             threshold=thr_text,
             deadline=clean(row.get("deadline")),
-            source_text=clean(row.get("evidence_text")) or "",
+            source_text=clean(row.get("evidence_text")) or clean(row.get("source_text")) or "",
             source_type=SourceType.STATE_REGULATION,
             language="en",
-            jurisdiction=clean(row.get("state")),
+            jurisdiction=clean(row.get("jurisdiction")) or clean(row.get("state")),
             policy_name=clean(row.get("policy_name")),
             domain=STATE_DOMAIN_MAP[dom_raw].value if dom_raw in STATE_DOMAIN_MAP else None,
             requirement_name=clean(row.get("requirement_name")),
@@ -162,5 +162,5 @@ class ProfileCheck(BaseModel):
     rule: Optional[str] = None            # e.g. "annual_turnover <= 50 crore"
     reasoning: Optional[str] = None
     evidence_text: Optional[str] = None
-    page_number: Optional[int] = None
+    page_number: Optional[str | int] = None
     source_url: Optional[str] = None
